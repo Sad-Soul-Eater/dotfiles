@@ -18,21 +18,21 @@ for PATTERN in $PATTERNS_DIR/*.pt; do
 
 	cp $PATTERN $TMP_PATTERN
 
-# Numbered colors
-for i in {0..15}
-do
+	# Numbered colors
+	for i in {0..15} do
+
 	v=`xrdb -query | awk '/*.color'"$i":'/ { print substr($2,2) }'`
 	eval "sed -i 's/%cl${i}%/${v}/g' $TMP_PATTERN";
-done
 
-# Named colors
-foreground=`xrdb -query | awk '/*.foreground/ { print substr($2,2) }'`
-background=`xrdb -query | awk '/*.background/ { print substr($2,2) }'`
-sed -i "s/%clfg%/${foreground}/g" $TMP_PATTERN
-sed -i "s/%clbg%/${background}/g" $TMP_PATTERN
+	done
 
-echo "$PATTERN_NAME - Done!"
+	# Named colors
+	foreground=`xrdb -query | awk '/*.foreground/ { print substr($2,2) }'`
+	background=`xrdb -query | awk '/*.background/ { print substr($2,2) }'`
+	sed -i "s/%clfg%/${foreground}/g" $TMP_PATTERN
+	sed -i "s/%clbg%/${background}/g" $TMP_PATTERN
 
-readarray TEMP_ARR < $TMP_PATTERN
+	echo "$PATTERN_NAME - Done!"
 
+	readarray TEMP_ARR < $TMP_PATTERN
 done

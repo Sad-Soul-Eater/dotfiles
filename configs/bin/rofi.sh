@@ -25,11 +25,11 @@ power () {
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi "$@")
 	if [ "$SELECTED_STRING" == "lock" ]; then
-    betterlockscreen -l dimblur -t "Don't touch my machine!"	
+		betterlockscreen -l dimblur -t "Don't touch my machine!"	
 	elif [ "$SELECTED_STRING" == "suspend" ]; then
 		systemctl suspend
 	elif [ "$SELECTED_STRING" == "logout" ]; then
-    i3-msg exit
+		i3-msg exit
 	elif [ "$SELECTED_STRING" == "reboot" ]; then
 		systemctl reboot
 	elif [ "$SELECTED_STRING" == "shutdown" ]; then
@@ -39,7 +39,7 @@ power () {
 
 screenshot (){
 	ACTION_LIST="full\narea\nopen last\narea to clip"
-  SCRIPT=$(dirname $(readlink -f $0))/screenshot.sh
+	SCRIPT=$(dirname $(readlink -f $0))/screenshot.sh
 
 	_rofi () {
 		rofi -dmenu -i -sync -p "screen" -width 8 -lines 4
@@ -47,9 +47,9 @@ screenshot (){
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi "$@")
 	if [ "$SELECTED_STRING" == "full" ]; then
-    $SCRIPT
+		$SCRIPT
 	elif [ "$SELECTED_STRING" == "area" ]; then
-    $SCRIPT -s
+		$SCRIPT -s
 	elif [ "$SELECTED_STRING" == "open last" ]; then
 		$SCRIPT -b
 	elif [ "$SELECTED_STRING" == "area to clip" ]; then
@@ -64,7 +64,7 @@ usage () {
 	-l	open clipmenu in rofi
 	-n	open NetworkManager in rofi
 	-p	power menu
-  -s  screenshot menu"
+	-s  screenshot menu"
 }
 
 while getopts "cdlnhps" OPTION; do
@@ -84,9 +84,9 @@ while getopts "cdlnhps" OPTION; do
 		p)
 			power
 			;;
-    s)
-      screenshot
-      ;;
+		s)
+			screenshot
+			;;
 		h)
 			usage
 			exit 1

@@ -213,12 +213,11 @@ exec_always --no-startup-id ~/bin/wallpaper.sh
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
 exec --no-startup-id conky -c ~/.config/.conkyrc
-#exec --no-startup-id sudo powertop --auto-tune
-#exec --no-startup-id nm-applet
-#exec --no-startup-id blueman-applet
+#exec --no-startup-id sudo powertop --auto-tune\
 exec --no-startup-id udiskie
 exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id nextcloud
+
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'
 
