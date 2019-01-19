@@ -1,0 +1,62 @@
+!----------------
+!  Xft Settings
+!----------------
+
+Xft*dpi: 102
+Xft*antialias:  true
+Xft*hinting:    true
+Xft*rgba:       rgb
+Xft*autohint:   false
+Xft*hintstyle:  hintfull
+Xft*lcdfilter:  lcddefault
+
+!----------------
+!  Colors 
+!----------------
+
+! special
+*.foreground:   #ebece6
+*.background:   #1e1f28
+*.cursorColor:  #ebece6
+
+! black
+*.color0:       #353535
+*.color8:       #595959
+
+! red
+*.color1:       #d43437
+*.color9:       #fb4245
+
+! green
+*.color2:       #3dbe5d
+*.color10:      #50fa7b
+
+! yellow
+*.color3:       #bac458
+*.color11:      #f0fa8b
+
+! blue
+*.color4:       #2883bb
+*.color12:      #49b9fe
+
+! magenta
+*.color5:       #b8287d
+*.color13:      #fb4cb3
+
+! cyan
+*.color6:       #5e9daa
+*.color14:      #8be9fd
+
+! white
+*.color7:       #a8a8a7
+*.color15:      #ededec
+
+rofi.padding:         20
+rofi.hide-scrollbar:  true
+rofi.font:            FiraGO 12
+rofi.color-enabled:   true
+
+rofi.color-window:    #1e1f28,#353535,#1e1f28
+rofi.color-normal:    #1e1f28,#ebece6,#1e1f28,#1e1f28,#3dbe5d
+rofi.color-active:    #1e1f28,#b8287d,#1e1f28,#1e1f28,#3dbe5d
+rofi.color-urgent:    #1e1f28,#bac458,#1e1f28,#1e1f28,#3dbe5d

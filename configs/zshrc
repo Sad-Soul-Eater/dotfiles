@@ -1,0 +1,30 @@
+export ZSH=/usr/share/oh-my-zsh
+export ZSH_CACHE_DIR=~/.oh-my-zsh/cache
+
+ZSH_THEME="spaceship-prompt/spaceship"
+
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+DISABLE_AUTO_UPDATE="true"
+ZSH_AUTOSUGGEST_USE_ASYNC="true" 
+
+plugins=(
+  systemd
+  extract
+  gitfast
+  sudo
+  zsh-completions
+  colored-man-pages
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+alias ls="exa"
+alias neofetch="neofetch | lolcat"
+alias h=htop
+alias mpv-tw="mpv --profile=twitch"
+alias upgrade_oh_my_zsh="sudo ~/bin/upgrade_oh_my_zsh.sh"
+alias v="nvim"

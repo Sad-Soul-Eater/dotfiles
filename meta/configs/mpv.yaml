@@ -1,0 +1,4 @@
+- link:
+    ~/.config/mpv/mpv.conf:     configs/mpv/linux-mpv.conf
+    ~/.config/mpv/input.conf:   configs/mpv/input.conf
+    ~/.config/mpv/scripts:      configs/mpv/scripts

@@ -1,0 +1,6 @@
+[submodule "meta/dotbot"]
+	path = meta/dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "configs/bin/polybar-spotify"]
+	path = configs/bin/polybar-spotify
+	url = https://github.com/Jvanrhijn/polybar-spotify.git

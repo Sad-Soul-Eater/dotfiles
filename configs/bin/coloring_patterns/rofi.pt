@@ -1,0 +1,10 @@
+FOREGROUND=#%clfg%
+BACKGROUND=#%clbg%
+BLACK=#%cl0%
+RED=#%cl1%
+GREEN=#%cl2%
+YELLOW=#%cl3%
+BLUE=#%cl4%
+MAGENTA=#%cl5%
+CYAN=#%cl6%
+WHITE=#%cl7%

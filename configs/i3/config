@@ -1,0 +1,277 @@
+#--------#
+# BASICS #
+#--------#
+
+# mod
+set $mod Mod4
+set $alt Mod1
+
+# font
+font pango:FiraGO 14
+
+#-----------------------------#
+# WINDOW / WORKSPACE COMMANDS #
+#-----------------------------#
+
+# drag floating key
+floating_modifier $alt
+
+# kill focused window
+bindsym $mod+q kill
+bindsym $alt+F4 kill
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+b floating toggle
+
+workspace_auto_back_and_forth yes
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+z move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+z scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#----------------#
+# BASIC BINDINGS #
+#----------------#
+
+# drun
+bindsym $mod+d exec --no-startup-id ~/bin/rofi.sh -d
+
+# clipmenu
+bindsym $alt+v exec --no-startup-id ~/bin/rofi.sh -l
+
+# calc
+bindsym $mod+c exec --no-startup-id ~/bin/rofi.sh -c
+
+# NetworkManager
+bindsym $mod+n exec --no-startup-id ~/bin/rofi.sh -n
+
+# Power-menu
+bindsym $mod+e exec --no-startup-id ~/bin/rofi.sh -p
+
+# terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# Thunar
+bindsym $mod+Tab exec --no-startup-id thunar 
+
+# restart i3 in place
+bindsym $mod+Shift+r restart
+
+# print screen
+bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
+
+# exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Firefox
+bindsym $mod+a exec --no-startup-id firefox-nightly
+
+#------#
+# GAPS #
+#------#
+
+smart_gaps on
+
+gaps inner 10 
+gaps outer 5
+bindsym $mod+o gaps outer current set 5; gaps inner current set 20
+bindsym $mod+i gaps outer current set 0; gaps inner current set 0
+
+#------------#
+# APPEARANCE #
+#------------#
+
+smart_borders on
+
+# window border
+for_window [class="^.*"] border pixel 1
+#for_window [class=".*"] title_format "<span font='Hack 10'> > %title</span>"
+
+set_from_resource $fg i3wm.foreground #f0f0f0
+set_from_resource $bg i3wm.background #f0f0f0
+set_from_resource $lw i3wm.color12 #f0f0f0
+set_from_resource $nr i3wm.color10 #f0f0f0
+set_from_resource $ur i3wm.color13 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $fg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $ur
+client.placeholder      $bg     $bg     $fg  $bg       $fg
+
+client.background       $bg
+
+#----------------------#
+# STARTUP APPLICATIONS #
+#----------------------#
+
+exec_always --no-startup-id dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$nr" -cfr "$ur"
+exec_always --no-startup-id ~/bin/wallpaper.sh
+
+exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id conky -c ~/.config/.conkyrc
+#exec --no-startup-id sudo powertop --auto-tune
+#exec --no-startup-id nm-applet
+#exec --no-startup-id blueman-applet
+exec --no-startup-id udiskie
+exec_always --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id nextcloud
+# Keyboard layout
+exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'
+
+#---------------#
+# SPECIAL CASES #
+#---------------#
+
+# Telegram 
+for_window [class="Telegram"]		floating enable,	resize set 400 1000,	move position 1510 51
+for_window [title="Media viewer"]				resize set 1920 1080,	move absolute position center,	border pixel 0
+
+# KeePassXC
+for_window [class="keepassxc"]		floating enable,	resize set 1280 720,	move absolute position center
+
+# thunar
+for_window [class="Thunar"]		floating enable,	resize set 1800 900,	move absolute position center
+
+# feh
+for_window [class="feh"]		floating enable,				move absolute position center
+
+# libreoffice
+for_window [class="Soffice"]					resize set 1000 750,	move absolute position center
+
+#------------#
+# MEDIA KEYS #
+#------------#
+
+# audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+floating_maximum_size 1900 x 1060
+floating_minimum_size -1 x -1
+
+#-----#
+# BAR #
+#-----#
+
+exec_always --no-startup-id ~/bin/bar.sh
+
+#-------------#
+# ASSIGNMENTS #
+#-------------#
+
+assign [class="^(Firefox)|(Nightly)$"] $ws2
+assign [class="Gedit"] $ws3
+assign [class="Code"] $ws4
+assign [class="Nautilus"] $ws3
+assign [class="mpv"] $ws6
+assign [class="discord"] $ws7
+for_window [class="Spotify"] move to workspace $ws10

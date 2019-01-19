@@ -1,0 +1,108 @@
+conky.config = {
+background = false,
+font = 'FiraGO:size=12',
+use_xft = true,
+
+update_interval = 1,
+cpu_avg_samples = 1,
+net_avg_samples = 1,
+
+total_run_times = 0,
+no_buffers = true,
+text_buffer_size = 512,
+
+minimum_width = 0,
+minimum_height = 0,
+
+own_window = true,
+own_window_type = 'override',
+own_window_class = 'conky',
+own_window_transparent = true,
+
+double_buffer = true,
+draw_shades = false,
+draw_outline = false,
+draw_borders = false,
+draw_graph_borders = false,
+
+color0 = 'c5c8c6',
+
+alignment = 'middle_left',
+gap_x = 25,
+
+override_utf8_locale = true,
+
+};
+
+conky.text = [[
+${if_match "${nodename}" == "arch-soul-nb"}\
+${voffset 55}
+${else}\
+${voffset 5}
+${endif}\
+${color0}SYSTEM ${hr 2}
+${voffset 5}${alignc}${color0}${font ConkySymbols:size=40}t${font}
+${font ConkySymbols:size=13}${color0}t${font} Kernel: ${alignr}${color0}${kernel}
+${font Stencil Icons:size=14}${color0}"${font} Uptime: ${alignr}${color0}${uptime}
+${if_match "${nodename}" == "arch-soul-nb"}\
+${offset 2}${font Stencil Icons:size=14}${color0}o${font}${offset 3} Battery: ${alignr}${color0}${battery_percent}%
+${endif}\
+
+${color0}${font StyleBats:size=14}J${font} RAM: ${alignr}${mem}/${memmax}
+${color0}${membar}
+${color0}${font StyleBats:size=14}i${font} SWAP: ${alignr}${swap}/${swapmax}
+${color0}${swapbar}
+
+CPU ${hr 2}
+
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu0 6,160} ${alignr}${freq_g 0}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu1 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu2 6,160} ${alignr}${freq_g 2}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu3 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu4 6,160} ${alignr}${freq_g 4}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu5 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu6 6,160} ${alignr}${freq_g 6}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu7 6,160}
+${if_match "${nodename}" == "arch-soul-pc"}\
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu8 6,160} ${alignr}${freq_g 8}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu9 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu10 6,160} ${alignr}${freq_g 10}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu11 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu12 6,160} ${alignr}${freq_g 12}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu13 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu14 6,160} ${alignr}${freq_g 14}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu15 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu16 6,160} ${alignr}${freq_g 16}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu17 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu18 6,160} ${alignr}${freq_g 18}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu19 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu20 6,160} ${alignr}${freq_g 20}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu21 6,160}
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu22 6,160} ${alignr}${freq_g 22}Ghz
+${font Stencil Icons:size=14}${color0}z${font} ${color0}${cpubar cpu23 6,160}
+${endif}\
+
+DISK ${hr 2}
+
+${font Icons South St:size=11}${color0}J${font} System: ${alignr}${fs_used /}/${fs_size /}
+${fs_bar /}
+${font Icons South St:size=11}${color0}J${font} HDD: ${alignr}${fs_used /home/soul/HDD/}/${fs_size /home/soul/HDD/}
+${fs_bar /home/soul/HDD/}
+
+${diskiograph_read /dev/sda 10,120 555555 AAAAAA -l} ${diskiograph_write /dev/sda 10,120 555555 AAAAAA -l}
+${color0}Read: ${diskio_read /dev/sda} ${alignr}${color0}Write: ${diskio_write /dev/sda}
+${if_match "${nodename}" == "arch-soul-nb"}\
+
+NETWORK ${hr 2}
+
+${font WIFI:size=13}${color0}B${font} SSID: ${alignr}${wireless_essid wlp1s0}
+${font PizzaDude Bullets:size=14}${color0}O${font} Up:      ${upspeed wlp1s0} ${alignr}${upspeedgraph wlp1s0 14,100}
+${font PizzaDude Bullets:size=14}${color0}U${font} Down: ${downspeed wlp1s0} ${alignr}${downspeedgraph wlp1s0 14,100}
+${font PizzaDude Bullets:size=14}${color0}N${font} Upload: ${alignr}${totalup wlp1s0}
+${font PizzaDude Bullets:size=14}${color0}T${font} Download: ${alignr}${totaldown wlp1s0}
+${font PizzaDude Bullets:size=14}${color0}Z${font} Quality: ${wireless_link_qual wlp1s0}% ${font FiraGO:size=8}${alignc}${color0}${wireless_link_bar wlp1s0}
+${voffset 11}
+${else}\
+${voffset 16}
+${endif}\
+]];
