@@ -6,7 +6,7 @@
 SCREENSHOTS_DIR=~/Pictures/Screenshots
 TIMESTAMP="$(date +%Y.%m.%d-%H.%M.%S)"
 FILENAME=$SCREENSHOTS_DIR/$TIMESTAMP.screenshot.png
-PHOTO_ICON_PATH=~/.icons/oomox-only_icons/categories/scalable/applications-photography.svg
+PHOTO_ICON_PATH=/usr/share/icons/Papirus/64x64/categories/screengrab.svg
 
 # -u option hides cursor
 # -m option changes the compression level
