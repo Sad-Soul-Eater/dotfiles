@@ -25,7 +25,7 @@ power () {
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi "$@")
 	if [ "$SELECTED_STRING" == "lock" ]; then
-		betterlockscreen -l dimblur -t "Don't touch my machine!"	
+		betterlockscreen -l dimblur -t "Don't touch my machine!"
 	elif [ "$SELECTED_STRING" == "suspend" ]; then
 		systemctl suspend
 	elif [ "$SELECTED_STRING" == "logout" ]; then
@@ -33,7 +33,7 @@ power () {
 	elif [ "$SELECTED_STRING" == "reboot" ]; then
 		systemctl reboot
 	elif [ "$SELECTED_STRING" == "shutdown" ]; then
-		systemctl poweroff 
+		systemctl poweroff
 	fi
 }
 
@@ -59,12 +59,12 @@ screenshot (){
 
 usage () {
 	echo "-h	open this page
-	-c	open calc in rofi
-	-d	open drun, run, window in rofi
-	-l	open clipmenu in rofi
-	-n	open NetworkManager in rofi
-	-p	power menu
-	-s  screenshot menu"
+-c	open calc in rofi
+-d	open drun, run, window in rofi
+-l	open clipmenu in rofi
+-n	open NetworkManager in rofi
+-p	power menu
+-s	screenshot menu"
 }
 
 while getopts "cdlnhps" OPTION; do
