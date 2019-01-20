@@ -233,10 +233,10 @@ for_window [title="Media viewer"]				resize set 1920 1080,	move absolute positio
 for_window [class="keepassxc"]		floating enable,	resize set 1280 720,	move absolute position center
 
 # thunar
-for_window [class="Thunar"]		floating enable,	resize set 1800 900,	move absolute position center
+for_window [class="(?i)thunar" window_type="normal"]		floating enable,	resize set 1280 720,	move absolute position center
 
-# feh
-for_window [class="feh"]		floating enable,				move absolute position center
+# sxiv 
+for_window [class="Sxiv"]		floating enable,				move absolute position center
 
 # libreoffice
 for_window [class="Soffice"]					resize set 1000 750,	move absolute position center
@@ -254,7 +254,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
-floating_maximum_size 1900 x 1060
+# floating_maximum_size 1900 x 1060
 floating_minimum_size -1 x -1
 
 #-----#
@@ -267,7 +267,7 @@ exec_always --no-startup-id ~/bin/bar.sh
 # ASSIGNMENTS #
 #-------------#
 
-assign [class="^(Firefox)|(Nightly)$"] $ws2
+assign [class="^(Firefox)|(Nightly)$" window_type="normal"] $ws2
 assign [class="Gedit"] $ws3
 assign [class="Code"] $ws4
 assign [class="Nautilus"] $ws3
