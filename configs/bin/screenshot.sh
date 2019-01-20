@@ -6,7 +6,8 @@
 SCREENSHOTS_DIR=~/Pictures/Screenshots
 TIMESTAMP="$(date +%Y.%m.%d-%H.%M.%S)"
 FILENAME=$SCREENSHOTS_DIR/$TIMESTAMP.screenshot.png
-PHOTO_ICON_PATH=/usr/share/icons/Papirus/64x64/categories/screengrab.svg
+ICON_PATH=/usr/share/icons/Papirus/64x64/categories/screengrab.svg
+IMG_V=sxiv-rifle
 
 # -u option hides cursor
 # -m option changes the compression level
@@ -14,29 +15,29 @@ PHOTO_ICON_PATH=/usr/share/icons/Papirus/64x64/categories/screengrab.svg
 
 if [[ "$1" = "-s" ]]; then
     # Area/window selection.
-    notify-send 'Select area to capture.' --urgency low -i $PHOTO_ICON_PATH
+    notify-send 'Select area to capture.' --urgency low -i $ICON_PATH
     maim -u -m 3 -s $FILENAME
     if [[ "$?" = "0" ]]; then
-        notify-send "Screenshot taken." --urgency low -i $PHOTO_ICON_PATH
+        notify-send "Screenshot taken." --urgency low -i $ICON_PATH
     fi
 elif [[ "$1" = "-c" ]]; then
-    notify-send 'Select area to copy to clipboard.' --urgency low -i $PHOTO_ICON_PATH
+    notify-send 'Select area to copy to clipboard.' --urgency low -i $ICON_PATH
     # Copy selection to clipboard
     maim -u -m 9 -s /tmp/maim_clipboard
     if [[ "$?" = "0" ]]; then
         xclip -selection clipboard -t image/png /tmp/maim_clipboard
-        notify-send "Copied selection to clipboard." --urgency low -i $PHOTO_ICON_PATH
+        notify-send "Copied selection to clipboard." --urgency low -i $ICON_PATH
         rm /tmp/maim_clipboard
     fi
 elif [[ "$1" = "-b" ]]; then
     # Browse with feh
-    cd $SCREENSHOTS_DIR ; feh $(ls -t) &
+    cd $SCREENSHOTS_DIR ; $IMG_V $(ls -t) &
 elif [[ "$1" = "-e" ]]; then
     # Edit last screenshot with GIMP
-    cd $SCREENSHOTS_DIR ; gimp $(ls -t | head -n1) & notify-send 'Opening last screenshot with GIMP' --urgency low -i ~/.icons/oomox-only_icons/categories/scalable/applications-painting.svg
+    cd $SCREENSHOTS_DIR ; gimp $(ls -t | head -n1) & notify-send 'Opening last screenshot with GIMP' --urgency low -i $ICON_PATH
 else
     # Full screenshot
     maim -u -m 3 $FILENAME
     xclip -selection clipboard -t image/png $FILENAME 
-    notify-send "Screenshot taken." --urgency low -i $PHOTO_ICON_PATH
+    notify-send "Screenshot taken." --urgency low -i $ICON_PATH
 fi
