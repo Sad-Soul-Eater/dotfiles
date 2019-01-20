@@ -25,7 +25,7 @@ power () {
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi "$@")
 	if [ "$SELECTED_STRING" == "lock" ]; then
-		betterlockscreen -l dimblur -t "Don't touch my machine!"
+		betterlockscreen -l dim -t "Don't touch my machine!"
 	elif [ "$SELECTED_STRING" == "suspend" ]; then
 		systemctl suspend
 	elif [ "$SELECTED_STRING" == "logout" ]; then
