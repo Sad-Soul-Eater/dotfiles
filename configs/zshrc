@@ -23,7 +23,6 @@ source $ZSH/oh-my-zsh.sh
 
 alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
 alias ls="exa"
-alias neofetch="neofetch | lolcat"
 alias h=htop
 alias mpv-tw="mpv --profile=twitch"
 alias upgrade_oh_my_zsh="sudo ~/bin/upgrade_oh_my_zsh.sh"
