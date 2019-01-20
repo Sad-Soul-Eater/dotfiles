@@ -6,9 +6,9 @@
 
 Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-things... 
 
-![Clean](https://i.imgur.com/4YpBiGX.png "Clean")
+![Clean](https://i.imgur.com/KVfAITG.png "Clean")
 <center> <a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a> 
-<a href="https://imgur.com/a/VQYtS8O">More screenshots</a>
+<a href="https://imgur.com/gallery/HwyioVB">More screenshots</a>
 </center>
 
 <div id="installation">
