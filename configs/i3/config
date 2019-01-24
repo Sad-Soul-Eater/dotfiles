@@ -149,6 +149,9 @@ bindsym $mod+n exec --no-startup-id ~/bin/rofi.sh -n
 # Power-menu
 bindsym $mod+e exec --no-startup-id ~/bin/rofi.sh -p
 
+# print screen
+bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
+
 # terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 
@@ -158,12 +161,6 @@ bindsym $mod+Tab exec --no-startup-id thunar
 # restart i3 in place
 bindsym $mod+Shift+r restart
 
-# print screen
-bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
-
-# exit i3
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 # Firefox
 bindsym $mod+a exec --no-startup-id firefox-nightly
 
@@ -171,18 +168,18 @@ bindsym $mod+a exec --no-startup-id firefox-nightly
 # GAPS #
 #------#
 
-smart_gaps on
+#smart_gaps on
 
-gaps inner 20 
+gaps inner 10 
 gaps outer 5
-bindsym $mod+o gaps outer current set 5; gaps inner current set 20
+bindsym $mod+o gaps outer current set 5; gaps inner current set 10
 bindsym $mod+i gaps outer current set 0; gaps inner current set 0
 
 #------------#
 # APPEARANCE #
 #------------#
 
-smart_borders on
+#smart_borders on
 
 # window border
 for_window [class="^.*"] border pixel 1
@@ -195,7 +192,7 @@ set_from_resource $nr i3wm.color10 #f0f0f0
 set_from_resource $ur i3wm.color13 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $fg
+client.focused          $bg     $bg     $fg  $fg       $fg
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $ur
@@ -207,6 +204,7 @@ client.background       $bg
 # STARTUP APPLICATIONS #
 #----------------------#
 
+exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$nr" -cfr "$ur"
 exec_always --no-startup-id ~/bin/wallpaper.sh
 
@@ -215,7 +213,6 @@ exec --no-startup-id compton --config ~/.config/compton/compton.conf
 exec --no-startup-id conky -c ~/.config/.conkyrc
 #exec --no-startup-id sudo powertop --auto-tune\
 exec --no-startup-id udiskie
-exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id nextcloud
 
 # Keyboard layout
@@ -227,7 +224,7 @@ exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift
 
 # Telegram 
 for_window [class="Telegram"]		floating enable,	resize set 400 1000,	move position 1510 51
-for_window [title="Media viewer"]				resize set 1920 1080,	move absolute position center,	border pixel 0
+for_window [title="Media viewer"]				fullscreen enable
 
 # KeePassXC
 for_window [class="keepassxc"]		floating enable,	resize set 1280 720,	move absolute position center
@@ -251,8 +248,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
 # floating_maximum_size 1900 x 1060
 floating_minimum_size -1 x -1
@@ -268,9 +265,7 @@ exec_always --no-startup-id ~/bin/bar.sh
 #-------------#
 
 assign [class="^(Firefox)|(Nightly)$" window_type="normal"] $ws2
-assign [class="Gedit"] $ws3
 assign [class="Code"] $ws4
-assign [class="Nautilus"] $ws3
 assign [class="mpv"] $ws6
 assign [class="discord"] $ws7
 for_window [class="Spotify"] move to workspace $ws10
