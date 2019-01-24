@@ -21,9 +21,18 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias ls="lsd"
+alias l="ls -la"
+alias la="ls -lA"
+alias ll="ls -l"
+alias lsa="ls -la"
+
+alias dotfiles="cd ~/.dotfiles"
+
 alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
-alias ls="exa"
 alias h=htop
 alias mpv-tw="mpv --profile=twitch"
 alias upgrade_oh_my_zsh="sudo ~/bin/upgrade_oh_my_zsh.sh"
+
 alias v="nvim"
+alias q="exit"
