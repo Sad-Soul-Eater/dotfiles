@@ -1,26 +1,26 @@
 #!/bin/bash
 
 calc () {
-	rofi -show calc -modi calc -bw 2 -lines 12 -width 60 -columns 3
+	rofi -show calc -modi calc -bw 2 -lines 12 -width 768 -columns 3
 }
 
 drun () {
-	rofi -show drun -modi drun,window,run -bw 2 -lines 12 -width 60 -columns 3 -sidebar-mode -show-icons true
+	rofi -show drun -modi drun,window,run -bw 2 -lines 12 -width 1152 -columns 3 -sidebar-mode -show-icons true
 }
 
 clip () {
-	CM_HISTLENGTH=20 CM_LAUNCHER=rofi CM_DIR=~/.cache/clipmenu clipmenu -p "clipmenu" -width 40
+	CM_HISTLENGTH=20 CM_LAUNCHER=rofi CM_DIR=~/.cache/clipmenu clipmenu -p "clipmenu" -width 768
 }
 
 nm () {
-	networkmanager_dmenu -width 15
+	networkmanager_dmenu -width 250
 }
 
 power () {
 	ACTION_LIST="lock\nsuspend\nlogout\nreboot\nshutdown"
 
 	_rofi () {
-		rofi -dmenu -i -sync -p "sys" -width 6 -lines 5
+		rofi -dmenu -i -sync -p "sys" -width 115 -lines 5
 	}
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi "$@")
@@ -42,7 +42,7 @@ screenshot (){
 	SCRIPT=$(dirname $(readlink -f $0))/screenshot.sh
 
 	_rofi () {
-		rofi -dmenu -i -sync -p "screen" -width 8 -lines 4
+		rofi -dmenu -i -sync -p "screen" -width 150 -lines 4
 	}
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi "$@")
