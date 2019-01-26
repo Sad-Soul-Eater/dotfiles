@@ -154,7 +154,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    show_indicators = no
 
     ### Icons ###
 
@@ -165,7 +165,7 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Papirus/32x32/status/:/usr/share/icons/Papirus/32x32/devices/
+    icon_path = /usr/share/icons/Flat-Remix-Dark/status/scalable:/usr/share/icons/Flat-Remix-Dark/devices/scalable
 
     ### History ###
 

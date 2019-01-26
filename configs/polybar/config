@@ -48,9 +48,9 @@ tray-detached = false
 tray-background = #1d1f21 
 
 ; Modules
-modules-left = wlan battery pulseaudio backlight spotify
+modules-left = wlan cpu memory keyboard spotify
 modules-center = i3
-modules-right = keyboard memory cpu date time
+modules-right = battery backlight pulseaudio date time
 
 
 [module/i3]

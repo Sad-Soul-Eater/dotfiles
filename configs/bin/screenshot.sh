@@ -6,7 +6,7 @@
 SCREENSHOTS_DIR=~/Pictures/Screenshots
 TIMESTAMP="$(date +%Y.%m.%d-%H.%M.%S)"
 FILENAME=$SCREENSHOTS_DIR/$TIMESTAMP.screenshot.png
-ICON_PATH=/usr/share/icons/Papirus/64x64/categories/screengrab.svg
+ICON_PATH=/usr/share/icons/Flat-Remix-Dark/devices/scalable/cs-screen.svg
 IMG_V=sxiv-rifle
 
 # -u option hides cursor
