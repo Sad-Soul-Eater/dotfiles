@@ -1,0 +1,13 @@
+[Unit]
+Description=ArchiSteamFarm as service
+After=network.target
+
+[Service]
+Type=simple
+User=archi
+Group=archi
+ExecStart=/home/archi/ASF/ArchiSteamFarm --cryptkey=<key>
+WorkingDirectory=/home/archi/ASF
+
+[Install]
+WantedBy=multi-user.target
