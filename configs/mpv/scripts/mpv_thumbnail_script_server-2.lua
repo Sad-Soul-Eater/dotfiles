@@ -1,0 +1,1 @@
+./mpv_thumbnail_script_server-1.lua
