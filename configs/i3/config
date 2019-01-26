@@ -223,7 +223,7 @@ exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift
 #---------------#
 
 # Telegram 
-for_window [class="Telegram"]		floating enable,	resize set 400 1000,	move position 1510 51
+for_window [class="Telegram"]		floating enable,	resize set 400 1000,	move position mouse
 for_window [title="Media viewer"]				fullscreen enable
 
 # KeePassXC
