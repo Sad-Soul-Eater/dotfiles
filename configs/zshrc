@@ -3,8 +3,6 @@ export ZSH_CACHE_DIR=~/.oh-my-zsh/cache
 
 ZSH_THEME="spaceship-prompt/spaceship"
 
-POWERLEVEL9K_MODE='nerdfont-complete'
-
 DISABLE_AUTO_UPDATE="true"
 ZSH_AUTOSUGGEST_USE_ASYNC="true" 
 
