@@ -38,7 +38,7 @@ conky.text = [[
 ${if_match "${nodename}" == "arch-soul-nb"}\
 ${voffset 55}
 ${else}\
-${voffset 5}
+${voffset 90}
 ${endif}\
 ${color0}SYSTEM ${hr 2}
 ${voffset 5}${alignc}${color0}${font ConkySymbols:size=40}t${font}
