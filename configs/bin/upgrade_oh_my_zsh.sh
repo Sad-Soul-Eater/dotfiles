@@ -9,7 +9,6 @@ REPOS=(
   "${PL_DIR}/zsh-autosuggestions"
   "${PL_DIR}/zsh-completions"
   "${PL_DIR}/zsh-syntax-highlighting"
-  "${TH_DIR}/powerlevel9k"
   "${TH_DIR}/spaceship-prompt"
 )
 

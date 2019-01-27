@@ -4,7 +4,10 @@ export ZSH_CACHE_DIR=~/.oh-my-zsh/cache
 ZSH_THEME="spaceship-prompt/spaceship"
 
 DISABLE_AUTO_UPDATE="true"
-ZSH_AUTOSUGGEST_USE_ASYNC="true" 
+
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 
 plugins=(
   systemd
