@@ -64,7 +64,6 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 ```
 ### Configs
 ```
-
 └── configs
 │  ├── alacritty
 │  ├── bin
