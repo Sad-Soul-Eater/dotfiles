@@ -6,21 +6,21 @@
 
 Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-things... 
 
-![Clean](https://i.imgur.com/KVfAITG.png "Clean")
-<center> <a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a> 
+![Clean](https://i.imgur.com/0QYwR57.png "Clean")
+<font size=2> <a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a> 
 <a href="https://imgur.com/gallery/HwyioVB">More screenshots</a>
-</center>
+</font>
 
 <div id="installation">
 <h2 align="center">How to install</h2>
 
 - Clone this repositoty
-- Run `./install-profile <`[profile-name](#profiles)`>` to symlink all configs or `./install-standalone <`[config name](#configs)`>` to symlink only one of them 
+- Run <code> ./install-profile <<a href="#profiles">profile-name</a>> </code> to symlink all configs or <code> ./install-standalone <<a href="#configs">config-name</a>> </code> to symlink only one of them
 - Done!
 
 >All safe, it won't kill your dotfiles, if folder/file already exists you'll see error during install process
 
-*My dotfiles managed by [DotBot™](https://github.com/anishathalye/dotbot)*
+<font size=2> *My dotfiles managed by [DotBot™](https://github.com/anishathalye/dotbot)* </font>
 
 </div>
 
@@ -58,28 +58,28 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 
 ### Profiles
 ```
-profiles
-├── server
-└── workstation
+└── profiles
+│  ├── server
+│  └── workstation
 ```
 ### Configs
 ```
-configs
-├── alacritty
-├── bin
-├── compton
-├── conky
-├── dotfiles
-├── dunst
-├── fontconfig
-├── i3
-├── mpv
-├── neofetch
-├── polybar
-├── ranger
-├── xresources
-├── yay
-└── zsh
+
+└── configs
+│  ├── alacritty
+│  ├── bin
+│  ├── compton
+│  ├── conky
+│  ├── dotfiles
+│  ├── dunst
+│  ├── i3
+│  ├── mpv
+│  ├── neofetch
+│  ├── polybar
+│  ├── ranger
+│  ├── xresources
+│  ├── yay
+│  └── zsh
 ```
 
 </div>
