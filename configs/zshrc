@@ -48,7 +48,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 plugins=(
   systemd
   extract
-  gitfast
+  git
   sudo
   zsh-completions
   colored-man-pages
