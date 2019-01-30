@@ -50,7 +50,7 @@ tray-background = #1d1f21
 ; Modules
 modules-left = wlan cpu memory keyboard spotify
 modules-center = i3
-modules-right = battery backlight pulseaudio date time
+modules-right = battery backlight pulseaudio popup-calendar time
 
 
 [module/i3]
@@ -140,6 +140,7 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
+
 [module/backlight]
 type = internal/backlight
 card = amdgpu_bl0 
@@ -151,6 +152,7 @@ label = %percentage%%
 ramp-0 = 
 ramp-1 = 
 ramp-2 = %{T3}%{T-}
+
 
 [module/wlan]
 type = internal/network
@@ -220,3 +222,10 @@ blacklist-0 = num lock
 blacklist-1 = scroll lock
 
 label-layout = %{T3}%{T-} %layout%
+
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/bin/polybar-scripts/popup-calendar.sh
+interval = 60
+click-left = ~/bin/polybar-scripts/popup-calendar.sh --popup
