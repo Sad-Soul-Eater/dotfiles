@@ -1,6 +1,6 @@
 <h1 align="center">Dotfiles</h1>
 
-1. [Instalation](#installation)
+1. [Installation](#installation)
 2. [Requirements](#requirements)
 3. [Available profiles/configurations](#profiles-configs)
 
@@ -59,8 +59,8 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 ### Profiles
 ```
 └── profiles
-│  ├── server
-│  └── workstation
+│  ├── server (bin dotfiles neofetch xresources zsh)
+│  └── workstation (all configs)
 ```
 ### Configs
 ```
