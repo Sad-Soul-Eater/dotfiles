@@ -1,5 +1,5 @@
 [{
     "link": {
-        "~/.config/nvim": "configs/nvim"
+        "~/.config/alacritty": "configs/alacritty"
     }
 }]
