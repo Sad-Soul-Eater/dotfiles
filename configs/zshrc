@@ -65,6 +65,7 @@ alias ll="ls -l"
 alias lsa="ls -la"
 
 alias dotfiles="cd ~/.dotfiles"
+alias vconf="v ~/.config/nvim/init.vim"
 
 alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
 alias h=htop
