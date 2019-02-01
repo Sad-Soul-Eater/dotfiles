@@ -10,7 +10,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use 'alacritty' if it is
   # available, otherwise 'xterm-256color' is used.
-  #TERM: xterm-256color
+  # TERM: xterm-256color
   WINIT_HIDPI_FACTOR: 1.0
 
 window:
@@ -155,7 +155,7 @@ colors:
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  #dim:
+  # dim:
   #  black:   '0x333333'
   #  red:     '0xf2777a'
   #  green:   '0x99cc99'
@@ -169,7 +169,7 @@ colors:
   #
   # The indexed colors include all colors from 16 to 256.
   # When these are not set, they're filled with sensible defaults.
-  #indexed_colors:
+  # indexed_colors:
   #  - { index: 16, color: '0x000000' }
 
 # Visual Bell
@@ -276,7 +276,7 @@ live_config_reload: true
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
-#shell:
+# shell:
 #  program: /bin/bash
 #  args:
 #    - --login

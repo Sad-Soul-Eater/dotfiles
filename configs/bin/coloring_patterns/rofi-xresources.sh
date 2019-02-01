@@ -11,17 +11,17 @@ MAGENTA=#%cl5%
 CYAN=#%cl6%
 WHITE=#%cl7%
 
-PATTERN="$(dirname $(readlink -f $0))/rofi-xresources.pt"
+PATTERN="$(dirname "$(readlink -f "$0")")/rofi-xresources.pt"
 
 if [ -e $PATTERN ]; then
-  rm $PATTERN
+    rm $PATTERN
 fi
 touch $PATTERN
 
-echo "rofi.color-window:   $BACKGROUND,$BLACK,$BACKGROUND"  >>  $PATTERN
-echo "rofi.color-normal:   $BACKGROUND,$FOREGROUND,$BACKGROUND,$BACKGROUND,$GREEN"  >>  $PATTERN
-echo "rofi.color-active:   $BACKGROUND,$MAGENTA,$BACKGROUND,$BACKGROUND,$GREEN" >>  $PATTERN
-echo "rofi.color-urgent:   $BACKGROUND,$YELLOW,$BACKGROUND,$BACKGROUND,$GREEN" >> $PATTERN
+echo "rofi.color-window:   $BACKGROUND,$BLACK,$BACKGROUND" >>$PATTERN
+echo "rofi.color-normal:   $BACKGROUND,$FOREGROUND,$BACKGROUND,$BACKGROUND,$GREEN" >>$PATTERN
+echo "rofi.color-active:   $BACKGROUND,$MAGENTA,$BACKGROUND,$BACKGROUND,$GREEN" >>$PATTERN
+echo "rofi.color-urgent:   $BACKGROUND,$YELLOW,$BACKGROUND,$BACKGROUND,$GREEN" >>$PATTERN
 
 # Theming help
 # color window = background, border, separator
