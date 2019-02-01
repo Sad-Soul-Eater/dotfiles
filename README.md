@@ -4,10 +4,10 @@
 2. [Requirements](#requirements)
 3. [Available profiles/configurations](#profiles-configs)
 
-Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-things... 
+Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-things...
 
 ![Clean](https://i.imgur.com/0QYwR57.png "Clean")
-<font size=2> <a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a> 
+<font size=2> <a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a>
 <a href="https://imgur.com/gallery/HwyioVB">More screenshots</a>
 </font>
 
@@ -15,6 +15,7 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 <h2 align="center">How to install</h2>
 
 - Clone this repositoty
+- Install [jq](https://stedolan.github.io/jq/) -- It need for dotbot config merging, and for [faster](https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md#why-is-my-prompt-slow) prompt in [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme.
 - Run <code> ./install-profile <<a href="#profiles">profile-name</a>> </code> to symlink all configs or <code> ./install-standalone <<a href="#configs">config-name</a>> </code> to symlink only one of them
 - Done!
 
