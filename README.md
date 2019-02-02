@@ -15,7 +15,7 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 <h2 align="center">How to install</h2>
 
 - Clone this repositoty
-- Install [jq](https://stedolan.github.io/jq/) -- It need for dotbot config merging, and for [faster](https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md#why-is-my-prompt-slow) prompt in [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme.
+- Install [jq](https://stedolan.github.io/jq/) -- It needed for dotbot config merging and [faster](https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md#why-is-my-prompt-slow) prompt in [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme.
 - Run <code> ./install-profile <<a href="#profiles">profile-name</a>> </code> to symlink all configs or <code> ./install-standalone <<a href="#configs">config-name</a>> </code> to symlink only one of them
 - Done!
 
