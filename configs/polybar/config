@@ -24,7 +24,7 @@ border-left-size = 0
 
 ; Location
 bottom = false
-; wm-restack = i3 
+; wm-restack = i3
 ; override-redirect = true
 
 ; Fonts
@@ -39,13 +39,13 @@ foreground = ${colors.foreground}
 
 ; Misc
 fixed-center = true
-padding-left = 2 
+padding-left = 2
 padding-right = 2
 module-margin = 2
 tray-position = right
 tray-detached = false
 ; tray-transparent = true
-tray-background = #1d1f21 
+tray-background = #1d1f21
 
 ; Modules
 modules-left = wlan cpu memory keyboard spotify
@@ -74,9 +74,9 @@ format = <label-state> <label-mode>
 
 label-mode = %mode%
 label-mode-padding = 1
-label-mode-background = ${colors.secondary} 
+label-mode-background = ${colors.secondary}
 
-label-focused = %icon% 
+label-focused = %icon%
 label-focused-foreground = ${colors.primary}
 label-focused-padding = 1
 
@@ -134,7 +134,7 @@ type = internal/pulseaudio
 format-volume = <ramp-volume> <label-volume>
 use-ui-max = false
 
-label-muted =  MUTE 
+label-muted =  MUTE
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -143,7 +143,7 @@ ramp-volume-2 = 
 
 [module/backlight]
 type = internal/backlight
-card = amdgpu_bl0 
+card = amdgpu_bl0
 
 format-spacing = 1
 format = <ramp><label>
@@ -156,7 +156,7 @@ ramp-2 = %{T3}%{T-}
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0 
+interface = wlp1s0
 
 label-connected = %{A1:~/bin/rofi.sh -n:} %essid%%{A}
 label-disconnected = %{A1:~/bin/rofi.sh -n:} Not Connected%{A}

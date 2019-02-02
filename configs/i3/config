@@ -145,7 +145,7 @@ bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
 bindsym $mod+Return exec --no-startup-id alacritty
 
 # Thunar
-bindsym $mod+Tab exec --no-startup-id thunar 
+bindsym $mod+Tab exec --no-startup-id thunar
 
 # restart i3 in place
 bindsym $mod+Shift+r restart
@@ -159,7 +159,7 @@ bindsym $mod+a exec --no-startup-id firefox-nightly
 
 #smart_gaps on
 
-gaps inner 10 
+gaps inner 10
 gaps outer 5
 bindsym $mod+o gaps outer current set 5; gaps inner current set 10
 bindsym $mod+i gaps outer current set 0; gaps inner current set 0
@@ -210,24 +210,24 @@ exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift
 # SPECIAL CASES #
 #---------------#
 
-# Telegram 
-for_window [class="Telegram"]		floating enable,	resize set 400 1000,	move position mouse
-for_window [title="Media viewer"]				fullscreen enable
+# Telegram
+for_window [class="Telegram"]                           floating enable,    resize set 400 1000,    move position mouse
+for_window [title="Media viewer"]                       fullscreen enable
 
 # KeePassXC
-for_window [class="keepassxc"]		floating enable,	resize set 1280 720,	move absolute position center
+for_window [class="keepassxc"]                          floating enable,    resize set 1280 720,    move absolute position center
 
 # thunar
-for_window [class="(?i)thunar" window_type="normal"]		floating enable,	resize set 1280 720,	move absolute position center
+for_window [class="(?i)thunar" window_type="normal"]    floating enable,    resize set 1280 720,    move absolute position center
 
-# sxiv 
-for_window [class="Sxiv"]		floating enable,				move absolute position center
+# sxiv
+for_window [class="Sxiv"]                               floating enable,    resize set 1280 720,    move absolute position center
 
 # libreoffice
-for_window [class="Soffice"]					resize set 1000 750,	move absolute position center
+for_window [class="Soffice"]                                                resize set 1000 750,    move absolute position center
 
 # Yad popup calendar
-for_window [title="Yad Calendar"] floating enable
+for_window [title="Yad Calendar"]                       floating enable
 
 #------------#
 # MEDIA KEYS #
