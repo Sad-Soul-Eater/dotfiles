@@ -28,11 +28,11 @@ elif [[ "$1" == "-c" ]]; then
 elif [[ "$1" == "-b" ]]; then
     # Browse with feh
     cd $SCREENSHOTS_DIR || return
-    $IMG_V $(ls -t) &
+    $IMG_V "$(find . -maxdepth 1 -type f -printf '%T@ %f\n' | sort -r | cut -d' ' -f2- | head -1)" &
 elif [[ "$1" == "-e" ]]; then
     # Edit last screenshot with GIMP
     cd $SCREENSHOTS_DIR || return
-    gimp $(ls -t | head -n1) &
+    gimp "$(find . -maxdepth 1 -type f -printf '%T@ %f\n' | sort -r | cut -d' ' -f2- | head -1)" &
     notify-send 'Opening last screenshot with GIMP' --urgency low -i $ICON_PATH
 else
     # Full screenshot

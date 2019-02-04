@@ -22,8 +22,6 @@ for REPO in "${REPOS[@]}"; do
     else
         echo "****** Getting latest for ${REPO} ******"
     fi
-
-    cd "${OMZ_DIR}${REPO}" || return
-    git pull --rebase
+    git -C "${OMZ_DIR}${REPO}" pull --rebase
     echo "******************************************"
 done
