@@ -34,7 +34,6 @@ call plug#end()
 "------------------------------------------------------------------------------
 " General
 "------------------------------------------------------------------------------
-
 " let's make sure we are in noncompatble mode
 set nocp
 
@@ -62,6 +61,18 @@ command W w !sudo tee % > /dev/null
 " This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
 inoremap jj <esc>
 nnoremap JJJJ <nop>
+noremap <F3> :Autoformat<CR>
+
+function! ClipboardYank()
+  call system('xclip -i -selection clipboard', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('xclip -o -selection clipboard')
+endfunction
+
+vnoremap <silent><leader>y y:call ClipboardYank()<cr>
+vnoremap <silent><leader>d d:call ClipboardYank()<cr>
+nnoremap <silent><leader>p :call ClipboardPaste()<cr>p
 
 
 "------------------------------------------------------------------------------
@@ -191,7 +202,7 @@ set noswapfile
 " /20  - remember 20 items in search history
 " %    - remember the buffer list (if vim started without a file arg)
 " n    - set name of viminfo file
-set viminfo='20,\"50,:20,/20,%,n~/.viminfo.go
+set viminfo='20,\"50,:20,%,n~/.cache/.viminfo.tmp
 
 " Define what to save with :mksession
 " blank - empty windows
@@ -376,7 +387,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+"map <leader>p :cp<cr>
 
 
 "------------------------------------------------------------------------------
