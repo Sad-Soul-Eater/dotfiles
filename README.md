@@ -75,6 +75,7 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 │  ├── i3
 │  ├── mpv
 │  ├── neofetch
+│  ├── neovim
 │  ├── polybar
 │  ├── ranger
 │  ├── xresources
