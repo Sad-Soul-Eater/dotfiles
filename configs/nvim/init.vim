@@ -64,10 +64,10 @@ nnoremap JJJJ <nop>
 noremap <F3> :Autoformat<CR>
 
 function! ClipboardYank()
-  call system('xclip -i -selection clipboard', @@)
+    call system('xclip -i -selection clipboard', @@)
 endfunction
 function! ClipboardPaste()
-  let @@ = system('xclip -o -selection clipboard')
+    let @@ = system('xclip -o -selection clipboard')
 endfunction
 
 vnoremap <silent><leader>y y:call ClipboardYank()<cr>
@@ -344,15 +344,13 @@ if has("mac") || has("macunix")
     vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save
 func! DeleteTrailingWS()
     exe "normal mz"
     %s/\s\+$//ge
     exe "normal `z"
 endfunc
-autocmd BufWrite *.go :call DeleteTrailingWS()
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+autocmd BufWrite * :call DeleteTrailingWS()
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
