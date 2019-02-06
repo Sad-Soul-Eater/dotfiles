@@ -42,7 +42,6 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'pangloss/vim-javascript'
-Plug 'chr4/nginx.vim'
 Plug 'lifepillar/pgsql.vim'
 
 call plug#end()
