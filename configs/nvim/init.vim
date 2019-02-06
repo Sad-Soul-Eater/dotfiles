@@ -1,15 +1,23 @@
-set autoindent
-set autowrite
+" vim-plug autoconfig if not already installed
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | nested source $MYVIMRC
+endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'itchyny/lightline.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
-Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/bin/fzf'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Shougo/neco-vim', { 'for': 'vim' }
+Plug 'mhinz/vim-signify'
+Plug 'sebdah/vim-delve'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'Chiel92/vim-autoformat'
 Plug 'mileszs/ack.vim'
@@ -17,17 +25,25 @@ Plug 'corntrace/bufexplorer'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-
+Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'pangloss/vim-javascript'
+Plug 'chr4/nginx.vim'
+Plug 'lifepillar/pgsql.vim'
 
 call plug#end()
 
@@ -51,7 +67,6 @@ let g:mapleader = ","
 
 " Fast saving
 map <Leader>w :w<CR>
-imap <Leader>w <ESC>:w<CR>
 vmap <Leader>w <ESC><ESC>:w<CR>
 
 " :W sudo saves the file
@@ -63,6 +78,7 @@ inoremap jj <esc>
 nnoremap JJJJ <nop>
 noremap <F3> :Autoformat<CR>
 
+" Copy/paste from system clipboard only when it needed
 function! ClipboardYank()
     call system('xclip -i -selection clipboard', @@)
 endfunction
@@ -78,8 +94,10 @@ nnoremap <silent><leader>p :call ClipboardPaste()<cr>p
 "------------------------------------------------------------------------------
 " VIM user interface
 "------------------------------------------------------------------------------
+set autoindent
+set autowrite
 
-" Make sure that coursor is always vertically centered on j/k moves
+" Make sure that cursor is always vertically centered on j/k moves
 set so=999
 
 " add vertical lines on columns
@@ -102,7 +120,7 @@ endif
 " Show line, column number, and relative position within a file in the status line
 set ruler
 
-" Show line numbers - could be toggled on/off on-fly by pressing F6
+" Show line numbers
 set number
 
 " Show (partial) commands (or size of selection in Visual mode) in the status line
@@ -163,18 +181,29 @@ set nrformats=octal,hex,alpha
 "------------------------------------------------------------------------------
 " Colors and Fonts
 "------------------------------------------------------------------------------
-
 " Enable syntax highlighting
-syntax on
 colorscheme onehalfdark
 set termguicolors
-let g:airline_theme='onehalfdark'
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+" Show status bar by default.
+set laststatus=2
+
+" Enable top tabline.
+let g:airline#extensions#tabline#enabled = 1
+
+" Disable showing tabs in the tabline. This will ensure that the buffers are
+" what is shown in the tabline at all times.
+let g:airline#extensions#tabline#show_tabs = 0
+
+" Enable powerline fonts.
+let g:airline_powerline_fonts = 1
+
+let g:airline_theme='onehalfdark'
 
 " highlight trailing space
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -264,20 +293,11 @@ map k gk
 map <space> /
 map <c-space> ?
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" Close the current buffer (w/o closing the current )
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>bda :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -292,6 +312,8 @@ let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
+"" Close the current buffer (w/o closing the current window)
+map <leader>bd :Bclose<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -315,15 +337,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-"------------------------------------------------------------------------------
-" Status line
-"------------------------------------------------------------------------------
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
 
 "------------------------------------------------------------------------------
 " Editing mappings
@@ -331,18 +344,11 @@ set laststatus=2
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+" Move a line of text using ALT+[jk]
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-    nmap <D-j> <M-j>
-    nmap <D-k> <M-k>
-    vmap <D-j> <M-j>
-    vmap <D-k> <M-k>
-endif
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
@@ -466,8 +472,34 @@ endfunction
 " Deoplete
 "------------------------------------------------------------------------------
 
-let g:deoplete#enable_at_startup = 1
 call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
+let g:AutoPairsMapCR=0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+
+imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
+
+" Disable deoplete when in multi cursor mode
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
+
+
+"------------------------------------------------------------------------------
+" Deoplete-go
+"------------------------------------------------------------------------------
+" Enable completing of go pointers
+let g:deoplete#sources#go#pointer = 1
+
+" Enable autocomplete of unimported packages
+let g:deoplete#sources#go#unimported_packages = 0
 
 
 "------------------------------------------------------------------------------
@@ -476,7 +508,6 @@ call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
 
 " General properties
 let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['\.o$', '\.pyc$', '\.php\~$']
 let NERDTreeWinSize = 35
 
@@ -494,6 +525,8 @@ map <leader>T :NERDTreeFind<cr>
 " Toogle on/off
 nmap <leader>o :NERDTreeToggle<cr>
 
+" Allow NERDTree to change session root.
+let g:NERDTreeChDirMode = 2
 
 "------------------------------------------------------------------------------
 " BufExplorer
@@ -501,7 +534,6 @@ nmap <leader>o :NERDTreeToggle<cr>
 
 " Shortcuts, type <leader>l to quickly navigate to necessary buffer
 map <leader>l :BufExplorer<cr>
-imap <leader>l <esc>:BufExplorer<cr>
 vmap <leader>l <esc>:BufExplorer<cr>
 
 
@@ -532,13 +564,13 @@ let g:syntastic_check_on_wq = 0
 "------------------------------------------------------------------------------
 " Vim-go
 "------------------------------------------------------------------------------
-let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "gofmt" "Explicited the formater plugin (gofmt, goimports, goreturn...)
+let g:go_snippet_engine = "neosnippet" " Set neosnippet as snippet engine
 
 " Easier to jump between errors in quickfix list
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+"nnoremap <leader>a :cclose<CR>
 
 " Show a list of interfaces which is implemented by the type under your cursor
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -569,12 +601,35 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
-" By default syntax-highlighting for Functions, Methods and Structs is disabled.
-" Let's enable them!
+" Enable syntax highlighting per default
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
 
+" Show the progress when running :GoCoverage
+let g:go_echo_command_info = 1
+
+" Show type information
+let g:go_auto_type_info = 1
+
+" Highlight variable uses
+let g:go_auto_sameids = 1
+
+" Fix for location list when vim-go is used together with Syntastic
+let g:go_list_type = "quickfix"
+
+" Add the failing test name to the output of :GoTest
+let g:go_test_show_name = 1
+
+
+"------------------------------------------------------------------------------
+" Tagbar'
+"------------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_type_go = {
             \ 'ctagstype' : 'go',
@@ -603,3 +658,24 @@ let g:tagbar_type_go = {
             \ 'ctagsbin'  : 'gotags',
             \ 'ctagsargs' : '-sort -silent'
             \ }
+
+
+"------------------------------------------------------------------------------
+" vim-delve
+"------------------------------------------------------------------------------
+" Set the Delve backend.
+let g:delve_backend = "native"
+
+
+"------------------------------------------------------------------------------
+" vim-markdown
+"------------------------------------------------------------------------------
+" Disable folding
+let g:vim_markdown_folding_disabled = 1
+
+
+"------------------------------------------------------------------------------
+" vim-multiple-cursors
+"------------------------------------------------------------------------------
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_skip_key='<C-b>'
