@@ -12,7 +12,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug '/usr/bin/fzf'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
 Plug 'mhinz/vim-signify'
@@ -38,7 +37,6 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'pangloss/vim-javascript'
@@ -498,7 +496,9 @@ endfunction
 let g:deoplete#sources#go#pointer = 1
 
 " Enable autocomplete of unimported packages
-let g:deoplete#sources#go#unimported_packages = 0
+let g:deoplete#sources#go#unimported_packages = 1
+
+let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
 
 
 "------------------------------------------------------------------------------
@@ -600,21 +600,8 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
-" Enable syntax highlighting per default
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-
 " Show the progress when running :GoCoverage
 let g:go_echo_command_info = 1
-
-" Show type information
-let g:go_auto_type_info = 1
 
 " Highlight variable uses
 let g:go_auto_sameids = 1
