@@ -499,6 +499,7 @@ let g:deoplete#sources#go#pointer = 1
 let g:deoplete#sources#go#unimported_packages = 1
 
 let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 
 "------------------------------------------------------------------------------
@@ -563,7 +564,9 @@ let g:syntastic_check_on_wq = 0
 "------------------------------------------------------------------------------
 " Vim-go
 "------------------------------------------------------------------------------
-let g:go_fmt_command = "gofmt" "Explicited the formater plugin (gofmt, goimports, goreturn...)
+let g:go_fmt_options = {
+        \ 'goimports': '',
+\ }
 let g:go_snippet_engine = "neosnippet" " Set neosnippet as snippet engine
 
 " Easier to jump between errors in quickfix list
@@ -663,5 +666,5 @@ let g:vim_markdown_folding_disabled = 1
 "------------------------------------------------------------------------------
 " vim-multiple-cursors
 "------------------------------------------------------------------------------
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_skip_key='<C-b>'
+"let g:multi_cursor_next_key='<C-n>'
+"let g:multi_cursor_skip_key='<C-b>'
