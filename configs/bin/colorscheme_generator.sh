@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to apply Xresources color scheme to config's by existing patterns 
+# Script to apply Xresources color scheme to config's by existing patterns
 
 PATTERNS_DIR="$(dirname "$(readlink -f "$0")")/coloring_patterns"
 TEMP_PATTERS_DIR=/tmp/colored_patterns

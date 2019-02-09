@@ -199,7 +199,6 @@ exec_always --no-startup-id ~/bin/wallpaper.sh
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
 exec --no-startup-id conky -c ~/.config/.conkyrc
-#exec --no-startup-id sudo powertop --auto-tune\
 exec --no-startup-id udiskie
 exec --no-startup-id nextcloud
 
