@@ -1,0 +1,39 @@
+#: The foreground and background for text selected with the mouse
+selection_foreground #%clbg%
+selection_background #%clfg%
+
+#: The foreground and background colors
+foreground #%clfg%
+background #%clbg%
+
+#: black
+color0 #%cl0%
+color8 #%cl8%
+
+#: red
+color1 #%cl1%
+color9 #%cl9%
+
+#: green
+color2  #%cl2%
+color10 #%cl10%
+
+#: yellow
+color3  #%cl3%
+color11 #%cl11%
+
+#: blue
+color4  #%cl4%
+color12 #%cl12%
+
+#: magenta
+color5  #%cl5%
+color13 #%cl13%
+
+#: cyan
+color6  #%cl6%
+color14 #%cl14%
+
+#: white
+color7  #%cl7%
+color15 #%cl15%
