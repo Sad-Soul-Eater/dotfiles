@@ -142,7 +142,7 @@ bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
 bindsym $mod+m exec --no-startup-id ~/bin/rofi.sh -e
 
 # terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id kitty
 
 # Thunar
 bindsym $mod+Tab exec --no-startup-id thunar
