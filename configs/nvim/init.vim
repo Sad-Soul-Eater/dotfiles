@@ -626,6 +626,16 @@ let g:go_auto_sameids = 1
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
 
+" Highlight all
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 
 "------------------------------------------------------------------------------
 " Tagbar'
