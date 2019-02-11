@@ -466,6 +466,9 @@ let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
+" Enter key select the highlighted menu item, as <C-Y> does
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Disable deoplete when in multi cursor mode
 function! Multiple_cursors_before()
     let b:deoplete_disable_auto_complete = 1
