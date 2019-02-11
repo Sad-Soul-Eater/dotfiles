@@ -7,38 +7,48 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/denite.nvim'
+" Basic plugins
+Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
-Plug 'mhinz/vim-signify'
-Plug 'sebdah/vim-delve'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'vim-syntastic/syntastic'
 Plug 'Chiel92/vim-autoformat'
-Plug 'mileszs/ack.vim'
-Plug 'corntrace/bufexplorer'
-Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv', {'on': ['Gitv']}
-Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
 
+
+" Version control (mostly git) plugins
+Plug 'mhinz/vim-signify'
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
+Plug 'tpope/vim-fugitive'
+
+
+" Not so important and used plugins
+Plug 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'corntrace/bufexplorer'
+Plug 'rbgrouleff/bclose.vim'
+
+
+" Visual/interface plugins, themes
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
+
+" Language specific plugins
 Plug 'sheerun/vim-polyglot'
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'sebdah/vim-delve'
+
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+
 Plug 'pangloss/vim-javascript'
 Plug 'lifepillar/pgsql.vim'
 
@@ -68,7 +78,7 @@ vmap <Leader>w <ESC><ESC>:w<CR>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
 inoremap jj <esc>
@@ -343,14 +353,6 @@ nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
-autocmd BufWrite * :call DeleteTrailingWS()
-
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
@@ -382,7 +384,7 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
+"map <leader>n :cn<cr>
 "map <leader>p :cp<cr>
 
 
@@ -403,7 +405,7 @@ map <leader>s? z=
 " Misc
 "------------------------------------------------------------------------------
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+"noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>q :e ~/buffer<cr>
@@ -417,6 +419,7 @@ map <leader>pp :setlocal paste!<cr>
 " easy way to edit reload .vimrc
 nmap <leader>V :source $MYVIMRC<cr>
 nmap <leader>v :vsp $MYVIMRC<cr>
+
 
 "------------------------------------------------------------------------------
 " Helper functions
@@ -530,6 +533,7 @@ nmap <leader>o :NERDTreeToggle<cr>
 
 " Allow NERDTree to change session root.
 let g:NERDTreeChDirMode = 2
+
 
 "------------------------------------------------------------------------------
 " BufExplorer
@@ -666,7 +670,7 @@ let g:tagbar_type_go = {
 " vim-delve
 "------------------------------------------------------------------------------
 " Set the Delve backend.
-let g:delve_backend = "native"
+let g:delve_backend = 'native'
 
 
 "------------------------------------------------------------------------------
@@ -674,10 +678,3 @@ let g:delve_backend = "native"
 "------------------------------------------------------------------------------
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
-
-
-"------------------------------------------------------------------------------
-" vim-multiple-cursors
-"------------------------------------------------------------------------------
-"let g:multi_cursor_next_key='<C-n>'
-"let g:multi_cursor_skip_key='<C-b>'
