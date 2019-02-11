@@ -214,7 +214,6 @@ autocmd BufWinLeave * call clearmatches()
 "------------------------------------------------------------------------------
 " Files, backups and undo
 "------------------------------------------------------------------------------
-
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
@@ -245,7 +244,6 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,winsize,tabpages
 "------------------------------------------------------------------------------
 " Text, tab and indent related
 "------------------------------------------------------------------------------
-
 " Use spaces instead of tabs
 set expandtab
 
@@ -271,7 +269,6 @@ set nowrap "Don't Wrap lines (it is stupid)
 "------------------------------------------------------------------------------
 " Visual mode related
 "------------------------------------------------------------------------------
-
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
@@ -281,7 +278,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 "------------------------------------------------------------------------------
 " Moving around, tabs, windows and buffers
 "------------------------------------------------------------------------------
-
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -364,7 +360,6 @@ vnoremap > >gv
 " Ack searching and cope displaying
 " (requires ack.vim - it's much better than vimgrep/grep)
 "------------------------------------------------------------------------------
-
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
@@ -394,7 +389,6 @@ map <leader>n :cn<cr>
 "------------------------------------------------------------------------------
 " Spell checking
 "------------------------------------------------------------------------------
-
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -408,7 +402,6 @@ map <leader>s? z=
 "------------------------------------------------------------------------------
 " Misc
 "------------------------------------------------------------------------------
-
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -455,7 +448,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
@@ -468,16 +460,11 @@ endfunction
 "------------------------------------------------------------------------------
 " Deoplete
 "------------------------------------------------------------------------------
-
 call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
 let g:AutoPairsMapCR=0
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-
-imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
 
 " Disable deoplete when in multi cursor mode
 function! Multiple_cursors_before()
@@ -487,6 +474,28 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
+
+
+"------------------------------------------------------------------------------
+" Neosnippet
+"------------------------------------------------------------------------------
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 
 "------------------------------------------------------------------------------
@@ -505,7 +514,6 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 "------------------------------------------------------------------------------
 " NERDTree
 "------------------------------------------------------------------------------
-
 " General properties
 let NERDTreeDirArrows=1
 let NERDTreeIgnore=['\.o$', '\.pyc$', '\.php\~$']
@@ -531,7 +539,6 @@ let g:NERDTreeChDirMode = 2
 "------------------------------------------------------------------------------
 " BufExplorer
 "------------------------------------------------------------------------------
-
 " Shortcuts, type <leader>l to quickly navigate to necessary buffer
 map <leader>l :BufExplorer<cr>
 vmap <leader>l <esc>:BufExplorer<cr>
@@ -544,7 +551,6 @@ map ]] ]c
 map [[ [c
 map <leader>gdi :Gdiff<cr>
 map <leader>gst :Gstatus<cr>
-map <leader>dup :diffupdate<cr>
 
 
 "------------------------------------------------------------------------------
