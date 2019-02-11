@@ -560,11 +560,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_go_checkers=['go']
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='!!'
+let g:syntastic_style_error_symbol='!!'
+let g:syntastic_warning_symbol='??'
+let g:syntastic_style_warning_symbol='??'
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_aggregate_errors=1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 
 "------------------------------------------------------------------------------
@@ -614,9 +619,6 @@ let g:go_echo_command_info = 1
 
 " Highlight variable uses
 let g:go_auto_sameids = 1
-
-" Fix for location list when vim-go is used together with Syntastic
-let g:go_list_type = "quickfix"
 
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
