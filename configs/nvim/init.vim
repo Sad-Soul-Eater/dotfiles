@@ -553,36 +553,39 @@ map <leader>gst :Gstatus<cr>
 
 
 "------------------------------------------------------------------------------
-" Syntastic
+" Ale
 "------------------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_go_checkers=['go']
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol='!!'
-let g:syntastic_style_error_symbol='!!'
-let g:syntastic_warning_symbol='??'
-let g:syntastic_style_warning_symbol='??'
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_aggregate_errors=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open = 1
+let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
+let g:ale_go_gometalinter_options = '--fast'
+let g:ale_fixers = {
+            \   '*': ['remove_trailing_lines', 'trim_whitespace']
+            \}
+let g:ale_fix_on_save = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_keep_list_window_open = 1
+let g:ale_list_window_size = 5
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '•'
 
 
 "------------------------------------------------------------------------------
 " Vim-go
 "------------------------------------------------------------------------------
-let g:go_fmt_options = {
-            \ 'goimports': '',
-            \ }
-let g:go_snippet_engine = "neosnippet" " Set neosnippet as snippet engine
+let g:go_fmt_command = 'goimports'
+let g:go_info_mode = 'guru'
+let g:go_def_mode = 'guru'
+let g:go_snippet_engine = 'neosnippet' " Set neosnippet as snippet engine
 
 " Easier to jump between errors in quickfix list
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-"nnoremap <leader>a :cclose<CR>
+nnoremap <leader>n :cnext<CR>
+nnoremap <leader>m :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+" Reuse one terminal
+let g:go_term_enabled = 1
+let g:go_term_mode = "on | belowright split"
+let g:go_term_height = 10
 
 " Show a list of interfaces which is implemented by the type under your cursor
 au FileType go nmap <Leader>s <Plug>(go-implements)
@@ -621,6 +624,10 @@ let g:go_auto_sameids = 1
 
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
+
+let g:go_list_type = 'quickfix'
+let g:go_fmt_fail_silently = 1
+let g:go_def_reuse_buffer = 1
 
 " Highlight all
 let g:go_highlight_types = 1
