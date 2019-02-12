@@ -17,6 +17,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'romainl/vim-qf'
 
 
 " Version control (mostly git) plugins
@@ -685,3 +686,10 @@ let g:delve_backend = 'native'
 "------------------------------------------------------------------------------
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
+
+
+"------------------------------------------------------------------------------
+" vim-qf
+"------------------------------------------------------------------------------
+nmap <buffer> <Left>  <Plug>(qf_older)
+nmap <buffer> <Right> <Plug>(qf_newer)
