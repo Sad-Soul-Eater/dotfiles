@@ -159,8 +159,8 @@ bindsym $mod+a exec --no-startup-id firefox-nightly
 
 #smart_gaps on
 
-gaps inner 10
-gaps outer 5
+gaps inner 0
+gaps outer 0
 bindsym $mod+o gaps outer current set 5; gaps inner current set 10
 bindsym $mod+i gaps outer current set 0; gaps inner current set 0
 
@@ -168,7 +168,7 @@ bindsym $mod+i gaps outer current set 0; gaps inner current set 0
 # APPEARANCE #
 #------------#
 
-#smart_borders on
+smart_borders on
 
 # window border
 for_window [class="^.*"] border pixel 1
