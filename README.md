@@ -16,7 +16,7 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 
 - Clone this repositoty
 - Install [jq](https://stedolan.github.io/jq/) -- It needed for dotbot config merging and [faster](https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md#why-is-my-prompt-slow) prompt in [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme.
-- Run <code> ./install-profile <<a href="#profiles">profile-name</a>> </code> to symlink all configs or <code> ./install-standalone <<a href="#configs">config-name</a>> </code> to symlink only one of them
+- Run <code>./install-profile <<a href="#profiles">profile-name</a>></code> to symlink all configs or <code>./install-standalone <<a href="#configs">config-name</a>></code> to symlink only one of them
 - Done!
 
 >All safe, it won't kill your dotfiles, if folder/file already exists you'll see error during install process
@@ -39,7 +39,7 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
     * [feh](http://feh.finalrewind.org/) - i used it to manage wallpaper
     * [sxiv](https://github.com/muennich/sxiv) - Simple X Image Viewer
 * [mpv](https://github.com/mpv-player/mpv) - video player based on MPlayer/mplayer2
-* [alacritty](https://github.com/jwilm/alacritty) - fastest terminal emulator in existence
+* [kitty](https://github.com/kovidgoyal/kitty) - A cross-platform, fast, feature full, GPU based terminal emulator with **ligatures** support
 * zsh - powerful shell that operates as both an interactive shell and as a scripting language interpreter
     * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) - delightful, open source, community-driven framework for managing your ZSH configuration
         * [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme
@@ -59,28 +59,29 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 
 ### Profiles
 ```
-└── profiles
-│  ├── server (bin dotfiles neofetch xresources zsh)
-│  └── workstation (all configs)
+├── server (bin dotfiles sv_htop neofetch neovim xresources zsh)
+└── workstation (all configs)
 ```
 ### Configs
 ```
-└── configs
-│  ├── alacritty
-│  ├── bin
-│  ├── compton
-│  ├── conky
-│  ├── dotfiles
-│  ├── dunst
-│  ├── i3
-│  ├── mpv
-│  ├── neofetch
-│  ├── neovim
-│  ├── polybar
-│  ├── ranger
-│  ├── xresources
-│  ├── yay
-│  └── zsh
+├──  alacritty
+├──  bin
+├──  compton
+├──  conky
+├──  dotfiles
+├──  dunst
+├──  i3
+├──  kitty
+├──  mpv
+├──  neofetch
+├──  neovim
+├──  polybar
+├──  ranger
+├──  sv_htop
+├──  ws_htop
+├──  xresources
+├──  yay
+└──  zsh
 ```
 
 </div>
