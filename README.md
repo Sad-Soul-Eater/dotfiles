@@ -64,24 +64,24 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
 ```
 ### Configs
 ```
-├──  alacritty
-├──  bin
-├──  compton
-├──  conky
-├──  dotfiles
-├──  dunst
-├──  i3
-├──  kitty
-├──  mpv
-├──  neofetch
-├──  neovim
-├──  polybar
-├──  ranger
-├──  sv_htop
-├──  ws_htop
-├──  xresources
-├──  yay
-└──  zsh
+├── alacritty
+├── bin
+├── compton
+├── conky
+├── dotfiles
+├── dunst
+├── i3
+├── kitty
+├── mpv
+├── neofetch
+├── neovim
+├── polybar
+├── ranger
+├── sv_htop
+├── ws_htop
+├── xresources
+├── yay
+└── zsh
 ```
 
 </div>
