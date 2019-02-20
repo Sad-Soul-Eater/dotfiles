@@ -51,6 +51,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+
 Plug 'lifepillar/pgsql.vim'
 
 call plug#end()
