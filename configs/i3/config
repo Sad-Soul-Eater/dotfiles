@@ -226,7 +226,7 @@ for_window [class="Sxiv"]                               floating enable,    resi
 for_window [class="Soffice"]                                                resize set 1000 750,    move absolute position center
 
 # Yad popup calendar
-for_window [title="Yad Calendar"]                       floating enable
+for_window [class="Yad" title="yad-calendar"]           floating enable
 
 #------------#
 # MEDIA KEYS #
