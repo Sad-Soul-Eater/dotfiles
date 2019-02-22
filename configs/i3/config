@@ -154,6 +154,9 @@ bindsym $mod+Shift+r restart
 # Firefox
 bindsym $mod+a exec --no-startup-id firefox-nightly
 
+# Telegram
+bindsym $mod+t exec --no-startup-id telegram-desktop
+
 #------#
 # GAPS #
 #------#
@@ -211,7 +214,7 @@ exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift
 #---------------#
 
 # Telegram
-for_window [class="Telegram"]                           floating enable,    resize set 400 1000,    move position mouse
+for_window [class="Telegram"]                           floating enable,    resize set 400 1000,    move position 20 40
 for_window [title="Media viewer"]                       fullscreen enable
 
 # KeePassXC
