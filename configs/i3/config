@@ -143,6 +143,7 @@ bindsym $mod+m exec --no-startup-id ~/bin/rofi.sh -e
 
 # terminal
 bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+Shift+Return exec --no-startup-id kitty -T="i3-float"
 
 # Thunar
 bindsym $mod+Tab exec --no-startup-id thunar
@@ -227,6 +228,9 @@ for_window [class="Soffice"]                                                resi
 
 # Yad popup calendar
 for_window [class="Yad" title="yad-calendar"]           floating enable
+
+# Make window with specified title float
+for_window [title=".*i3-float.*"]                       floating enable,    resize set 1280 720,    move absolute position center
 
 #------------#
 # MEDIA KEYS #
