@@ -262,8 +262,9 @@ exec_always --no-startup-id ~/bin/bar.sh
 #-------------#
 
 assign [class="^(Firefox)|(Nightly)$" window_type="normal"] $ws2
-assign [class="Code"] $ws4
-assign [class="mpv"] $ws6
+assign [class="Code"] $ws3
+assign [class="qBittorrent" window_type="normal"] $ws4
+assign [class="mpv"] $ws5
 assign [class="discord"] $ws7
 for_window [class="Spotify"] move to workspace $ws10
 
