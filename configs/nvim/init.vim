@@ -553,14 +553,15 @@ map <leader>gst :Gstatus<cr>
 "------------------------------------------------------------------------------
 " Ale
 "------------------------------------------------------------------------------
-let g:ale_linters = {'go': ['gometalinter']}
-let g:ale_go_gometalinter_options = ''
+let g:ale_linters = {
+            \ 'go': ['golangci-lint'],
+            \ }
 let g:ale_fixers = {
-            \   '*': ['remove_trailing_lines', 'trim_whitespace']
+            \ '*': ['remove_trailing_lines', 'trim_whitespace']
             \}
 let g:ale_fix_on_save = 1
 
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_sign_warning = '•'
 let g:ale_sign_error = '✖'
 
