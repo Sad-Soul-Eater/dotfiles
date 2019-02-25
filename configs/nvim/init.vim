@@ -42,6 +42,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Language specific plugins
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/neco-syntax'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
