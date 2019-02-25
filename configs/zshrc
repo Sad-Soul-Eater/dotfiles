@@ -74,3 +74,5 @@ alias upgrade_oh_my_zsh="sudo ~/bin/upgrade_oh_my_zsh.sh"
 
 alias v="nvim"
 alias q="exit"
+
+export GOPATH=$HOME/go

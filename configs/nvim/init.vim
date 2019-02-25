@@ -505,7 +505,7 @@ let g:deoplete#sources#go#pointer = 1
 " Enable autocomplete of unimported packages
 let g:deoplete#sources#go#unimported_packages = 1
 
-let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 
