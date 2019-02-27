@@ -145,8 +145,8 @@ bindsym $mod+m exec --no-startup-id ~/bin/rofi.sh -e
 bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+Shift+Return exec --no-startup-id kitty -T="i3-float"
 
-# Thunar
-bindsym $mod+Tab exec --no-startup-id thunar
+# File Manager
+bindsym $mod+Tab exec --no-startup-id pcmanfm
 
 # restart i3 in place
 bindsym $mod+Shift+r restart
@@ -220,8 +220,8 @@ for_window [title="Media viewer"]                       fullscreen enable
 # KeePassXC
 for_window [class="keepassxc"]                          floating enable,    resize set 1280 720,    move absolute position center
 
-# thunar
-for_window [class="(?i)thunar" window_type="normal"]    floating enable,    resize set 1280 720,    move absolute position center
+# pcmanfm
+for_window [class="(?i)pcmanfm" window_type="normal"]    floating enable,    resize set 1280 720,    move absolute position center
 
 # sxiv
 for_window [class="Sxiv"]                               floating enable,    resize set 1280 720,    move absolute position center
