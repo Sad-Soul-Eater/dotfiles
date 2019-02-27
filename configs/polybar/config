@@ -48,7 +48,7 @@ tray-detached = false
 tray-background = #1d1f21
 
 ; Modules
-modules-left = wlan cpu memory keyboard spotify
+modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
 modules-center = i3
 modules-right = battery backlight pulseaudio popup-calendar time
 
@@ -210,8 +210,7 @@ menu-3-1-exec = menu-open-0
 
 [module/spotify]
 type = custom/script
-
-interval = 1
+interval = 5
 format = <label>
 exec = python ~/bin/polybar-spotify/spotify_status.py -p ' , ' -f '{play_pause} {song} - {artist}'
 
@@ -226,6 +225,13 @@ label-layout = %{T3}%{T-} %layout%
 
 [module/popup-calendar]
 type = custom/script
-exec = ~/bin/polybar-scripts/popup-calendar.sh
 interval = 60
+exec = ~/bin/polybar-scripts/popup-calendar.sh
 click-left = ~/bin/polybar-scripts/popup-calendar.sh --popup
+
+
+[module/vpn-wireguard-wg]
+type = custom/script
+interval = 5
+exec = ~/bin/polybar-scripts/vpn-wireguard-wg.sh
+click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle
