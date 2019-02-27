@@ -76,10 +76,12 @@ call plug#end()
 " General
 "------------------------------------------------------------------------------
 " let's make sure we are in noncompatble mode
-set nocp
+set nocompatible
 
 " Sets how many lines of history VIM has to remember
-set history=700
+set history=1024
+
+set ttyfast
 
 " Enable filetype plugins
 filetype plugin on
@@ -98,9 +100,6 @@ vmap <Leader>w <ESC><ESC>:w<CR>
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
 
-" This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
-inoremap jj <esc>
-nnoremap JJJJ <nop>
 noremap <F3> :Autoformat<CR>
 
 " Copy/paste from system clipboard only when it needed
@@ -131,16 +130,8 @@ set colorcolumn=80,120
 " Highlight current line - allows you to track cursor position more easily
 set cursorline
 
-" Completion options (select longest + show menu even if a single match is found)
-set completeopt=longest,menuone
-
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-    set wildignore+=.git\*,.hg\*,.svn\*
-endif
+set wildignore=*.o,*~,*.pyc,.git\*,.hg\*,.svn\*
 
 " Show line, column number, and relative position within a file in the status line
 set ruler
@@ -206,6 +197,10 @@ set nrformats=octal,hex,alpha
 set shortmess=a
 set cmdheight=2
 
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+
 "------------------------------------------------------------------------------
 " Colors and Fonts
 "------------------------------------------------------------------------------
@@ -215,9 +210,6 @@ set termguicolors
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
 
 " Show status bar by default.
 set laststatus=2
@@ -234,14 +226,12 @@ let g:airline_powerline_fonts = 1
 
 let g:airline_theme='onehalfdark'
 
-" highlight trailing space
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+" toggle invisible characters
+set list
+set listchars=tab:→\ ,trail:⋅,extends:❯,precedes:❮
 
+" highlight conflicts
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "------------------------------------------------------------------------------
 " Files, backups and undo
@@ -290,11 +280,11 @@ set tabstop=4
 set shiftround
 
 " Linebreak on 500 characters
-set lbr
+set linebreak
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent
+set smartindent
 set nowrap "Don't Wrap lines (it is stupid)
 
 
