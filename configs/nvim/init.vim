@@ -212,6 +212,7 @@ set cmdheight=2
 " Enable syntax highlighting
 colorscheme onehalfdark
 set termguicolors
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -358,8 +359,6 @@ autocmd BufReadPost *
             \ if line("'\"") > 0 && line("'\"") <= line("$") |
             \   exe "normal! g`\"" |
             \ endif
-" Remember info about open buffers on close
-set viminfo^=%
 
 
 "------------------------------------------------------------------------------
@@ -425,19 +424,7 @@ map <leader>s? z=
 "------------------------------------------------------------------------------
 " Misc
 "------------------------------------------------------------------------------
-" Remove the Windows ^M - when the encodings gets messed up
-"noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-" easy way to edit reload .vimrc
+" Easy way to edit reload .vimrc
 nmap <leader>V :source $MYVIMRC<cr>
 nmap <leader>v :vsp $MYVIMRC<cr>
 
@@ -717,7 +704,7 @@ let g:delve_backend = 'native'
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
 
-" In markdown it option hide html tags, so disable it
+" In markdown it option conceals html tags, so need to turn-off it back
 au FileType markdown set conceallevel=0 concealcursor=niv
 
 

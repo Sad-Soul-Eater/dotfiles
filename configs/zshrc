@@ -13,6 +13,7 @@ git           # Git section (git_branch + git_status)
 # package     # Package version
 node          # Node.js section
 # ruby        # Ruby section
+# elm         # Elm section
 # elixir      # Elixir section
 # xcode       # Xcode section
 # swift       # Swift section
