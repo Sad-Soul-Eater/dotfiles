@@ -9,22 +9,40 @@ call plug#begin('~/.vim/plugged')
 
 " Basic plugins
 Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'romainl/vim-qf'
+Plug '/bin/fzf'
 
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
+" Autocomplete plugins
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
+
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+
+Plug 'ncm2/ncm2-neosnippet'
+Plug 'ncm2/ncm2-bufword'
+Plug 'fgrsnau/ncm2-otherbuf', {'branch': 'ncm2'}
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'ncm2/ncm2-syntax'     | Plug 'Shougo/neco-syntax'
+Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
+Plug 'ncm2/ncm2-vim'        | Plug 'Shougo/neco-vim'
 
 " Version control (mostly git) plugins
 Plug 'mhinz/vim-signify'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 Plug 'tpope/vim-fugitive'
-
 
 " Not so important and used plugins
 Plug 'mileszs/ack.vim'
@@ -32,20 +50,16 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'corntrace/bufexplorer'
 Plug 'rbgrouleff/bclose.vim'
 
-
 " Visual/interface plugins, themes
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-
 " Language specific plugins
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/neco-syntax'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'sebdah/vim-delve'
 
 Plug 'plasticboy/vim-markdown'
@@ -188,6 +202,9 @@ set foldcolumn=0
 " Enable Ctrl-A/Ctrl-X to work on octal and hex numbers, as well as characters
 set nrformats=octal,hex,alpha
 
+" Avoiding the 'Hit ENTER to continue' prompts
+set shortmess=a
+set cmdheight=2
 
 "------------------------------------------------------------------------------
 " Colors and Fonts
@@ -457,59 +474,6 @@ endfunction
 
 
 "------------------------------------------------------------------------------
-" Deoplete
-"------------------------------------------------------------------------------
-call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
-let g:AutoPairsMapCR=0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#num_processes = 8
-
-" Enter key select the highlighted menu item, as <C-Y> does
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
-
-
-"------------------------------------------------------------------------------
-" Neosnippet
-"------------------------------------------------------------------------------
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ neosnippet#expandable_or_jumpable() ?
-            \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-
-"------------------------------------------------------------------------------
-" Deoplete-go
-"------------------------------------------------------------------------------
-" Enable completing of go pointers
-let g:deoplete#sources#go#pointer = 1
-
-" Enable autocomplete of unimported packages
-let g:deoplete#sources#go#unimported_packages = 1
-
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-
-"------------------------------------------------------------------------------
 " NERDTree
 "------------------------------------------------------------------------------
 " General properties
@@ -553,6 +517,65 @@ map <leader>gst :Gstatus<cr>
 
 
 "------------------------------------------------------------------------------
+" LanguageClient-neovim
+"------------------------------------------------------------------------------
+let g:LanguageClient_rootMarkers = {
+            \ 'go': ['.git', 'go.mod'],
+            \ }
+
+let g:LanguageClient_serverCommands = {
+            \ 'go': ['bingo'],
+            \ 'html': ['html-languageserver', '--stdio'],
+            \ 'css': ['css-languageserver', '--stdio'],
+            \ 'json': ['json-languageserver', '--stdio'],
+            \ }
+
+
+"------------------------------------------------------------------------------
+" ncm2
+"------------------------------------------------------------------------------
+" Enable ncm2 for all buffers
+autocmd BufEnter  *  call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
+
+" Press enter key to trigger snippet expansion
+function! NCM2ExpandCompletionIfSnippet()
+    if ncm2_neosnippet#completed_is_snippet()
+        call feedkeys("\<Plug>(ncm2_neosnippet_expand_completed)", "im")
+        return ''
+    endif
+    return ''
+endfunction
+
+autocmd CompleteDone * call NCM2ExpandCompletionIfSnippet()
+
+" Use <TAB> to select the popup menu
+imap <expr> <Tab>
+            \ pumvisible() ? "\<C-n>" : neosnippet#jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+smap <expr> <Tab> neosnippet#jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+"------------------------------------------------------------------------------
+" Neosnippet
+"------------------------------------------------------------------------------
+let g:neosnippet#enable_complete_done = 1
+
+" Hide snippet symbols
+set conceallevel=2 concealcursor=niv
+
+
+"------------------------------------------------------------------------------
 " Ale
 "------------------------------------------------------------------------------
 let g:ale_linters = {
@@ -568,7 +591,7 @@ let g:ale_sign_warning = '•'
 let g:ale_sign_error = '✖'
 
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 let g:ale_list_window_size = 10
 let g:ale_set_loclist = 0
@@ -579,7 +602,7 @@ let g:ale_set_quickfix = 1
 " Vim-go
 "------------------------------------------------------------------------------
 let g:go_fmt_command = 'goimports'
-let g:go_info_mode = 'guru'
+let g:go_info_mode = 'gocode'
 let g:go_def_mode = 'guru'
 let g:go_snippet_engine = 'neosnippet' " Set neosnippet as snippet engine
 
@@ -623,10 +646,12 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 " Show the progress when running :GoCoverage
-let g:go_echo_command_info = 1
+let g:go_echo_command_info = 0
 
 " Highlight variable uses
 let g:go_auto_sameids = 1
+let g:go_fmt_experimental = 1
+let g:go_updatetime = 200
 
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
@@ -691,6 +716,9 @@ let g:delve_backend = 'native'
 "------------------------------------------------------------------------------
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
+
+" In markdown it option hide html tags, so disable it
+au FileType markdown set conceallevel=0 concealcursor=niv
 
 
 "------------------------------------------------------------------------------
