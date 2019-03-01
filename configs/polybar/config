@@ -29,12 +29,13 @@ bottom = false
 
 ; Fonts
 font-0 = "FiraGO:size=11;2"
-font-1 = "Font Awesome 5 Free:antialias=false:style=Regular:pixelsize=11;2"
-font-2 = "Font Awesome 5 Free:antialias=false:style=Solid:pixelsize=11;2"
-font-3 = "Font Awesome 5 Brands:antialias=false:pixelsize=11;2"
-font-4 = "Fura Code Nerd Font:antialias=false:pixelsize=11;3"
-font-5 = "Fura Code Nerd Font:antialias=false:pixelsize=13;3"
-font-6 = "Material Design Icons:antialias=false:pixelsize=11;3"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=11;1"
+font-4 = "Fura Code Nerd Font:pixelsize=11;3"
+font-5 = "Fura Code Nerd Font:pixelsize=13;3"
+font-6 = "Material Design Icons:pixelsize=12;3"
+font-7 = "Material Design Icons:pixelsize=13;3"
 
 ; Colors
 background = ${colors.background}
@@ -107,41 +108,43 @@ label = %date%
 type = internal/battery
 
 battery = BAT0
-poll-interval = 1
-full-at = 98
+adapter = AC1
 
-label-discharging = %percentage%%
-label-charging = %percentage%%
-label-full = %percentage%%
+format-discharging = %{T5}<ramp-capacity>%{T-} <label-discharging>
+format-charging = %{T5}<animation-charging>%{T-} <label-charging>
+format-full = %{T5}<ramp-capacity>%{T-} <label-full>
 
-format-discharging = <ramp-capacity> <label-discharging>
-format-full = <ramp-capacity> <label-full>
-format-charging = <animation-charging> <label-charging>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
 
-animation-charging-0 = %{T5}%{T-}
-animation-charging-1 = %{T5}%{T-}
-animation-charging-2 = %{T5}%{T-}
-animation-charging-3 = %{T5}%{T-}
-animation-charging-4 = %{T5}%{T-}
-
-ramp-capacity-0 = %{T5}%{T-}
-ramp-capacity-1 = %{T5}%{T-}
-ramp-capacity-2 = %{T5}%{T-}
-ramp-capacity-3 = %{T5}%{T-}
-ramp-capacity-4 = %{T5}%{T-}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
 
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = %{A3:pavucontrol:}<ramp-volume> <label-volume>%{A}
+format-volume = %{A3:pavucontrol:}%{T6}<ramp-volume>%{T-} <label-volume>%{A}
 use-ui-max = true
 
 label-muted = %{T6}婢%{T-}
 
-ramp-volume-0 = %{T6}奄%{T-}
-ramp-volume-1 = %{T6}奔%{T-}
-ramp-volume-2 = %{T6}墳%{T-}
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
 
 
 [module/backlight]
@@ -149,30 +152,30 @@ type = internal/backlight
 card = amdgpu_bl0
 
 format-spacing = 1
-format = <ramp><label>
+format = %{T7}<ramp>%{T-}<label>
 label = %percentage%%
 
-ramp-0 = %{T5}%{T-}
-ramp-1 = %{T5}%{T-}
-ramp-2 = %{T3}%{T-}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 
 
 [module/wlan]
 type = internal/network
 interface = wlp1s0
 
-label-connected = %{A1:~/bin/rofi.sh -n:} %essid%%{A}
-label-disconnected = %{A1:~/bin/rofi.sh -n:} Not Connected%{A}
+label-connected = %{A1:~/bin/rofi.sh -n:}%{T8}蠟%{T-} %essid%%{A}
+label-disconnected = %{A1:~/bin/rofi.sh -n:}%{T8}來%{T-} Not Connected%{A}
 
 
 [module/cpu]
 type = internal/cpu
-label = %{T5}%{T-} %percentage%%
+label = %{T1}%{T-} %percentage%%
 
 
 [module/memory]
 type = internal/memory
-label = %{T2}%{T-} %gb_used%
+label = %{T3}%{T-} %gb_used%
 interval = 3
 
 
@@ -187,8 +190,9 @@ label-layout = %{T3}%{T-} %layout%
 [module/spotify]
 type = custom/script
 interval = 5
+format-prefix = " "
 format = <label>
-exec = python ~/bin/polybar-spotify/spotify_status.py -p ' , ' -f '{play_pause} {song} - {artist}'
+exec = python ~/bin/polybar-spotify/spotify_status.py -f '{song} - {artist}'
 
 
 [module/popup-calendar]
