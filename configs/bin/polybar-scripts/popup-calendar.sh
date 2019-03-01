@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BAR_HEIGHT=22
+BAR_HEIGHT=23
 YAD_WIDTH=200
 YAD_HEIGHT=200
 DATE="%{T5}%{T-} $(date +"%e %B")"
@@ -23,7 +23,7 @@ case "$1" in
     if [ "$((Y + YAD_HEIGHT))" -gt "$HEIGHT" ]; then #Bottom
         : $((pos_y = HEIGHT - BAR_HEIGHT - YAD_HEIGHT))
     else #Top
-        : $((pos_y = Y + BAR_HEIGHT))
+        : $((pos_y = BAR_HEIGHT))
     fi
 
     yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
