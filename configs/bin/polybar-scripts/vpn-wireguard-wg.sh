@@ -4,11 +4,11 @@ CONFIG_PATH=~/wg/wg-aruba.conf
 
 SHOW_NAME=false #Show connection name instead of CONNECTED_TEXT
 
-CONNECTED_ICON=" VPN:"
-CONNECTED_TEXT="up"
+CONNECTED_ICON="%{T7}%{T-}"
+CONNECTED_TEXT=""
 
-DISCONNECTED_ICON=" VPN:"
-DISCONNECTED_TEXT="down"
+DISCONNECTED_ICON="%{T7}劣%{T-}"
+DISCONNECTED_TEXT=""
 
 
 CONFIG_NAME=$(basename "${CONFIG_PATH%.*}")
@@ -30,9 +30,9 @@ status() {
         if $SHOW_NAME; then
             CONNECTED_TEXT=$CONFIG_NAME
         fi
-        echo "$CONNECTED_ICON $CONNECTED_TEXT"
+        echo "$CONNECTED_ICON""$CONNECTED_TEXT"
     else
-        echo "$DISCONNECTED_ICON $DISCONNECTED_TEXT"
+        echo "$DISCONNECTED_ICON""$DISCONNECTED_TEXT"
     fi
 }
 
