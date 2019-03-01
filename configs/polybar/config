@@ -50,7 +50,7 @@ tray-background = #1d1f21
 ; Modules
 modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
 modules-center = i3
-modules-right = battery backlight pulseaudio popup-calendar time
+modules-right = updates-arch-combined battery backlight pulseaudio popup-calendar time
 
 
 [module/i3]
@@ -132,9 +132,9 @@ ramp-capacity-4 = 
 type = internal/pulseaudio
 
 format-volume = <ramp-volume> <label-volume>
-use-ui-max = false
+use-ui-max = true
 
-label-muted =  MUTE
+label-muted = 
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -235,3 +235,9 @@ type = custom/script
 interval = 5
 exec = ~/bin/polybar-scripts/vpn-wireguard-wg.sh
 click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle
+
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/bin/polybar-scripts/updates-arch-combined.sh
+interval = 600
