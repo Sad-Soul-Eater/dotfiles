@@ -11,6 +11,11 @@ DISCONNECTED_ICON="%{T7}劣%{T-}"
 DISCONNECTED_TEXT=""
 
 
+if [ ! -f $CONFIG_PATH ]; then
+    echo "$DISCONNECTED_ICON Config file not found"
+    exit 0
+fi
+
 CONFIG_NAME=$(basename "${CONFIG_PATH%.*}")
 
 check() {
@@ -49,11 +54,6 @@ toggle() {
 
     status
 }
-
-if [ ! -f $CONFIG_PATH ]; then
-    echo "$DISCONNECTED_ICON Config file not found"
-    exit 0
-fi
 
 case "$1" in
 --toggle)
