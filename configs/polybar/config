@@ -48,8 +48,7 @@ padding-right = 2
 module-margin = 2
 tray-position = right
 tray-detached = false
-; tray-transparent = true
-tray-background = #1d1f21
+tray-background = ${colors.background}
 
 ; Modules
 modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
