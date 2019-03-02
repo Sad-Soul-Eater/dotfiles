@@ -695,7 +695,14 @@ let g:delve_backend = 'native'
 let g:vim_markdown_folding_disabled = 1
 
 " In markdown it option conceals html tags, so need to turn-off it back
-au FileType markdown set conceallevel=0 concealcursor=niv
+au FileType markdown set conceallevel=0 concealcursor=
+
+
+"------------------------------------------------------------------------------
+" markdown-preview
+"------------------------------------------------------------------------------
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
 
 
 "------------------------------------------------------------------------------
