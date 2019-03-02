@@ -4,7 +4,6 @@
 2. [Requirements](#requirements)
 3. [Available profiles/configurations](#profiles-configs)
 
-Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-things...
 ![Clean](https://imgur.com/mNoRwHM.png "Clean")
 <p align="center">
 <img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://imgur.com/mh8Zeuu.png">
