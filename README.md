@@ -1,15 +1,21 @@
-<h1 align="center">Dotfiles</h1>
+<h1 align="center">✨Dotfiles✨</h1>
 
 1. [Installation](#installation)
 2. [Requirements](#requirements)
 3. [Available profiles/configurations](#profiles-configs)
 
 Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-things...
-
-![Clean](https://i.imgur.com/0QYwR57.png "Clean")
-<font size=2> <a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a>
-<a href="https://imgur.com/gallery/HwyioVB">More screenshots</a>
+![Clean](https://imgur.com/mNoRwHM.png "Clean")
+<p align="center">
+<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://imgur.com/mh8Zeuu.png">
+<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://imgur.com/95fKc24.png">
+</p>
+<p align="center">
+<font size=2>
+<a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a>
+<a href="https://imgur.com/gallery/HwyioVB">More screenshots(old)</a>
 </font>
+</p>
 
 <div id="installation">
 <h2 align="center">How to install</h2>
@@ -35,8 +41,8 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
     * [dunst](https://github.com/dunst-project/dunst) - lightweight and customizable notification daemon
     * [conky](https://github.com/brndnmtthws/conky) - light-weight system monitor for X
     * [clipmenu](https://github.com/cdown/clipmenu) - clipboard management using dmenu
-    * [maim](https://github.com/naelstrof/maim) - (make image) takes screenshots of your desktop.
-    * [feh](http://feh.finalrewind.org/) - i used it to manage wallpaper
+    * [maim](https://github.com/naelstrof/maim) - takes screenshots of your desktop.
+    * [feh](http://feh.finalrewind.org/) - used to manage wallpaper
     * [sxiv](https://github.com/muennich/sxiv) - Simple X Image Viewer
 * [mpv](https://github.com/mpv-player/mpv) - video player based on MPlayer/mplayer2
 * [kitty](https://github.com/kovidgoyal/kitty) - A cross-platform, fast, feature full, GPU based terminal emulator with **ligatures** support
@@ -47,10 +53,11 @@ Config files for i3, polybar, rofi, mpv, Xresources, alacritty and some bash-thi
     * [ranger](https://github.com/ranger/ranger) - VIM-inspired filemanager for the console
 * [yay](https://github.com/Jguer/yay) - Yet another Yogurt - An AUR Helper written in Go
 * Fonts:
-    * [FiraGO](https://github.com/bBoxType/FiraGO) - main interface font
-    * [FuraCode](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode) - terminal font
-    * [FontAwesome](https://fontawesome.com/) - used for icons in polybar
-    * Some fonts neded for conky - [link](https://drive.google.com/file/d/1m0qbqjxZyCqe11b_lhHqRN9BeCP9MMDt/view?usp=sharing)
+    * [FiraGO](https://github.com/bBoxType/FiraGO) - interface font
+    * [FiraCode](https://github.com/tonsky/FiraCode) - terminal font
+    * [FuraCode](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode) - used for icons in polybar and conky
+    * [FontAwesome](https://fontawesome.com/) - used for icons in polybar and conky
+    * [Material Design Icons](https://aur.archlinux.org/packages/ttf-material-design-icons-git/) - used for icons in polybar and conky
 
 </div>
 
