@@ -53,7 +53,7 @@ tray-background = ${colors.background}
 ; Modules
 modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
 modules-center = i3
-modules-right = updates-arch-combined battery backlight pulseaudio popup-calendar time
+modules-right = updates-arch-combined github battery backlight pulseaudio popup-calendar time
 
 
 [module/i3]
@@ -94,7 +94,7 @@ label-urgent-padding = 1
 [module/time]
 type = internal/date
 interval = 1.0
-date = %{T5}%{T-} %H:%M
+date = %{A1:~/bin/polybar-scripts/popup-calendar.sh --popup:}%{T5}%{T-} %H:%M%{A}
 
 
 [module/date]
@@ -184,6 +184,15 @@ blacklist-0 = num lock
 blacklist-1 = scroll lock
 
 label-layout = %{T3}%{T-} %layout%
+
+
+[module/github]
+type = internal/github
+token = ${file:~/.secrets/github-notification.token}
+empty-notifications = false
+interval = 30
+format = <label>
+label = %{T5}%{T-} %notifications%
 
 
 [module/spotify]
