@@ -136,7 +136,7 @@ animation-charging-6 = 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = %{A3:pavucontrol:}%{T6}<ramp-volume>%{T-} <label-volume>%{A}
+format-volume = %{A3:pavucontrol &:}%{T6}<ramp-volume>%{T-} <label-volume>%{A}
 use-ui-max = true
 
 label-muted = %{T6}婢%{T-}
