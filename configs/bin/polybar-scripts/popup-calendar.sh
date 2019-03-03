@@ -1,9 +1,9 @@
 #!/bin/sh
 
-BAR_HEIGHT=22
-BORDER=1
-YAD_WIDTH=200
-YAD_HEIGHT=200
+BAR_HEIGHT=22  # polybar height
+BORDER_SIZE=1  # border size from your wm settings
+YAD_WIDTH=222  # 222 is minimum possible value
+YAD_HEIGHT=188 # 188 is minimum possible value
 DATE="%{T5}%{T-} $(date +"%e %B")"
 
 case "$1" in
@@ -16,19 +16,19 @@ case "$1" in
     eval "$(xdotool getdisplaygeometry --shell)"
 
     # X
-    if [ "$((X + 26 + BORDER + YAD_WIDTH / 2))" -gt "$WIDTH" ]; then #Right side
-        : $((pos_x = WIDTH - 26 - BORDER - YAD_WIDTH))
-    elif [ "$((X - YAD_WIDTH / 2))" -lt 1 ]; then #Left side
-        : $((pos_x = BORDER))
+    if [ "$((X + YAD_WIDTH / 2 + 2 + BORDER_SIZE))" -gt "$WIDTH" ]; then #Right side
+        : $((pos_x = WIDTH - YAD_WIDTH - BORDER_SIZE - 4))
+    elif [ "$((X - YAD_WIDTH / 2 - 2 - BORDER_SIZE))" -lt 1 ]; then #Left side
+        : $((pos_x = BORDER_SIZE))
     else #Center
-        : $((pos_x = X - YAD_WIDTH / 2))
+        : $((pos_x = X - YAD_WIDTH / 2 - 2))
     fi
 
     # Y
-    if [ "$((Y + YAD_HEIGHT))" -gt "$HEIGHT" ]; then #Bottom
-        : $((pos_y = HEIGHT - BAR_HEIGHT - YAD_HEIGHT))
+    if [ "$Y" -gt "$((HEIGHT / 2))" ]; then #Bottom
+        : $((pos_y = HEIGHT - YAD_HEIGHT - 4 - BAR_HEIGHT - BORDER_SIZE))
     else #Top
-        : $((pos_y = BAR_HEIGHT))
+        : $((pos_y = BAR_HEIGHT + BORDER_SIZE))
     fi
 
     yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
