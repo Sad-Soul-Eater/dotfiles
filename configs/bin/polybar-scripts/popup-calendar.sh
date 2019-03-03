@@ -1,6 +1,7 @@
 #!/bin/sh
 
-BAR_HEIGHT=23
+BAR_HEIGHT=22
+BORDER=1
 YAD_WIDTH=200
 YAD_HEIGHT=200
 DATE="%{T5}%{T-} $(date +"%e %B")"
@@ -15,10 +16,10 @@ case "$1" in
     eval "$(xdotool getdisplaygeometry --shell)"
 
     # X
-    if [ "$((X + 27 + YAD_WIDTH / 2))" -gt "$WIDTH" ]; then #Right side
-        : $((pos_x = WIDTH - 27 - YAD_WIDTH))
+    if [ "$((X + 26 + BORDER + YAD_WIDTH / 2))" -gt "$WIDTH" ]; then #Right side
+        : $((pos_x = WIDTH - 26 - BORDER - YAD_WIDTH))
     elif [ "$((X - YAD_WIDTH / 2))" -lt 1 ]; then #Left side
-        : $((pos_x = 1))
+        : $((pos_x = BORDER))
     else #Center
         : $((pos_x = X - YAD_WIDTH / 2))
     fi
