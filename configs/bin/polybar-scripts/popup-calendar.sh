@@ -7,14 +7,18 @@ DATE="%{T5}%{T-} $(date +"%e %B")"
 
 case "$1" in
 --popup)
+    if [ "$(xdotool getwindowfocus getwindowname)" = "yad-calendar" ]; then
+        exit 0
+    fi
+
     eval "$(xdotool getmouselocation --shell)"
     eval "$(xdotool getdisplaygeometry --shell)"
 
     # X
-    if [ "$((X + 35 + YAD_WIDTH / 2))" -gt "$WIDTH" ]; then #Right side
-        : $((pos_x = WIDTH - 35 - YAD_WIDTH))
+    if [ "$((X + 27 + YAD_WIDTH / 2))" -gt "$WIDTH" ]; then #Right side
+        : $((pos_x = WIDTH - 27 - YAD_WIDTH))
     elif [ "$((X - YAD_WIDTH / 2))" -lt 1 ]; then #Left side
-        : $((pos_x = 10))
+        : $((pos_x = 1))
     else #Center
         : $((pos_x = X - YAD_WIDTH / 2))
     fi
@@ -28,7 +32,7 @@ case "$1" in
 
     yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
         --width=$YAD_WIDTH --height=$YAD_HEIGHT --posx=$pos_x --posy=$pos_y \
-        --title="yad-calendar" >/dev/null
+        --title="yad-calendar" >/dev/null &
     ;;
 *)
     echo "$DATE"
