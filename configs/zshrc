@@ -1,7 +1,62 @@
-export ZSH=/usr/share/oh-my-zsh
-export ZSH_CACHE_DIR=~/.oh-my-zsh/cache
+### Added by Zplugin's installer
+source '/home/soul/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
 
-ZSH_THEME="spaceship-prompt/spaceship"
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
+
+
+setopt promptsubst
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::lib/git.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::lib/key-bindings.zsh
+
+zplugin ice wait"0" lucid atload"unalias grv"
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/systemd/systemd.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/sudo/sudo.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
+
+zplugin light denysdovhan/spaceship-prompt
+
+zplugin ice wait"0" lucid atinit"zpcompinit"
+zplugin light zdharma/fast-syntax-highlighting
+
+zplugin ice wait"0" blockf lucid
+zplugin light zsh-users/zsh-completions
+
+zplugin ice wait"0" lucid atload"_zsh_autosuggest_start"
+zplugin light zsh-users/zsh-autosuggestions
+
+zplugin ice wait"0" lucid
+zplugin light zdharma/history-search-multi-word
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::lib/completion.zsh
+
+zplugin ice wait"0" lucid
+zplugin light djui/alias-tips
+
+zplugin ice wait"0" lucid
+zplugin load zdharma/zui
+
+zplugin ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
+zplugin load zdharma/zplugin-crasis
+
 
 SPACESHIP_PROMPT_ORDER=(
 time          # Time stamps section
@@ -10,7 +65,7 @@ dir           # Current directory section
 host          # Hostname section
 git           # Git section (git_branch + git_status)
 # hg          # Mercurial section (hg_branch  + hg_status)
-# package     # Package version
+package       # Package version
 node          # Node.js section
 # ruby        # Ruby section
 # elm         # Elm section
@@ -19,13 +74,13 @@ node          # Node.js section
 # swift       # Swift section
 golang        # Go section
 # php         # PHP section
-rust          # Rust section
+# rust        # Rust section
 # haskell     # Haskell Stack section
 # julia       # Julia section
 # docker      # Docker section
 # aws         # Amazon Web Services section
 venv          # virtualenv section
-# conda         # conda virtualenv section
+# conda       # conda virtualenv section
 pyenv         # Pyenv section
 # dotnet      # .NET section
 # ember       # Ember.js section
@@ -34,46 +89,47 @@ pyenv         # Pyenv section
 exec_time     # Execution time
 line_sep      # Line break
 battery       # Battery level and status
-vi_mode       # Vi-mode indicator
+# vi_mode     # Vi-mode indicator
 jobs          # Background jobs indicator
 exit_code     # Exit code section
 char          # Prompt character
 )
 
-DISABLE_AUTO_UPDATE="true"
-
-ZSH_AUTOSUGGEST_USE_ASYNC="true"
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
-
-plugins=(
-systemd
-extract
-git
-sudo
-zsh-completions
-colored-man-pages
-zsh-autosuggestions
-zsh-syntax-highlighting
-)
-
-source $ZSH/oh-my-zsh.sh
 
 alias ls="lsd"
 alias l="ls -la"
 alias la="ls -lA"
 alias ll="ls -l"
-alias lsa="ls -la"
+
+alias -- -='cd -'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+
+alias md='mkdir -p'
+alias rd=rmdir
 
 alias dotfiles="cd ~/.dotfiles"
+
+alias v="nvim"
 alias vconf="v ~/.config/nvim/init.vim"
 
 alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
 alias h=htop
 alias mpv-tw="mpv --profile=twitch"
-alias upgrade_oh_my_zsh="sudo ~/bin/upgrade_oh_my_zsh.sh"
 
-alias v="nvim"
 alias q="exit"
 
+
 export GOPATH=$HOME/go
+export EDITOR='nvim'
+
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
