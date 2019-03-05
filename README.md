@@ -20,7 +20,6 @@
 <h2 align="center">How to install</h2>
 
 - Clone this repositoty
-- Install [jq](https://stedolan.github.io/jq/) -- It needed for dotbot config merging and [faster](https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md#why-is-my-prompt-slow) prompt in [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme.
 - Run <code>./install-profile <<a href="#profiles">profile-name</a>></code> to symlink all configs or <code>./install-standalone <<a href="#configs">config-name</a>></code> to symlink only one of them
 - Done!
 
@@ -46,10 +45,7 @@
 * [mpv](https://github.com/mpv-player/mpv) - video player based on MPlayer/mplayer2
 * [kitty](https://github.com/kovidgoyal/kitty) - A cross-platform, fast, feature full, GPU based terminal emulator with **ligatures** support
 * zsh - powerful shell that operates as both an interactive shell and as a scripting language interpreter
-    * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) - delightful, open source, community-driven framework for managing your ZSH configuration
-        * [spaceship](https://github.com/denysdovhan/spaceship-prompt) theme
     * [neofetch](https://github.com/dylanaraps/neofetch) - command-line system information tool written in bash 3.2+
-    * [ranger](https://github.com/ranger/ranger) - VIM-inspired filemanager for the console
 * [yay](https://github.com/Jguer/yay) - Yet another Yogurt - An AUR Helper written in Go
 * Fonts:
     * [FiraGO](https://github.com/bBoxType/FiraGO) - interface font
