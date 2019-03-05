@@ -51,7 +51,7 @@ zplugin snippet OMZ::lib/completion.zsh
 zplugin ice wait"0" lucid
 zplugin light djui/alias-tips
 
-zplugin ice wait"0" lucid
+zplugin ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
 zplugin load zdharma/zui
 
 zplugin ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
