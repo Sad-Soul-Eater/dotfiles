@@ -68,6 +68,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 
+Plug 'stephpy/vim-yaml'
+Plug 'mrk21/yaml-vim'
+Plug 'tarekbecker/vim-yaml-formatter'
+
 Plug 'lifepillar/pgsql.vim'
 
 call plug#end()
@@ -710,3 +714,9 @@ let g:mkdp_auto_close = 1
 "------------------------------------------------------------------------------
 nmap <buffer> <Left>  <Plug>(qf_older)
 nmap <buffer> <Right> <Plug>(qf_newer)
+
+
+"------------------------------------------------------------------------------
+" yaml formatter
+"------------------------------------------------------------------------------
+au FileType yaml noremap <F3> :YAMLFormat<CR>
