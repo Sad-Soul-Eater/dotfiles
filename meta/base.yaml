@@ -1,0 +1,7 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+- clean:
+  - '~'
+  - ~/.config

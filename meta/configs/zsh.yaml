@@ -1,0 +1,7 @@
+- link:
+    ~/.zshrc: configs/zshrc
+- shell:
+  - command: configs/bin/install-zplugin.sh
+    description: Install zplugin
+    stdout: true
+    stdin: true

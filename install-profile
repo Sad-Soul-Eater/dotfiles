@@ -3,7 +3,7 @@
 set -e
 
 BASE_CONFIG="base"
-CONFIG_SUFFIX=".json"
+CONFIG_SUFFIX=".yaml"
 
 META_DIR="meta"
 CONFIG_DIR="configs"
@@ -28,8 +28,8 @@ for config in $CONFIGS "$@"; do
     echo -e "\nConfigure $config"
     configFile="$(mktemp)"
 
-    jq -s add "${BASE_DIR}/${META_DIR}/${BASE_CONFIG}${CONFIG_SUFFIX}" "${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config}${CONFIG_SUFFIX}" >"$configFile"
-    "${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "$BASE_DIR" -c "$configFile"
+    echo -e "$(<"${BASE_DIR}/${META_DIR}/${BASE_CONFIG}${CONFIG_SUFFIX}")\n$(<"${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config}${CONFIG_SUFFIX}")" >"$configFile"
+    "${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile"
 
     rm -f "$configFile"
 done
