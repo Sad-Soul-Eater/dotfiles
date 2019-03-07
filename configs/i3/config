@@ -99,15 +99,15 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px
+        bindsym j resize grow height 10 px
+        bindsym k resize shrink height 10 px
+        bindsym l resize grow width 10 px
 
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px
+        bindsym Down resize grow height 10 px
+        bindsym Up resize shrink height 10 px
+        bindsym Right resize grow width 10 px
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -152,7 +152,7 @@ bindsym $mod+Tab exec --no-startup-id pcmanfm
 bindsym $mod+Shift+r restart
 
 # Firefox
-bindsym $mod+a exec --no-startup-id firefox-nightly
+bindsym $mod+a exec --no-startup-id firefox-nightly, workspace $ws2
 
 # Telegram
 bindsym $mod+t exec --no-startup-id telegram-desktop
@@ -248,8 +248,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
-# floating_maximum_size 1900 x 1060
-floating_minimum_size -1 x -1
+#floating_maximum_size 1900 x 1060
+#floating_minimum_size -1 x -1
 
 #-----#
 # BAR #
