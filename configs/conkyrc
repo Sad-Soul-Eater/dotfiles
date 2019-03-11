@@ -24,18 +24,14 @@ draw_graph_borders = false,
 color0 = 'ebece6',
 
 alignment = 'middle_left',
-gap_x = 25,
+gap_x = 30,
 
 override_utf8_locale = true,
 
 };
 
 conky.text = [[
-${if_match "${nodename}" == "arch-soul-nb"}\
-${voffset 55}
-${else}\
 ${voffset 100}
-${endif}\
 ${color0}SYSTEM ${hr 2}
 ${voffset 5}${alignc}${color0}${font FuraCode Nerd Font:size=40}${font}
 
@@ -85,7 +81,6 @@ ${font Font Awesome 5 Free Solid:size=12}${color0}${font} System: ${alignr}${
 ${fs_bar /}
 ${font Font Awesome 5 Free Solid:size=12}${color0}${font} HDD: ${alignr}${fs_used /home/soul/HDD/}/${fs_size /home/soul/HDD/}
 ${fs_bar /home/soul/HDD/}
-
 ${diskiograph_read /dev/sda 10,120} ${diskiograph_write /dev/sda 10,120}
 ${color0}Read: ${diskio_read /dev/sda} ${alignr}${color0}Write: ${diskio_write /dev/sda}
 ${if_match "${nodename}" == "arch-soul-nb"}\
@@ -98,6 +93,5 @@ ${font Font Awesome 5 Free Regular:size=14}${color0}${font} Down: ${downspeed
 ${font Font Awesome 5 Free Solid:size=14}${color0}${font} Upload: ${alignr}${totalup wlp1s0}
 ${font Font Awesome 5 Free Solid:size=14}${color0}${font} Download: ${alignr}${totaldown wlp1s0}
 ${font Material Design Icons:size=14}${color0}廊${font} Quality: ${wireless_link_qual wlp1s0}% ${font FiraGO:size=8}${alignc}${color0}${wireless_link_bar wlp1s0}
-${voffset 11}
 ${endif}\
 ]];
