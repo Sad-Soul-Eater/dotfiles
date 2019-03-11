@@ -126,30 +126,30 @@ custom_cursor_color: true
 colors:
   # Default colors
   primary:
-    background: '0x1e1f28'
+    background: '0x161520'
     foreground: '0xebece6'
 
   # Normal colors
   normal:
-    black:   '0x353535'
+    black:   '0x29282f'
     red:     '0xd43437'
     green:   '0x3dbe5d'
-    yellow:  '0xbac458'
-    blue:    '0x2883bb'
-    magenta: '0xb8287d'
-    cyan:    '0x5e9daa'
-    white:   '0xa8a8a7'
+    yellow:  '0xa0a94c'
+    blue:    '0x3b4cda'
+    magenta: '0x8d1ea1'
+    cyan:    '0x3c97aa'
+    white:   '0xa4a4aa'
 
   # Bright colors
   bright:
-    black:   '0x595959'
+    black:   '0x63626a'
     red:     '0xfb4245'
     green:   '0x50fa7b'
-    yellow:  '0xf0fa8b'
-    blue:    '0x49b9fe'
-    magenta: '0xfb4cb3'
-    cyan:    '0x8be9fd'
-    white:   '0xededec'
+    yellow:  '0xd7e267'
+    blue:    '0x4665da'
+    magenta: '0xbc43d2'
+    cyan:    '0x67c6da'
+    white:   '0xcfcfed'
 
   # Dim colors
   #

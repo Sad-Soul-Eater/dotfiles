@@ -152,7 +152,7 @@ bindsym $mod+Tab exec --no-startup-id pcmanfm
 bindsym $mod+Shift+r restart
 
 # Firefox
-bindsym $mod+a exec --no-startup-id firefox-nightly, workspace $ws2
+bindsym $mod+a exec --no-startup-id firefox-nightly
 
 # Telegram
 bindsym $mod+t exec --no-startup-id telegram-desktop

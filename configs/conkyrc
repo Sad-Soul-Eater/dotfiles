@@ -21,7 +21,7 @@ draw_outline = false,
 draw_borders = false,
 draw_graph_borders = false,
 
-color0 = 'c5c8c6',
+color0 = 'ebece6',
 
 alignment = 'middle_left',
 gap_x = 25,
