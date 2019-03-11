@@ -4,6 +4,8 @@
 PATTERNS_DIR="$(dirname "$(readlink -f "$0")")/coloring_patterns"
 TEMP_PATTERS_DIR=/tmp/colored_patterns
 
+"$PATTERNS_DIR"/rofi-xresources.sh
+
 if [ -e "$TEMP_PATTERS_DIR" ]; then
     rm -rf "${TEMP_PATTERS_DIR:?}"/*
 else

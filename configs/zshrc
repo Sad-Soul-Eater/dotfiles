@@ -7,7 +7,6 @@ autoload -Uz _zplugin
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 
-
 setopt promptsubst
 
 zplugin ice wait"0" lucid
