@@ -29,13 +29,14 @@ bottom = false
 
 ; Fonts
 font-0 = "FiraGO:size=11;2"
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11;1"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11;1"
-font-3 = "Font Awesome 5 Brands:pixelsize=11;1"
-font-4 = "Fura Code Nerd Font:pixelsize=11;3"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11;2"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
+font-3 = "Font Awesome 5 Brands:pixelsize=11;2"
+font-4 = "Fura Code Nerd Font:pixelsize=12;2"
 font-5 = "Fura Code Nerd Font:pixelsize=13;3"
 font-6 = "Material Design Icons:pixelsize=12;3"
 font-7 = "Material Design Icons:pixelsize=13;3"
+font-8 = "Fura Code Nerd Font:pixelsize=11;2"
 
 ; Colors
 background = ${colors.background}
