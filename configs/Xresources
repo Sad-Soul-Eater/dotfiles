@@ -23,32 +23,32 @@ Xft*lcdfilter:  lcddefault
 *.color8:       #63626a
 
 ! red
-*.color1:       #d43437
-*.color9:       #fb4245
+*.color1:       #bf3032
+*.color9:       #fa3e48
 
 ! green
-*.color2:       #3dbe5d
+*.color2:       #30bf54
 *.color10:      #50fa7b
 
 ! yellow
-*.color3:       #a0a94c
+*.color3:       #b1bf30
 *.color11:      #d7e267
 
 ! blue
-*.color4:       #3b4cda
+*.color4:       #303ebf
 *.color12:      #4665da
 
 ! magenta
-*.color5:       #8d1ea1
+*.color5:       #aa30bf
 *.color13:      #bc43d2
 
 ! cyan
-*.color6:       #3c97aa
+*.color6:       #30a7bf
 *.color14:      #67c6da
 
 ! white
-*.color7:       #a4a4aa
-*.color15:      #cfcfed
+*.color7:       #bfbfb8
+*.color15:      #ebece6
 
 rofi.padding:         20
 rofi.hide-scrollbar:  true
@@ -56,6 +56,6 @@ rofi.font:            FiraGO 12
 rofi.color-enabled:   true
 
 rofi.color-window:   #161520,#29282f,#00161520
-rofi.color-normal:   #00161520,#ebece6,#00161520,#00161520,#8d1ea1
-rofi.color-active:   #00161520,#3dbe5d,#00161520,#00161520,#8d1ea1
-rofi.color-urgent:   #00161520,#a0a94c,#00161520,#00161520,#8d1ea1
+rofi.color-normal:   #00161520,#ebece6,#00161520,#00161520,#aa30bf
+rofi.color-active:   #00161520,#30bf54,#00161520,#00161520,#aa30bf
+rofi.color-urgent:   #00161520,#b1bf30,#00161520,#00161520,#aa30bf
