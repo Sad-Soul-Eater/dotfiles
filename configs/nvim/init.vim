@@ -47,9 +47,9 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
+Plug '~/.config/nvim/plugins/cs'
 
 " Language specific plugins
 Plug 'sheerun/vim-polyglot'
@@ -204,7 +204,7 @@ set ffs=unix,dos,mac
 " Colors and Fonts
 "------------------------------------------------------------------------------
 " Enable syntax highlighting
-colorscheme onehalfdark
+colorscheme cs
 set termguicolors
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -223,6 +223,7 @@ let g:airline#extensions#tabline#show_tabs = 0
 " Enable powerline fonts.
 let g:airline_powerline_fonts = 1
 
+let g:airline_theme='cs'
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
