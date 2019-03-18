@@ -490,6 +490,8 @@ map <leader>gst :Gstatus<cr>
 "------------------------------------------------------------------------------
 " LanguageClient-neovim
 "------------------------------------------------------------------------------
+let g:LanguageClient_diagnosticsEnable=0
+
 let g:LanguageClient_rootMarkers = {
 			\ 'go': ['.git', 'go.mod'],
 			\ }
