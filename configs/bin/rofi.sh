@@ -62,7 +62,7 @@ emoji() {
 }
 
 usage() {
-    echo "-h	open this page
+    echo "-h  open this page
 -c  calc
 -d  drun, run, window
 -l  clipmenu
