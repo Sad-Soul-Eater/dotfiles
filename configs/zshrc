@@ -97,14 +97,14 @@ char          # Prompt character
 
 
 if (( $+commands[lsd] )); then
-    alias ls="lsd"
-    alias l="ls -la"
-    alias la="ls -a"
-    alias ll="ls -l"
+	alias ls="lsd"
+	alias l="ls -la"
+	alias la="ls -a"
+	alias ll="ls -l"
 else
-    alias l="ls -lah"
-    alias la="ls -A"
-    alias ll="ls -lh"
+	alias l="ls -lah"
+	alias la="ls -A"
+	alias ll="ls -lh"
 fi
 
 alias -- -='cd -'
@@ -124,9 +124,9 @@ alias rd=rmdir
 alias dotfiles="cd ~/.dotfiles"
 
 if (( $+commands[nvim] )); then
-    alias v="nvim"
-    alias vconf="v ~/.config/nvim/init.vim"
-    export EDITOR='nvim'
+	alias v="nvim"
+	alias vconf="v ~/.config/nvim/init.vim"
+	export EDITOR='nvim'
 fi
 
 alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"

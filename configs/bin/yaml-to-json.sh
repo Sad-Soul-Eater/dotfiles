@@ -5,12 +5,12 @@
 WORKING_DIR="$1"
 
 for YAML_FILE in "$WORKING_DIR"/*.yaml; do
-    [ -e "$YAML_FILE" ] || continue
+	[ -e "$YAML_FILE" ] || continue
 
-    FILE_NAME=$(basename "${YAML_FILE%.*}")
-    JSON_FILE=$WORKING_DIR/$FILE_NAME.json
+	FILE_NAME=$(basename "${YAML_FILE%.*}")
+	JSON_FILE=$WORKING_DIR/$FILE_NAME.json
 
-    python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' < "$YAML_FILE" > "$JSON_FILE"
+	python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)' <"$YAML_FILE" >"$JSON_FILE"
 
-    echo "$FILE_NAME - Converted!"
+	echo "$FILE_NAME - Converted!"
 done

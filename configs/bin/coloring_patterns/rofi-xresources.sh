@@ -14,12 +14,12 @@ WHITE=%cl7%
 PATTERN="$(dirname "$(readlink -f "$0")")/rofi-xresources.pt"
 
 if [ -e "$PATTERN" ]; then
-    rm "$PATTERN"
+	rm "$PATTERN"
 fi
 touch "$PATTERN"
 
 {
-    echo "rofi.color-window:   #$BACKGROUND,#$BLACK,#00$BACKGROUND
+	echo "rofi.color-window:   #$BACKGROUND,#$BLACK,#00$BACKGROUND
 rofi.color-normal:   #00$BACKGROUND,#$FOREGROUND,#00$BACKGROUND,#00$BACKGROUND,#$MAGENTA
 rofi.color-active:   #00$BACKGROUND,#$GREEN,#00$BACKGROUND,#00$BACKGROUND,#$MAGENTA
 rofi.color-urgent:   #00$BACKGROUND,#$YELLOW,#00$BACKGROUND,#00$BACKGROUND,#$MAGENTA"
