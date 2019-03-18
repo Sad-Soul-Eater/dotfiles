@@ -1,10 +1,3 @@
-" vim-plug autoconfig if not already installed
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | nested source $MYVIMRC
-endif
-
 call plug#begin('~/.vim/plugged')
 
 " Basic plugins
@@ -22,9 +15,9 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Autocomplete plugins
 Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
+			\ 'branch': 'next',
+			\ 'do': 'bash install.sh',
+			\ }
 
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
@@ -55,6 +48,8 @@ Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Language specific plugins
 Plug 'sheerun/vim-polyglot'
@@ -108,10 +103,10 @@ noremap <F3> :Autoformat<CR>
 
 " Copy/paste from system clipboard only when it needed
 function! ClipboardYank()
-    call system('xclip -i -selection clipboard', @@)
+	call system('xclip -i -selection clipboard', @@)
 endfunction
 function! ClipboardPaste()
-    let @@ = system('xclip -o -selection clipboard')
+	let @@ = system('xclip -o -selection clipboard')
 endfunction
 
 vnoremap <silent><leader>y y:call ClipboardYank()<cr>
@@ -155,7 +150,7 @@ set whichwrap+=<,>,h,l
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-    set mouse=a
+	set mouse=a
 endif
 
 " Allow smarter completion by infering the case
@@ -228,11 +223,6 @@ let g:airline#extensions#tabline#show_tabs = 0
 " Enable powerline fonts.
 let g:airline_powerline_fonts = 1
 
-let g:airline_theme='onehalfdark'
-
-" toggle invisible characters
-set list
-set listchars=tab:→\ ,trail:⋅,extends:❯,precedes:❮
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -270,15 +260,15 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,winsize,tabpages
 "------------------------------------------------------------------------------
 " Text, tab and indent related
 "------------------------------------------------------------------------------
-" Use spaces instead of tabs
-set expandtab
+" Use tabs instead of spaces
+set noexpandtab
 
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
 
 " Round indent to multiple of 'shiftwidth' for > and < commands
 set shiftround
@@ -287,7 +277,6 @@ set shiftround
 set linebreak
 set tw=500
 
-set autoindent
 set smartindent
 set nowrap "Don't Wrap lines (it is stupid)
 
@@ -343,16 +332,16 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
-    set switchbuf=useopen,usetab,newtab
-    set stal=2
+	set switchbuf=useopen,usetab,newtab
+	set stal=2
 catch
 endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+			\ if line("'\"") > 0 && line("'\"") <= line("$") |
+			\   exe "normal! g`\"" |
+			\ endif
 
 
 "------------------------------------------------------------------------------
@@ -427,30 +416,30 @@ nmap <leader>v :vsp $MYVIMRC<cr>
 " Helper functions
 "------------------------------------------------------------------------------
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+	exe "menu Foo.Bar :" . a:str
+	emenu Foo.Bar
+	unmenu Foo
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+	let l:saved_reg = @"
+	execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("Ack \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+	if a:direction == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'gv'
+		call CmdLine("Ack \"" . l:pattern . "\" " )
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	elseif a:direction == 'f'
+		execute "normal /" . l:pattern . "^M"
+	endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+	let @/ = l:pattern
+	let @" = l:saved_reg
 endfunction
 
 
@@ -501,15 +490,15 @@ map <leader>gst :Gstatus<cr>
 " LanguageClient-neovim
 "------------------------------------------------------------------------------
 let g:LanguageClient_rootMarkers = {
-            \ 'go': ['.git', 'go.mod'],
-            \ }
+			\ 'go': ['.git', 'go.mod'],
+			\ }
 
 let g:LanguageClient_serverCommands = {
-            \ 'go': ['bingo'],
-            \ 'html': ['html-languageserver', '--stdio'],
-            \ 'css': ['css-languageserver', '--stdio'],
-            \ 'json': ['json-languageserver', '--stdio'],
-            \ }
+			\ 'go': ['bingo'],
+			\ 'html': ['html-languageserver', '--stdio'],
+			\ 'css': ['css-languageserver', '--stdio'],
+			\ 'json': ['json-languageserver', '--stdio'],
+			\ }
 
 
 "------------------------------------------------------------------------------
@@ -527,22 +516,22 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
 
 " Press enter key to trigger snippet expansion
 function! NCM2ExpandCompletionIfSnippet()
-    if ncm2_neosnippet#completed_is_snippet()
-        call feedkeys("\<Plug>(ncm2_neosnippet_expand_completed)", "im")
-        return ''
-    endif
-    return ''
+	if ncm2_neosnippet#completed_is_snippet()
+		call feedkeys("\<Plug>(ncm2_neosnippet_expand_completed)", "im")
+		return ''
+	endif
+	return ''
 endfunction
 
 autocmd CompleteDone * call NCM2ExpandCompletionIfSnippet()
 
 " Use <TAB> to select the popup menu
 imap <expr> <Tab>
-            \ pumvisible() ? "\<C-n>" : neosnippet#jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+			\ pumvisible() ? "\<C-n>" : neosnippet#jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 smap <expr> <Tab> neosnippet#jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -560,11 +549,11 @@ set conceallevel=2 concealcursor=niv
 " Ale
 "------------------------------------------------------------------------------
 let g:ale_linters = {
-            \ 'go': ['golangci-lint'],
-            \ }
+			\ 'go': ['golangci-lint'],
+			\ }
 let g:ale_fixers = {
-            \ '*': ['remove_trailing_lines', 'trim_whitespace']
-            \}
+			\ '*': ['remove_trailing_lines', 'trim_whitespace']
+			\}
 let g:ale_fix_on_save = 1
 
 let g:ale_sign_column_always = 0
@@ -612,12 +601,12 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 
 " Run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-        call go#test#Test(0, 1)
-    elseif l:file =~# '^\f\+\.go$'
-        call go#cmd#Build(0)
-    endif
+	let l:file = expand('%')
+	if l:file =~# '^\f\+_test\.go$'
+		call go#test#Test(0, 1)
+	elseif l:file =~# '^\f\+\.go$'
+		call go#cmd#Build(0)
+	endif
 endfunction
 
 " Run/build/test/coverage
@@ -657,32 +646,32 @@ let g:go_highlight_build_constraints = 1
 "------------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_type_go = {
-            \ 'ctagstype' : 'go',
-            \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-            \ ],
-            \ 'sro' : '.',
-            \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-            \ },
-            \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-            \ },
-            \ 'ctagsbin'  : 'gotags',
-            \ 'ctagsargs' : '-sort -silent'
-            \ }
+			\ 'ctagstype' : 'go',
+			\ 'kinds'     : [
+			\ 'p:package',
+			\ 'i:imports:1',
+			\ 'c:constants',
+			\ 'v:variables',
+			\ 't:types',
+			\ 'n:interfaces',
+			\ 'w:fields',
+			\ 'e:embedded',
+			\ 'm:methods',
+			\ 'r:constructor',
+			\ 'f:functions'
+			\ ],
+			\ 'sro' : '.',
+			\ 'kind2scope' : {
+			\ 't' : 'ctype',
+			\ 'n' : 'ntype'
+			\ },
+			\ 'scope2kind' : {
+			\ 'ctype' : 't',
+			\ 'ntype' : 'n'
+			\ },
+			\ 'ctagsbin'  : 'gotags',
+			\ 'ctagsargs' : '-sort -silent'
+			\ }
 
 
 "------------------------------------------------------------------------------
@@ -720,3 +709,17 @@ nmap <buffer> <Right> <Plug>(qf_newer)
 " yaml formatter
 "------------------------------------------------------------------------------
 au FileType yaml noremap <F3> :YAMLFormat<CR>
+
+
+"------------------------------------------------------------------------------
+" vim-indent-guides
+"------------------------------------------------------------------------------
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+
+
+"------------------------------------------------------------------------------
+" vim-better-whitespace
+"------------------------------------------------------------------------------
+let g:better_whitespace_enabled = 1
+let g:strip_whitespace_on_save = 0
