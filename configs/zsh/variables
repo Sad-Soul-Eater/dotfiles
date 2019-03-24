@@ -1,0 +1,6 @@
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
+
+export GOPATH=$HOME/go
+
+# vim: set ft=zsh:

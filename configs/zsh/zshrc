@@ -4,16 +4,17 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
-ZSH_AUTOSUGGEST_USE_ASYNC="true"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
+source ~/.zsh/variables
 
 # Prompt
-#zplugin light denysdovhan/spaceship-prompt
+source ~/.zsh/prompt-settings
 zplugin light romkatv/powerlevel10k
-source ~/.prompt-settings
 
 # Oh-my-zsh libs
 zplugin snippet OMZ::lib/history.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::lib/directories.zsh
 
 zplugin ice wait"0" lucid
 zplugin snippet OMZ::lib/git.zsh
@@ -59,45 +60,4 @@ zplugin light zdharma/history-search-multi-word
 zplugin ice wait"0" lucid
 zplugin light djui/alias-tips
 
-
-if (( $+commands[lsd] )); then
-	alias ls="lsd"
-	alias l="ls -la"
-	alias la="ls -a"
-	alias ll="ls -l"
-else
-	alias l="ls -lah"
-	alias la="ls -A"
-	alias ll="ls -lh"
-fi
-
-alias -- -='cd -'
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
-
-alias md='mkdir -p'
-alias rd=rmdir
-
-alias dotfiles="cd ~/.dotfiles"
-
-if (( $+commands[nvim] )); then
-	alias v="nvim"
-	alias vconf="v ~/.config/nvim/init.vim"
-	export EDITOR='nvim'
-fi
-
-alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
-alias h=htop
-alias mpv-tw="mpv --profile=twitch"
-
-alias q="exit"
-
-
-export GOPATH=$HOME/go
+source ~/.zsh/aliases

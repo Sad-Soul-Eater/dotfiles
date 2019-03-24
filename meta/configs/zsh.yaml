@@ -1,5 +1,8 @@
 - link:
-    ~/.zshrc: configs/zshrc
+    ~/.zshrc: configs/zsh/zshrc
+    ~/.zsh/prompt-settings: configs/zsh/powerlevel10k
+    ~/.zsh/aliases: configs/zsh/aliases
+    ~/.zsh/variables: configs/zsh/variables
 - shell:
   - command: configs/bin/install-zplugin.sh
     description: Install zplugin
