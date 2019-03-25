@@ -7,7 +7,7 @@
 ![Clean](https://i.imgur.com/uqzQlGw.png "Clean")
 <p align="center">
 <img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/JvhiPSi.png">
-<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/3qeqTST.png">
+<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/OBBxDlo.png">
 </p>
 <p align="center">
 <font size=2>
