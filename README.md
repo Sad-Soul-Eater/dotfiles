@@ -4,14 +4,14 @@
 2. [Requirements](#requirements)
 3. [Available profiles/configurations](#profiles-configs)
 
-![Clean](https://imgur.com/mNoRwHM.png "Clean")
+![Clean](https://i.imgur.com/uqzQlGw.png "Clean")
 <p align="center">
-<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://imgur.com/mh8Zeuu.png">
-<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://imgur.com/95fKc24.png">
+<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/JvhiPSi.png">
+<img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/3qeqTST.png">
 </p>
 <p align="center">
 <font size=2>
-<a href="https://www.reddit.com/r/Animewallpaper/comments/afj0b2/suwako_moriya_2560x1440/">Wallpaper</a>
+<a href="https://www.reddit.com/r/Animewallpaper/comments/b5f2vx/the_horns_original_2560x1080_1920x1080_1080x1920/">Wallpaper</a>
 <a href="https://imgur.com/gallery/HwyioVB">More screenshots(old)</a>
 </font>
 </p>
@@ -32,21 +32,24 @@
 <div id="requirements">
 <h2 align="center">To experience the full power of my Dotfiles you need:</h2>
 
-* [i3-gaps](https://github.com/Airblader/i3) - dynamic tiling window manager
-    * [polybar](https://github.com/jaagr/polybar) - fast and easy-to-use tool for creating status bars
+* [i3-gaps](https://github.com/Airblader/i3) - dynamic tiling window manager - [config](configs/i3/config)
+    * [polybar](https://github.com/jaagr/polybar) - fast and easy-to-use tool for creating status bars - [config](configs/polybar/config)
     * [rofi](https://github.com/DaveDavenport/rofi) - window switcher, application launcher and dmenu replacement
-    * [compton](https://github.com/yshui/compton) - compositor for X
-    * [dunst](https://github.com/dunst-project/dunst) - lightweight and customizable notification daemon
-    * [conky](https://github.com/brndnmtthws/conky) - light-weight system monitor for X
+    * [compton](https://github.com/yshui/compton) - compositor for X - [config](configs/compton/compton.conf)
+    * [dunst](https://github.com/dunst-project/dunst) - lightweight and customizable notification daemon - [config](configs/dunst/dunstrc)
+    * [conky](https://github.com/brndnmtthws/conky) - light-weight system monitor for X - [config](configs/conkyrc)
     * [clipmenu](https://github.com/cdown/clipmenu) - clipboard management using dmenu
-    * [maim](https://github.com/naelstrof/maim) - takes screenshots of your desktop.
+    * [maim](https://github.com/naelstrof/maim) - takes screenshots of your desktop
     * [feh](http://feh.finalrewind.org/) - used to manage wallpaper
     * [sxiv](https://github.com/muennich/sxiv) - Simple X Image Viewer
-* [mpv](https://github.com/mpv-player/mpv) - video player based on MPlayer/mplayer2
-* [kitty](https://github.com/kovidgoyal/kitty) - A cross-platform, fast, feature full, GPU based terminal emulator with **ligatures** support
-* zsh - powerful shell that operates as both an interactive shell and as a scripting language interpreter
-    * [neofetch](https://github.com/dylanaraps/neofetch) - command-line system information tool written in bash 3.2+
-* [yay](https://github.com/Jguer/yay) - Yet another Yogurt - An AUR Helper written in Go
+* [kitty](https://github.com/kovidgoyal/kitty) - A cross-platform, fast, feature full, GPU based terminal emulator with **ligatures** support - [config](configs/kitty)
+* [neovim](https://github.com/neovim/neovim) - Vim-fork focused on **extensibility** and usability - [config](configs/nvim/init.vim)
+    * [vim-plug](https://github.com/junegunn/vim-plug) - Minimalist Vim Plugin Manager
+* [zsh](http://zsh.sourceforge.net) - powerful shell that operates as both an interactive shell and as a scripting language interpreter - [config](configs/zsh)
+    * [zplugin](https://github.com/zdharma/zplugin) - Flexible Zsh plugin manager with **turbo mode**, clean fpath, reports, completion management
+    * [neofetch](https://github.com/dylanaraps/neofetch) - command-line system information tool written in bash 3.2+ - [config](configs/neofetch/config.conf)
+* [mpv](https://github.com/mpv-player/mpv) - **video player** based on MPlayer/mplayer2 - [config](configs/mpv)
+* [yay](https://github.com/Jguer/yay) - Yet another Yogurt - An AUR Helper written in Go - [config](configs/yay/config.json)
 * Fonts:
     * [FiraGO](https://github.com/bBoxType/FiraGO) - interface font
     * [FiraCode](https://github.com/tonsky/FiraCode) - terminal font
