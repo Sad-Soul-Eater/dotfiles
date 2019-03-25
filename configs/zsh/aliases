@@ -3,10 +3,6 @@ if (( $+commands[lsd] )); then
 	alias l="ls -la"
 	alias la="ls -a"
 	alias ll="ls -l"
-else
-	alias l="ls -lah"
-	alias la="ls -A"
-	alias ll="ls -lh"
 fi
 
 alias dotfiles="cd ~/.dotfiles"

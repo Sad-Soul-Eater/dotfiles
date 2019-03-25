@@ -13,7 +13,6 @@ zplugin light romkatv/powerlevel10k
 # Oh-my-zsh libs
 zplugin snippet OMZ::lib/history.zsh
 
-zplugin ice wait"0" lucid
 zplugin snippet OMZ::lib/directories.zsh
 
 zplugin ice wait"0" lucid
