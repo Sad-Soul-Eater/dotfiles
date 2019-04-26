@@ -1,0 +1,2 @@
+- link:
+    ~/.config/systemd/user/clipmenud.service.d: configs/systemd/user/clipmenud.service.d
