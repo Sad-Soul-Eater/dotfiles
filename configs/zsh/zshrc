@@ -4,6 +4,8 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
+autoload -Uz zmv
+
 source ~/.zsh/variables
 
 # Prompt
@@ -15,11 +17,10 @@ zplugin snippet OMZ::lib/history.zsh
 
 zplugin snippet OMZ::lib/directories.zsh
 
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::lib/git.zsh
+zplugin snippet OMZ::lib/key-bindings.zsh
 
 zplugin ice wait"0" lucid
-zplugin snippet OMZ::lib/key-bindings.zsh
+zplugin snippet OMZ::lib/git.zsh
 
 zplugin ice wait"0" lucid atload"unalias grv"
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
