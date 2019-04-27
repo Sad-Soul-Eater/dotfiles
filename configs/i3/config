@@ -196,18 +196,19 @@ client.background       $bg
 # STARTUP APPLICATIONS #
 #----------------------#
 
-exec_always --no-startup-id xrdb ~/.Xresources
-exec_always --no-startup-id dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$nr" -cfr "$ur"
-exec_always --no-startup-id ~/bin/wallpaper.sh
-
-exec --no-startup-id telegram-desktop -startintray
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
-exec --no-startup-id conky
-exec --no-startup-id udiskie
-exec --no-startup-id nextcloud
-
 # Keyboard layout
-exec --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'
+exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'
+
+exec_always --no-startup-id ~/bin/wallpaper.sh
+exec_always --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id killall dunst && dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$nr" -cfr "$ur"
+exec_always --no-startup-id killall compton && compton --config ~/.config/compton/compton.conf
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id udiskie
+exec --no-startup-id conky
+exec --no-startup-id nextcloud
+exec --no-startup-id telegram-desktop -startintray
 
 #---------------#
 # SPECIAL CASES #

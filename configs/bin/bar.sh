@@ -1,5 +1,4 @@
 #!/bin/sh
 
 killall polybar
-
-polybar base
+polybar base &
