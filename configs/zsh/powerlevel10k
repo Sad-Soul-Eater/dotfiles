@@ -1,6 +1,6 @@
-# Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower.
-# If you copy this file, keep the link to the original and this sentence intact;
-# you are encouraged to change everything else.
+# Original location: https://github.com/romkatv/dotfiles-public/blob/master/.purepower
+# If you copy this file, keep the link to the original and this sentence intact; you are encouraged
+# to change everything else.
 
 local vi_insert=$'\u276F'
 local vi_cmd=$'\u276E'
@@ -55,7 +55,7 @@ typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\b?'
 typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\b!'
 typeset -g POWERLEVEL9K_VCS_STAGED_ICON=$'\b+'
 typeset -g POWERLEVEL9K_VCS_STASH_ICON='*'
-typeset -g POWERLEVEL9K_VCS_TAG_ICON='#'
+typeset -g POWERLEVEL9K_VCS_TAG_ICON=$'\b#'
 
 typeset -g POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=none
 typeset -g POWERLEVEL9K_ROOT_ICON=$root
