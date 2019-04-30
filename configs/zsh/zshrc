@@ -9,7 +9,7 @@ autoload -Uz zmv
 source ~/.zsh/variables
 
 # Prompt
-source ~/.zsh/prompt-settings
+source ~/.zsh/powerlevel10k-settings
 zplugin light romkatv/powerlevel10k
 
 # Oh-my-zsh libs
