@@ -4,13 +4,15 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
-autoload -Uz zmv
+autoload -Uz zargs zmv zcp zln
 
 source ~/.zsh/variables
 
 # Prompt
 source ~/.zsh/powerlevel10k-settings
 zplugin light romkatv/powerlevel10k
+# Disable highlighting of text pasted into the command line
+zle_highlight=('paste:none')
 
 # Oh-my-zsh libs
 zplugin snippet OMZ::lib/history.zsh
