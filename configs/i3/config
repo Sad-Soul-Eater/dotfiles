@@ -209,6 +209,7 @@ exec --no-startup-id udiskie
 exec --no-startup-id conky
 exec --no-startup-id nextcloud
 exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id /usr/lib/kdeconnectd
 
 #---------------#
 # SPECIAL CASES #
