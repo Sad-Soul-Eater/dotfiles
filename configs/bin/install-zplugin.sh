@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ZPLG_HOME="${ZDOTDIR:-$HOME}/.zplugin"
 if [ ! -d "$ZPLG_HOME" ]; then

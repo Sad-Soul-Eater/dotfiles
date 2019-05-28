@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 calc() {
 	rofi -show calc -modi calc -calc-command "echo '{result}' | xclip" -lines 12 -width 768 -columns 3

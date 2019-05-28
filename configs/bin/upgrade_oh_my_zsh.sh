@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 OMZ_DIR=/usr/share/oh-my-zsh
 PL_DIR=/custom/plugins

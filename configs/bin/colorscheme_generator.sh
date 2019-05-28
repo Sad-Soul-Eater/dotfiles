@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Script to apply Xresources color scheme to config's by existing patterns
 
 PATTERNS_DIR="$(dirname "$(readlink -f "$0")")/coloring_patterns"
@@ -21,7 +21,7 @@ for PATTERN in "$PATTERNS_DIR"/*.pt; do
 	cp "$PATTERN" "$TMP_PATTERN"
 
 	# Numbered colors
-	for i in {0..15}; do
+	for i in $(seq 0 15); do
 		v=$(xrdb -query | awk '/*.color'"$i":'/ { print substr($2,2) }')
 		eval "sed -i 's/%cl${i}%/${v}/g' $TMP_PATTERN"
 	done

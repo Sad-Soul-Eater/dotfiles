@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Screenshot wrapper
 # Uses maim (which uses slop)
 # "Friendship ended with scrot. Now maim is my best friend."
