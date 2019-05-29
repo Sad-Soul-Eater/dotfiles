@@ -165,7 +165,7 @@ icon_position = left
 max_icon_size = 32
 
 # Paths to default icons.
-icon_path = /usr/share/icons/Flat-Remix-Dark/status/scalable:/usr/share/icons/Flat-Remix-Dark/devices/scalable
+icon_path = /usr/share/icons/Flat-Remix-Blue-Dark/status/scalable:/usr/share/icons/Flat-Remix-Blue-Dark/devices/scalable
 
 ### History ###
 
@@ -324,4 +324,3 @@ timeout = 0
 #    urgency = normal
 #
 # vim: ft=cfg
-
