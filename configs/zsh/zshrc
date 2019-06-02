@@ -11,8 +11,6 @@ source ~/.zsh/variables
 # Prompt
 source ~/.zsh/powerlevel10k-settings
 zplugin light romkatv/powerlevel10k
-# Disable highlighting of text pasted into the command line
-zle_highlight=('paste:none')
 
 # Oh-my-zsh libs
 zplugin snippet OMZ::lib/history.zsh
