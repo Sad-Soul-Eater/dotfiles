@@ -61,6 +61,9 @@ bindsym $mod+Shift+z move scratchpad
 # Show the first scratchpad window
 bindsym $mod+z scratchpad show
 
+# Sticky floating windows
+bindsym $mod+w sticky toggle
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -99,19 +102,19 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 mode "resize" {
-        bindsym h resize shrink width 10 px
-        bindsym j resize grow height 10 px
-        bindsym k resize shrink height 10 px
-        bindsym l resize grow width 10 px
+	bindsym h resize shrink width 10 px
+	bindsym j resize grow height 10 px
+	bindsym k resize shrink height 10 px
+	bindsym l resize grow width 10 px
 
-        bindsym Left resize shrink width 10 px
-        bindsym Down resize grow height 10 px
-        bindsym Up resize shrink height 10 px
-        bindsym Right resize grow width 10 px
+	bindsym Left resize shrink width 10 px
+	bindsym Down resize grow height 10 px
+	bindsym Up resize shrink height 10 px
+	bindsym Right resize grow width 10 px
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
