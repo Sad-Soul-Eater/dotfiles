@@ -63,6 +63,7 @@ bindsym $mod+z scratchpad show
 
 # Sticky floating windows
 bindsym $mod+w sticky toggle
+bindsym $mod+Shift+w sticky enable, floating enable, resize set 480 270
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -204,6 +205,7 @@ exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:al
 
 exec_always --no-startup-id feh --bg-fill ~/wallpaper.*
 exec_always --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id ~/bin/bar.sh
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$nr" -cfr "$ur" &
 exec_always --no-startup-id killall compton; compton --config ~/.config/compton/compton.conf &
 
@@ -255,12 +257,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
 #floating_maximum_size 1900 x 1060
 #floating_minimum_size -1 x -1
-
-#-----#
-# BAR #
-#-----#
-
-exec_always --no-startup-id ~/bin/bar.sh
 
 #-------------#
 # ASSIGNMENTS #
