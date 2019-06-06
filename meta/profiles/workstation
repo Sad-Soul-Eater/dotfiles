@@ -4,7 +4,7 @@ compton
 conky
 dotfiles
 dunst
-ws_htop
+firefox
 i3
 kitty
 mpv
@@ -14,6 +14,7 @@ polybar
 psd
 ranger
 systemd
+ws_htop
 xresources
 yay
 zsh
