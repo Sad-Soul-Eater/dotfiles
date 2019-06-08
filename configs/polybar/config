@@ -199,7 +199,7 @@ label = %{T5}%{T-} %notifications%
 [module/spotify]
 type = custom/script
 interval = 5
-format-prefix = " "
+format-prefix = "%{T6} %{T-}"
 format = <label>
 exec = python ~/bin/polybar-spotify/spotify_status.py -f '{song} - {artist}'
 
