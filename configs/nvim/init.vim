@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Basic plugins
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
@@ -18,6 +18,8 @@ Plug 'autozimu/LanguageClient-neovim', {
 			\ 'branch': 'next',
 			\ 'do': 'bash install.sh',
 			\ }
+
+Plug 'Shougo/echodoc.vim'
 
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
@@ -490,18 +492,21 @@ map <leader>gst :Gstatus<cr>
 "------------------------------------------------------------------------------
 " LanguageClient-neovim
 "------------------------------------------------------------------------------
-let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_diagnosticsEnable=1
 
 let g:LanguageClient_rootMarkers = {
 			\ 'go': ['.git', 'go.mod'],
 			\ }
 
 let g:LanguageClient_serverCommands = {
-			\ 'go': ['bingo'],
+			\ 'go': ['~/go/bin/gopls'],
 			\ 'html': ['html-languageserver', '--stdio'],
 			\ 'css': ['css-languageserver', '--stdio'],
 			\ 'json': ['json-languageserver', '--stdio'],
 			\ }
+
+" Run gofmt and goimports on save
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 
 "------------------------------------------------------------------------------
@@ -518,23 +523,12 @@ set completeopt=noinsert,menuone,noselect
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
 
 " Press enter key to trigger snippet expansion
-function! NCM2ExpandCompletionIfSnippet()
-	if ncm2_neosnippet#completed_is_snippet()
-		call feedkeys("\<Plug>(ncm2_neosnippet_expand_completed)", "im")
-		return ''
-	endif
-	return ''
-endfunction
-
-autocmd CompleteDone * call NCM2ExpandCompletionIfSnippet()
+inoremap <silent> <expr> <CR> ncm2_neosnippet#expand_or("\<CR>", 'n')
 
 " Use <TAB> to select the popup menu
-imap <expr> <Tab>
-			\ pumvisible() ? "\<C-n>" : neosnippet#jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr> <Tab> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-smap <expr> <Tab> neosnippet#jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr> <Tab> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -542,8 +536,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "------------------------------------------------------------------------------
 " Neosnippet
 "------------------------------------------------------------------------------
-let g:neosnippet#enable_complete_done = 1
-
 " Hide snippet symbols
 set conceallevel=2 concealcursor=niv
 
@@ -552,7 +544,7 @@ set conceallevel=2 concealcursor=niv
 " Ale
 "------------------------------------------------------------------------------
 let g:ale_linters = {
-			\ 'go': ['golangci-lint'],
+			\ 'go': ['~/go/bin/golangci-lint'],
 			\ }
 let g:ale_fixers = {
 			\ '*': ['remove_trailing_lines', 'trim_whitespace']
@@ -574,9 +566,10 @@ let g:ale_set_quickfix = 1
 "------------------------------------------------------------------------------
 " Vim-go
 "------------------------------------------------------------------------------
-let g:go_fmt_command = 'goimports'
-let g:go_info_mode = 'gocode'
-let g:go_def_mode = 'guru'
+"let g:go_fmt_command = 'goimports'
+"let g:go_info_mode = 'gocode'
+"let g:go_def_mode = 'guru'
+let g:auto_complete_enabled = 0
 let g:go_snippet_engine = 'neosnippet' " Set neosnippet as snippet engine
 
 " Easier to jump between errors in quickfix list
@@ -726,3 +719,7 @@ let g:indent_guides_auto_colors = 0
 "------------------------------------------------------------------------------
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 0
+
+
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
