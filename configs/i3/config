@@ -102,6 +102,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+bindsym $mod+y move workspace to output up
+
 mode "resize" {
 	bindsym h resize shrink width 10 px
 	bindsym j resize grow height 10 px
@@ -203,15 +205,15 @@ client.background       $bg
 # Keyboard layout
 exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'
 
-exec_always --no-startup-id feh --bg-fill ~/wallpaper.*
+exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id ~/bin/bar.sh
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$nr" -cfr "$ur" &
 exec_always --no-startup-id killall compton; compton --config ~/.config/compton/compton.conf &
+exec_always --no-startup-id killall conky; conky &
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id udiskie
-exec --no-startup-id conky
 exec --no-startup-id nextcloud
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id /usr/lib/kdeconnectd
@@ -225,22 +227,22 @@ for_window [class="Telegram"]                           floating enable,    resi
 for_window [title="Media viewer"]                       fullscreen enable
 
 # KeePassXC
-for_window [class="keepassxc"]                          floating enable,    resize set 1280 720,    move absolute position center
+for_window [class="keepassxc"]                          floating enable,    resize set 1280 720,    move position center
 
 # pcmanfm
-for_window [class="(?i)pcmanfm" window_type="normal"]    floating enable,    resize set 1280 720,    move absolute position center
+for_window [class="(?i)pcmanfm" window_type="normal"]   floating enable,    resize set 1280 720,    move position center
 
 # sxiv
-for_window [class="Sxiv"]                               floating enable,    resize set 1280 720,    move absolute position center
+for_window [class="Sxiv"]                               floating enable,    resize set 1280 720,    move position center
 
 # libreoffice
-for_window [class="Soffice"]                                                resize set 1000 750,    move absolute position center
+for_window [class="Soffice"]                                                resize set 1000 750,    move position center
 
 # Yad popup calendar
 for_window [class="Yad" title="yad-calendar"]           floating enable
 
 # Make window with specified title float
-for_window [title=".*i3-float.*"]                       floating enable,    resize set 1280 720,    move absolute position center
+for_window [title=".*i3-float.*"]                       floating enable,    resize set 1280 720,    move position center
 
 #------------#
 # MEDIA KEYS #
@@ -263,7 +265,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 #-------------#
 
 assign [class="^(Firefox)|(Nightly)$" window_type="normal"] $ws2
-assign [class="Code"] $ws3
+assign [class="code-oss"] $ws3
 assign [class="qBittorrent" window_type="normal"] $ws4
 assign [class="mpv"] $ws5
 assign [class="discord"] $ws7
