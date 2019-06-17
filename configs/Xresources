@@ -2,6 +2,8 @@
 !  Xft Settings
 !----------------
 
+Xcursor.size: 24
+
 Xft*antialias:  true
 Xft*hinting:    true
 Xft*rgba:       rgb
