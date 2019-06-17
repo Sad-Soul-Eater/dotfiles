@@ -2,6 +2,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 
 export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
 
 # Disable highlighting of text pasted into the command line
 zle_highlight=('paste:none')
