@@ -1,8 +1,8 @@
 #!/bin/sh
 # Script to apply Xresources color scheme to config's by existing patterns
 
-PATTERNS_DIR="$(dirname "$(readlink -f "$0")")/coloring_patterns"
-TEMP_PATTERS_DIR=/tmp/colored_patterns
+PATTERNS_DIR="$(dirname "$(readlink -f "$0")")/coloring-patterns"
+TEMP_PATTERS_DIR=/tmp/colored-patterns
 
 "$PATTERNS_DIR"/rofi-xresources.sh
 

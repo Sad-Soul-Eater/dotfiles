@@ -7,7 +7,7 @@ SCREENSHOTS_DIR=~/Pictures/Screenshots
 TIMESTAMP="$(date +%Y.%m.%d-%H.%M.%S)"
 FILENAME=${SCREENSHOTS_DIR}/${TIMESTAMP}.screenshot.png
 ICON_PATH=/usr/share/icons/Flat-Remix-Blue-Dark/devices/scalable/cs-screen.svg
-IMG_V=sxiv-rifle
+IMG_V=xdg-open
 
 # -u option hides cursor
 # -m option changes the compression level
