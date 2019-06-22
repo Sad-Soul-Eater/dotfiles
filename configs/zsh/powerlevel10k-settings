@@ -14,7 +14,7 @@ fi
 	typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 		dir  # current directory
 		vcs  # git status
-		)
+	)
 
 	typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
 		status                  # exit code of the last command
@@ -24,8 +24,8 @@ fi
 		# anaconda              # conda environment (https://conda.io/)
 		# pyenv                 # python environment (https://github.com/pyenv/pyenv)
 		custom_rprompt          # the output of function `custom_rprompt()` if it is defined
-		# context								# user@host
-		time										# HH:MM:SS
+		# context               # user@host
+		time                    # HH:MM:SS
 	)
 
 	zmodload zsh/terminfo
