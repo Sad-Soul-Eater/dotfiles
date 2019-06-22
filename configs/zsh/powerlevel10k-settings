@@ -11,6 +11,23 @@ fi
 () {
 	emulate -L zsh && setopt no_unset pipe_fail
 
+	typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+		dir  # current directory
+		vcs  # git status
+		)
+
+	typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+		status                  # exit code of the last command
+		command_execution_time  # duration of the last command
+		background_jobs         # presence of background jobs
+		# virtualenv            # python virtual environment (https://docs.python.org/3/library/venv.html)
+		# anaconda              # conda environment (https://conda.io/)
+		# pyenv                 # python environment (https://github.com/pyenv/pyenv)
+		custom_rprompt          # the output of function `custom_rprompt()` if it is defined
+		# context								# user@host
+		time										# HH:MM:SS
+	)
+
 	zmodload zsh/terminfo
 	if (( terminfo[colors] >= 256 )); then
 		function _pp_c() { print -nr -- $2 }
@@ -28,12 +45,6 @@ fi
 		fi
 		function _pp_s() { print -nr -- $1 }
 	fi
-
-	typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-	dir vcs)
-
-	typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-	status command_execution_time background_jobs custom_rprompt time)
 
 	local ins=$(_pp_s '>' '▶')
 	local cmd=$(_pp_s '<' '◀')
@@ -113,6 +124,23 @@ fi
 
 	typeset -g POWERLEVEL9K_TIME_BACKGROUND=none
 	typeset -g POWERLEVEL9K_TIME_FOREGROUND=$(_pp_c 7 7)
+
+	typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=none
+	typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=6
+	typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
+
+	typeset -g POWERLEVEL9K_ANACONDA_BACKGROUND=none
+	typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=6
+	typeset -g POWERLEVEL9K_ANACONDA_SHOW_PYTHON_VERSION=true
+	typeset -g POWERLEVEL9K_ANACONDA_LEFT_DELIMITER=
+	typeset -g POWERLEVEL9K_ANACONDA_RIGHT_DELIMITER=
+
+	typeset -g POWERLEVEL9K_PYENV_BACKGROUND=none
+	typeset -g POWERLEVEL9K_PYENV_FOREGROUND=6
+	typeset -g POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=false
+
+	# Icon for virtualenv, anaconda and pyenv.
+	typeset -g POWERLEVEL9K_PYTHON_ICON=
 
 	unfunction _pp_c _pp_s
 } "$@"
