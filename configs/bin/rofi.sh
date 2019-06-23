@@ -9,7 +9,7 @@ drun() {
 }
 
 clip() {
-	CM_HISTLENGTH=20 CM_LAUNCHER=rofi CM_DIR=~/.cache/clipmenu clipmenu -p "clipmenu" -width 768
+	CM_HISTLENGTH=20 CM_LAUNCHER=rofi CM_DIR=~/.cache/clipmenu clipmenu -i -p "clipmenu" -width 768
 }
 
 nm() {
