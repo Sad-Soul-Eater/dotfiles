@@ -5,6 +5,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # Disable highlighting of text pasted into the command line
 zle_highlight=('paste:none')
 
