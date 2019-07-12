@@ -62,7 +62,9 @@ emoji() {
 }
 
 usage() {
-	echo "-h  open this page
+	echo "Usage: ./rofi.sh [options]
+Options:
+-h  open this page
 -c  calc
 -d  drun, run, window
 -l  clipmenu
@@ -71,6 +73,11 @@ usage() {
 -s  screenshot menu
 -e  emoji picker"
 }
+
+if [[ "$1" == "" ]]; then
+	usage
+	exit 0
+fi
 
 while getopts "cdlnpseh" OPTION; do
 	case "$OPTION" in

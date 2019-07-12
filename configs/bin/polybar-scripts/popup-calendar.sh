@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 BAR_HEIGHT=22  # polybar height
 BORDER_SIZE=1  # border size from your wm settings

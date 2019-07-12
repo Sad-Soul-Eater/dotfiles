@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 CONFIG_PATH=~/wg/wg-aruba.conf
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Script to apply Xresources color scheme to config's by existing patterns
 
 PATTERNS_DIR="$(dirname "$(readlink -f "$0")")/coloring-patterns"

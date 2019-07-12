@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Convert yaml files to json files in specified folder
 # Usage - ./yaml-to-json.sh /dir/to/yaml
 
