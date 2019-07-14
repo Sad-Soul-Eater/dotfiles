@@ -1,6 +1,8 @@
 {
 	"cSpell.words": [
+		"REPO",
 		"alacritty",
+		"chown",
 		"code",
 		"conkyrc",
 		"dmenu",
@@ -12,10 +14,18 @@
 		"htop",
 		"mplayer",
 		"nvim",
+		"printf",
+		"repos",
 		"rofi",
 		"sxiv",
+		"systemctl",
 		"systemd",
+		"trilium",
 		"xresources",
 		"zplugin"
+	],
+	"cSpell.ignoreWords": [
+		"zadam",
+		"elif",
 	]
 }
