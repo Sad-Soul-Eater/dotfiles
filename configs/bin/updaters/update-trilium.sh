@@ -26,11 +26,13 @@ printf "Stopping Trilium serevice... "
 if ! systemctl stop trilium.service; then
 	fail
 fi
+printf "ok\n"
 
 printf "Extracting archive... "
 if ! tar -xJf trilium-linux-x64-server-*.tar.xz; then
 	fail
 fi
+printf "ok\n"
 
 rm trilium-linux-x64-server-*.tar.xz
 
@@ -38,10 +40,12 @@ printf "Fixing permissions..."
 if ! chown -R trilium:trilium "./trilium-linux-x64-server"; then
 	fail
 fi
+printf "ok\n"
 
 printf "Starting Trilium serevice... "
 if ! systemctl start trilium.service; then
 	fail
 fi
+printf "ok\n"
 
 echo "Update completed!"
