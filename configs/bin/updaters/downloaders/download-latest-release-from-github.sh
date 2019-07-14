@@ -5,19 +5,38 @@ usage() {
 }
 
 if [ -z "$1" ]; then
+	echo "Error: missing github repository"
 	usage
 	exit 0
 fi
-REPO="$1"
+REPOSITORY="$1"
 
 if [ -z "$2" ]; then
+	echo "Error: missing regex for grep"
 	usage
 	exit 1
 fi
 REGEX="$2"
 
-URL=$(curl -s https://api.github.com/repos/"$REPO"/releases/latest | grep "$REGEX")
-if [ "$URL" = "" ]; then
+URL_REGEX="(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]"
+
+URL=$(curl -s https://api.github.com/repos/"$REPOSITORY"/releases/latest | grep "$REGEX" | cut -d '"' -f 4)
+
+if [ -z "$URL" ]; then
+	echo "Error: wrong regex: grep result is empty"
 	exit 1
 fi
-echo "$URL" | cut -d '"' -f 4 | wget -qi -
+
+if ! [[ "$URL" =~ $URL_REGEX ]]; then
+	echo "Error: wrong regex: grep result is not url:"
+	echo "$URL"
+
+	exit 1
+fi
+
+echo "Download starting..."
+if ! aria2c --console-log-level=error "$URL"; then
+	echo "Downloading failed"
+	exit 1
+fi
+echo "Download completed"
