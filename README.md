@@ -5,6 +5,7 @@
 3. [Available profiles/configurations](#profiles-configs)
 
 ![Clean](https://i.imgur.com/0IlbzDV.png "Clean")
+
 <p align="center">
 <img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/uqzQlGw.png">
 <img align="center" height="80" style="padding-left: 5px; padding-right: 5px" src="https://i.imgur.com/OBBxDlo.png">
@@ -24,7 +25,7 @@
 * Run <code>./install-profile <<a href="#profiles">profile-name</a>></code> to symlink all configs or <code>./install-standalone <<a href="#configs">config-name</a>></code> to symlink only one of them
 * Done!
 
->All safe, it won't kill your dotfiles, if folder/file already exists you'll see error during install process
+> All safe, it won't kill your dotfiles, if folder/file already exists you'll see error during install process
 
 <font size=2> *My dotfiles managed by [DotBot™](https://github.com/anishathalye/dotbot)* </font>
 
@@ -68,14 +69,14 @@
 
 ### Profiles
 
-```text
+``` text
 ├── server (bin dotfiles sv_htop neofetch neovim xresources zsh)
 └── workstation (all configs)
 ```
 
 ### Configs
 
-```text
+``` text
 ├── alacritty
 ├── bin
 ├── compton
