@@ -6,10 +6,10 @@ autoload -Uz _zplugin
 
 autoload -Uz zargs zmv zcp zln
 
-source ~/.zsh/variables
+source ~/.zsh/variables.zsh
 
 # Prompt
-source ~/.zsh/powerlevel10k-settings
+source ~/.zsh/powerlevel10k-settings.zsh
 zplugin light romkatv/powerlevel10k
 
 # Oh-my-zsh libs
@@ -63,4 +63,4 @@ zplugin light zdharma/history-search-multi-word
 zplugin ice wait"0" lucid
 zplugin light djui/alias-tips
 
-source ~/.zsh/aliases
+source ~/.zsh/aliases.zsh
