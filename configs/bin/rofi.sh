@@ -38,22 +38,26 @@ power() {
 }
 
 screenshot() {
-	ACTION_LIST="full\narea\nopen last\narea to clip"
+	ACTION_LIST="area to clipboard\narea\nopen last\nedit last\nfull\nfull to clipboard"
 	SCRIPT="$(dirname "$(readlink -f "$0")")"/screenshot.sh
 
 	_rofi() {
-		rofi -dmenu -i -sync -p "screen" -width 150 -lines 4
+		rofi -dmenu -i -sync -p "screen" -width 175 -lines 6
 	}
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi)
 	if [ "$SELECTED_STRING" == "full" ]; then
-		$SCRIPT
+		$SCRIPT -f
+	elif [ "$SELECTED_STRING" == "full to clipboard" ]; then
+		$SCRIPT -g
 	elif [ "$SELECTED_STRING" == "area" ]; then
-		$SCRIPT -s
-	elif [ "$SELECTED_STRING" == "open last" ]; then
-		$SCRIPT -b
-	elif [ "$SELECTED_STRING" == "area to clip" ]; then
+		$SCRIPT -a
+	elif [ "$SELECTED_STRING" == "area to clipboard" ]; then
 		$SCRIPT -c
+	elif [ "$SELECTED_STRING" == "open last" ]; then
+		$SCRIPT -o
+	elif [ "$SELECTED_STRING" == "edit last" ]; then
+		$SCRIPT -e
 	fi
 }
 
@@ -111,5 +115,3 @@ while getopts "cdlnpseh" OPTION; do
 		;;
 	esac
 done
-
-shift "$((OPTIND - 1))"
