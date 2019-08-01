@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usage() {
-	echo "Usage: ./download-latest-release-from-github.sh \"github_repo\" \"grep_regex\""
+	echo "Usage: ./download-latest-release-from-github.sh \"github_repo\" \"grep_regex\" \"aria2c_options\""
 }
 
 if [ -z "$1" ]; then
@@ -17,6 +17,8 @@ if [ -z "$2" ]; then
 	exit 1
 fi
 REGEX="$2"
+
+OPTS="$3"
 
 URL_REGEX="(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]"
 
@@ -35,7 +37,7 @@ if ! [[ "$URL" =~ $URL_REGEX ]]; then
 fi
 
 echo "Download starting..."
-if ! aria2c --console-log-level=error "$URL"; then
+if ! aria2c --console-log-level=error $OPTS "$URL"; then
 	echo "Downloading failed"
 	exit 1
 fi
