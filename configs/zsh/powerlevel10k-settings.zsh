@@ -41,7 +41,7 @@ fi
 		newline
 		# nordvpn               # nordvpn connection status, linux only (https://nordvpn.com/)
 		# public_ip             # public IP address
-		battery                 # internal battery
+		# battery               # internal battery
 		time                    # current time
 	)
 
