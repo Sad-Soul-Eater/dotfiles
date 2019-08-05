@@ -208,6 +208,7 @@ interval = 5
 format-prefix = "%{T6} %{T-}"
 format = <label>
 exec = python ~/bin/polybar-spotify/spotify_status.py -f '{song} - {artist}'
+click-left = i3-msg '[class="Spotify"] focus'
 
 
 [module/popup-calendar]
