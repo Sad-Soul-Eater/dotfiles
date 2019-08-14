@@ -19,27 +19,32 @@ show_devices() {
 	devices=""
 	for device in $(qdbus --literal org.kde.kdeconnect /modules/kdeconnect org.kde.kdeconnect.daemon.devices); do
 		deviceid=$(echo "$device" | awk -F'["|"]' '{print $2}')
-		devicename=$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.name)
-		isreach="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.isReachable)"
-		istrust="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.isTrusted)"
-		if [ "$devices" != "" ]; then
-			devices+=" $SEPERATOR "
-		fi
-		if [ "$isreach" = "true" ] && [ "$istrust" = "true" ]; then
-			battery_icon=""
-			if "$(qdbus --literal org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.battery.isCharging)" == "true"; then
-				battery_icon+="$CHARGING_ICON "
+		if [ "$deviceid" != "" ]; then
+			devicetype=$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.type)
+			devicename=$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.name)
+			isreach="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.isReachable)"
+			istrust="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.isTrusted)"
+			if [ "$devicetype" != "desktop" ]; then
+				if [ "$devices" != "" ]; then
+					devices+=" $SEPERATOR "
+				fi
+				if [ "$isreach" = "true" ] && [ "$istrust" = "true" ]; then
+					battery_icon=""
+					if "$(qdbus --literal org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.battery.isCharging)" == "true"; then
+						battery_icon+="$CHARGING_ICON "
+					fi
+					battery_charge="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.battery.charge)%"
+					devices+="%{A1:$DIR/polybar-kdeconnect.sh -n '$devicename' -i '$deviceid' -b '$battery_charge' -m:}$PHONE_ICON$battery_icon$battery_charge%{A}"
+				elif [ "$isreach" = "false" ] && [ "$istrust" = "true" ]; then
+					devices+="$PHONE_ICON"
+				else
+					haspairing="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.hasPairingRequests)"
+					if [ "$haspairing" = "true" ]; then
+						show_pmenu2 "$devicename" "$deviceid"
+					fi
+					devices+="%{A1:$DIR/polybar-kdeconnect.sh -n '$devicename' -i '$deviceid' -p:}$PHONE_ICON%{A}"
+				fi
 			fi
-			battery_charge="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.battery.charge)%"
-			devices+="%{A1:$DIR/polybar-kdeconnect.sh -n '$devicename' -i '$deviceid' -b '$battery_charge' -m:}$PHONE_ICON$battery_icon$battery_charge%{A}"
-		elif [ "$isreach" = "false" ] && [ "$istrust" = "true" ]; then
-			devices+="$PHONE_ICON"
-		else
-			haspairing="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.hasPairingRequests)"
-			if [ "$haspairing" = "true" ]; then
-				show_pmenu2 "$devicename" "$deviceid"
-			fi
-			devices+="%{A1:$DIR/polybar-kdeconnect.sh -n '$devicename' -i '$deviceid' -p:}$PHONE_ICON%{A}"
 		fi
 	done
 	echo "${devices}"
