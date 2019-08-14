@@ -33,7 +33,8 @@ fi
 		nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
 		nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
 		nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
-		go_version              # golang version
+		go_version              # go version (https://golang.org)
+		rust_version            # rustc version (https://www.rust-lang.org)
 		# node_version          # node.js version
 		kubecontext             # current kubernetes context (https://kubernetes.io/)
 		context                 # user@host
