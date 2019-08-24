@@ -14,7 +14,6 @@ fi
 
 	typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 		# =========================[ Line #1 ]=========================
-		# os_icon               # os identifier
 		dir                     # current directory
 		vcs                     # git status
 		# =========================[ Line #2 ]=========================
@@ -35,14 +34,11 @@ fi
 		nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
 		go_version              # go version (https://golang.org)
 		rust_version            # rustc version (https://www.rust-lang.org)
-		# node_version          # node.js version
 		kubecontext             # current kubernetes context (https://kubernetes.io/)
 		context                 # user@host
+		ranger                  # ranger shell (https://github.com/ranger/ranger)
 		# =========================[ Line #2 ]=========================
 		newline
-		# nordvpn               # nordvpn connection status, linux only (https://nordvpn.com/)
-		# public_ip             # public IP address
-		# battery               # internal battery
 		time                    # current time
 	)
 
