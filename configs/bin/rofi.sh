@@ -13,7 +13,7 @@ clip() {
 }
 
 nm() {
-	networkmanager_dmenu -width 250
+	networkmanager_dmenu -width 300
 }
 
 power() {
