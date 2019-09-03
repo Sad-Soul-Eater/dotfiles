@@ -111,7 +111,7 @@ font:
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 0
+    y: -1
 
 # Display the time it takes to redraw each frame.
 debug.render_timer: false
