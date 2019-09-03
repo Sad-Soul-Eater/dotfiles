@@ -37,6 +37,8 @@ fi
 		kubecontext             # current kubernetes context (https://kubernetes.io/)
 		context                 # user@host
 		ranger                  # ranger shell (https://github.com/ranger/ranger)
+		ram                     # free RAM
+		load                    # CPU load
 		# =========================[ Line #2 ]=========================
 		newline
 		time                    # current time
