@@ -128,7 +128,7 @@ user_pref("toolkit.telemetry.server", "");
 user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
 user_pref("toolkit.telemetry.unified", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
-user_pref("urlclassifier.trackingTable", "test-track-simple,base-track-digest256,content-track-digest256");
+user_pref("urlclassifier.trackingTable", "test-track-simple,base-track-digest256");
 user_pref("webgl.disabled", true);
 user_pref("widget.chrome.allow-gtk-dark-theme", true);
 user_pref("widget.content.allow-gtk-dark-theme", true);
