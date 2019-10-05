@@ -1,16 +1,19 @@
 source ~/.zplugin/plugins/romkatv---powerlevel10k/config/p10k-lean.zsh
 
-if [[ -o 'aliases' ]]; then
-	# Temporarily disable aliases.
-	'builtin' 'unsetopt' 'aliases'
-	local p10k_lean_restore_aliases=1
-else
-	local p10k_lean_restore_aliases=0
-fi
+# Temporarily change options.
+'builtin' 'local' '-a' 'p10k_config_opts'
+[[ ! -o 'aliases'         ]] || p10k_config_opts+=('aliases')
+[[ ! -o 'sh_glob'         ]] || p10k_config_opts+=('sh_glob')
+[[ ! -o 'no_brace_expand' ]] || p10k_config_opts+=('no_brace_expand')
+'builtin' 'setopt' 'no_aliases' 'no_sh_glob' 'brace_expand'
 
 () {
 	emulate -L zsh
-	setopt no_unset
+	setopt no_unset extended_glob
+	zmodload zsh/langinfo
+	if [[ ${langinfo[CODESET]:-} != (utf|UTF)(-|)8 ]]; then
+		local LC_ALL=${${(@M)$(locale -a):#*.(utf|UTF)(-|)8}[1]:-en_US.UTF-8}
+	fi
 
 	typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 		# =========================[ Line #1 ]=========================
@@ -51,7 +54,7 @@ fi
 	typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
 }
 
-(( ! p10k_lean_restore_aliases )) || setopt aliases
-'builtin' 'unset' 'p10k_lean_restore_aliases'
+(( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
+'builtin' 'unset' 'p10k_config_opts'
 
 # vim: set ft=zsh:
