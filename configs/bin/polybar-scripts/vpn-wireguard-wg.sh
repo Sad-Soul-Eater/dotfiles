@@ -1,47 +1,37 @@
 #!/usr/bin/env sh
 
-CONFIG_PATH=~/wg/wg-aruba.conf
+connection_status() {
+	if [ -f "$config" ]; then
+		connection=$(sudo wg show "$config_name" 2>/dev/null | head -n 1 | awk '{print $NF }')
 
-SHOW_NAME=false #Show connection name instead of CONNECTED_TEXT
+		if [ "$connection" = "$config_name" ]; then
+			echo "1"
+		else
+			echo "2"
+		fi
+	else
+		echo "3"
+	fi
+}
 
-CONNECTED_ICON="%{T7}%{T-}"
-CONNECTED_TEXT=""
-
-DISCONNECTED_ICON="%{T7}劣%{T-}"
-DISCONNECTED_TEXT=""
-
-if [ ! -f $CONFIG_PATH ]; then
-	echo "$DISCONNECTED_ICON Config file not found"
-	exit 0
-fi
-
-CONFIG_NAME=$(basename "${CONFIG_PATH%.*}")
-WG_RESULT=$(sudo wg show "$CONFIG_NAME" 2>/dev/null | head -n 1 | awk '{print $NF }')
-
-if [ "$WG_RESULT" = "$CONFIG_NAME" ]; then
-	CONNECTED=true
-else
-	CONNECTED=false
-fi
+config="$HOME/wg/wg-aruba.conf"
+config_name=$(basename "${config%.*}")
 
 case "$1" in
 --toggle)
-	FULL_CONFIG_PATH="$(readlink -f "$CONFIG_PATH")"
-
-	if $CONNECTED; then
-		sudo wg-quick down "$FULL_CONFIG_PATH" 2>/dev/null
+	if [ "$(connection_status)" = "1" ]; then
+		sudo wg-quick down "$config" 2>/dev/null
 	else
-		sudo wg-quick up "$FULL_CONFIG_PATH" 2>/dev/null
+		sudo wg-quick up "$config" 2>/dev/null
 	fi
 	;;
 *)
-	if $CONNECTED; then
-		if $SHOW_NAME; then
-			CONNECTED_TEXT=$CONFIG_NAME
-		fi
-		echo "$CONNECTED_ICON""$CONNECTED_TEXT"
+	if [ "$(connection_status)" = "1" ]; then
+		echo "%{T7}%{T-} $config_name"
+	elif [ "$(connection_status)" = "3" ]; then
+		echo "%{T7}劣%{T-} Config not found!"
 	else
-		echo "$DISCONNECTED_ICON""$DISCONNECTED_TEXT"
+		echo "%{T7}劣%{T-}"
 	fi
 	;;
 esac
