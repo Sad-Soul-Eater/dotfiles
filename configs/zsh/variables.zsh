@@ -11,4 +11,7 @@ export NVM_DIR="$HOME/.nvm"
 # Disable highlighting of text pasted into the command line
 zle_highlight=('paste:none')
 
+# Enable Hardcore mode to enforce the use of aliases
+export YSU_HARDCORE=1
+
 # vim: set ft=zsh:
