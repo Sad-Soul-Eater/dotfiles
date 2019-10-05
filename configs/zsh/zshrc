@@ -44,6 +44,17 @@ zplugin snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
 
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
+
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::plugins/golang/golang.plugin.zsh
 # Plugins
 zplugin ice wait"0" lucid atinit"zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
@@ -58,6 +69,6 @@ zplugin ice wait"0" lucid
 zplugin light zdharma/history-search-multi-word
 
 zplugin ice wait"0" lucid
-zplugin light djui/alias-tips
+zplugin light MichaelAquilina/zsh-you-should-use
 
 source ~/.zsh/aliases.zsh
