@@ -281,6 +281,7 @@ assign [class="firefox" window_type="normal"] $ws2
 assign [class="code-oss"] $ws3
 assign [class="VSCodium"] $ws3
 assign [class="qBittorrent" window_type="normal"] $ws4
+assign [class="Transmission" window_type="normal"] $ws4
 assign [class="mpv"] $ws5
 assign [class="discord"] $ws7
 for_window [class="Spotify"] move to workspace $ws10
