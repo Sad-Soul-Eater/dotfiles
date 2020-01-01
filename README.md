@@ -38,7 +38,7 @@
 * [i3-gaps](https://github.com/Airblader/i3) - dynamic tiling window manager - [config](configs/i3/config)
   * [polybar](https://github.com/jaagr/polybar) - fast and easy-to-use tool for creating **status bars** - [config](configs/polybar/config)
   * [rofi](https://github.com/DaveDavenport/rofi) - window switcher, application launcher and **dmenu replacement**
-  * [compton](https://github.com/yshui/compton) - **compositor** for X - [config](configs/compton/compton.conf)
+  * [picom](https://github.com/yshui/picom) - **compositor** for X - [config](configs/picom/picom.conf)
   * [dunst](https://github.com/dunst-project/dunst) - lightweight and customizable notification daemon - [config](configs/dunst/dunstrc)
   * [conky](https://github.com/brndnmtthws/conky) - light-weight system monitor for X - [config](configs/conkyrc)
   * [psd](https://github.com/graysky2/profile-sync-daemon) - Symlinks and syncs browser profile dirs to **RAM** - [config](configs/psd/psd.conf)

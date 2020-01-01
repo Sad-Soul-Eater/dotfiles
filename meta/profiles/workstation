@@ -1,6 +1,5 @@
 alacritty
 bin
-compton
 conky
 dotfiles
 dunst
@@ -10,6 +9,7 @@ kitty
 mpv
 neofetch
 neovim
+picom
 polybar
 psd
 ranger
