@@ -15,8 +15,6 @@ zplugin light romkatv/powerlevel10k
 # Oh-my-zsh libs
 zplugin snippet OMZ::lib/history.zsh
 
-zplugin snippet OMZ::lib/directories.zsh
-
 zplugin snippet OMZ::lib/key-bindings.zsh
 
 zplugin ice wait"0" lucid
@@ -55,6 +53,7 @@ zplugin snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
 
 zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/golang/golang.plugin.zsh
+
 # Plugins
 zplugin ice wait"0" lucid atinit"zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
