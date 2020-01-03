@@ -1,4 +1,5 @@
 user_pref("accessibility.force_disabled", 1);
+user_pref("browser.aboutConfig.showWarning", false);
 user_pref("beacon.enabled", false);
 user_pref("browser.bookmarks.showMobileBookmarks", true);
 user_pref("browser.cache.offline.enable", false);
@@ -40,7 +41,7 @@ user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.safebrowsing.enabled", false);
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
-user_pref("browser.search.countryCode", "US");
+user_pref("browser.search.countryCode", "US"); // [HIDDEN PREF]
 user_pref("browser.search.geoSpecificDefaults", false);
 user_pref("browser.search.geoSpecificDefaults.url", "");
 user_pref("browser.search.geoip.url", "");
@@ -72,6 +73,10 @@ user_pref("extensions.htmlaboutaddons.discover.enabled", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.webservice.discoverURL", "");
+user_pref("experiments.enabled", false);
+user_pref("experiments.manifest.uri", "");
+user_pref("experiments.supported", false);
+user_pref("experiments.activeExperiment", false);
 user_pref("font.default.x-cyrillic", "sans-serif");
 user_pref("font.default.x-western", "sans-serif");
 user_pref("font.language.group", "x-western");
@@ -109,6 +114,7 @@ user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
 user_pref("security.certerrors.mitm.auto_enable_enterprise_roots", false);
+user_pref("security.csp.enable", true); // [DEFAULT: true]
 user_pref("security.enterprise_roots.enabled", false);
 user_pref("security.ssl.disable_session_identifiers", false);
 user_pref("security.ssl.enable_false_start", true);
