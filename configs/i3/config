@@ -216,20 +216,22 @@ client.background       $bg
 #----------------------#
 
 # Keyboard layout
-exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'
+exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle' &
 
-exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id xrdb ~/.Xresources
-exec_always --no-startup-id ~/bin/bar.sh
+exec_always --no-startup-id nitrogen --restore &
+exec_always --no-startup-id xrdb ~/.Xresources &
+exec_always --no-startup-id ~/bin/bar.sh &
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$cl10" -cfr "$cl13" &
-exec_always --no-startup-id killall compton; compton --config ~/.config/compton/compton.conf &
+exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf &
 exec_always --no-startup-id killall conky; conky &
 
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id udiskie
-exec --no-startup-id nextcloud
-exec --no-startup-id telegram-desktop -startintray
-exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id udiskie &
+exec --no-startup-id nextcloud --background &
+exec --no-startup-id telegram-desktop -startintray &
+exec --no-startup-id wg-quick up ~/wg/wg-aruba-local.conf &
+exec --no-startup-id /usr/lib/kdeconnectd &
+exec --no-startup-id xcalib -v '/home/soul/Acer Swift 3 SF315-41.icm' &
 
 #---------------#
 # SPECIAL CASES #
@@ -240,7 +242,7 @@ for_window [class="Telegram"]                           floating enable,    resi
 for_window [title="Media viewer"]                       fullscreen enable
 
 # KeePassXC
-for_window [class="keepassxc"]                          floating enable,    resize set 1280 720,    move position center
+for_window [class="KeePassXC"]                          floating enable,    resize set 1280 720,    move position center
 
 # pcmanfm
 for_window [class="(?i)pcmanfm" window_type="normal"]   floating enable,    resize set 1280 720,    move position center
@@ -255,7 +257,7 @@ for_window [class="Soffice"]                                                resi
 for_window [class="Yad" title="yad-calendar"]           floating enable
 
 # Make window with specified title float
-for_window [title=".*i3-float.*"]                       floating enable,    resize set 1280 720,    move position center
+for_window [title="^i3-float$"]                         floating enable,    resize set 1280 720,    move position center
 
 #------------#
 # MEDIA KEYS #

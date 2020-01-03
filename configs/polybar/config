@@ -208,27 +208,26 @@ interval = 5
 format-prefix = "%{T6} %{T-}"
 format = <label>
 exec = python ~/bin/polybar-spotify/spotify_status.py -f '{song} - {artist}'
-click-left = i3-msg '[class="Spotify"] focus'
+click-left = i3-msg '[class="Spotify"] focus' &
 
 
 [module/popup-calendar]
 type = custom/script
 interval = 60
 exec = ~/bin/polybar-scripts/popup-calendar.sh
-click-left = ~/bin/polybar-scripts/popup-calendar.sh --popup
+click-left = ~/bin/polybar-scripts/popup-calendar.sh --popup &
 
 
 [module/vpn-wireguard-wg]
 type = custom/script
 interval = 5
 exec = ~/bin/polybar-scripts/vpn-wireguard-wg.sh
-click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle
+click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle &
 
 
 [module/updates-arch-combined]
 type = custom/script
 exec = ~/bin/polybar-scripts/updates-arch-combined.sh
-click-left = ~/bin/polybar-scripts/updates-arch-combined.sh
 interval = 600
 
 
