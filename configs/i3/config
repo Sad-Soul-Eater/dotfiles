@@ -7,7 +7,7 @@ set $mod Mod4
 set $alt Mod1
 
 # font
-font pango:FiraGO 14
+font pango:FiraGO 12
 
 #-----------------------------#
 # WINDOW / WORKSPACE COMMANDS #
@@ -64,6 +64,8 @@ bindsym $mod+z scratchpad show
 # Sticky floating windows
 bindsym $mod+w sticky toggle
 bindsym $mod+Shift+w sticky enable, floating enable, resize set 480 270
+
+bindsym $mod+p layout toggle tabbed split
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -202,12 +204,12 @@ set_from_resource $cl13 i3wm.color13 #f0f0f0
 set_from_resource $cl14 i3wm.color14 #f0f0f0
 set_from_resource $cl15 i3wm.color15 #f0f0f0
 
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $fg       $fg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $cl13
-client.placeholder      $bg     $bg     $fg  $bg       $fg
+# class                 border  backgr. text   indicator child_border
+client.focused          $cl7    $bg     $fg    $fg       $fg
+client.focused_inactive $cl0    $bg     $fg    $bg       $bg
+client.unfocused        $cl0    $bg     $fg    $bg       $bg
+client.urgent           $cl13   $bg     $cl13  $bg       $cl13
+client.placeholder      $bg     $bg     $fg    $bg       $fg
 
 client.background       $bg
 
