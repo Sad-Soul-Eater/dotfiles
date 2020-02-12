@@ -62,7 +62,7 @@ screenshot() {
 }
 
 emoji() {
-	rofi -show emoji -modi emoji -lines 20 -width 1344 -columns 3
+	rofimoji -c --rofi-args "-lines 20 -width 1344 -columns 2"
 }
 
 usage() {
