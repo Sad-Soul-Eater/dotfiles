@@ -150,8 +150,8 @@ bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
 bindsym $mod+m exec --no-startup-id ~/bin/rofi.sh -e
 
 # terminal
-bindsym $mod+Return exec --no-startup-id alacritty
-bindsym $mod+Shift+Return exec --no-startup-id alacritty -t="i3-float"
+bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+Shift+Return exec --no-startup-id kitty --title="i3-float"
 
 # File Manager
 bindsym $mod+Tab exec --no-startup-id pcmanfm
@@ -234,6 +234,7 @@ exec --no-startup-id telegram-desktop -startintray &
 exec --no-startup-id wg-quick up ~/wg/wg-aruba-local.conf &
 exec --no-startup-id /usr/lib/kdeconnectd &
 exec --no-startup-id xcalib -v '/home/soul/Acer Swift 3 SF315-41.icm' &
+exec --no-startup-id redshift &
 
 #---------------#
 # SPECIAL CASES #
@@ -292,7 +293,7 @@ assign [class="qBittorrent" window_type="normal"] $ws4
 assign [class="Transmission" window_type="normal"] $ws4
 assign [class="Deluge" window_type="normal"] $ws4
 assign [class="mpv"] $ws5
-assign [class="^Steam$" title="^Steam$"] $ws6
+assign [class="Steam" title="Steam"] $ws6
 assign [class="discord"] $ws7
 for_window [class="Spotify"] move to workspace $ws10
 
