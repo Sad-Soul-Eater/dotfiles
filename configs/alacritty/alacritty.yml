@@ -81,13 +81,13 @@ tabspaces: 4
 #   - file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   normal:
-    family: FuraCode Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
   bold:
-    family: FuraCode Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
   italic:
-    family: FuraCode Nerd Font
+    family: Source Code Pro
     style: Italic
   size: 12
 
@@ -102,7 +102,7 @@ font:
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: -1
+    y: 0
 
 # Display the time it takes to redraw each frame.
 debug.render_timer: false
