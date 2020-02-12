@@ -21,6 +21,10 @@ alias dotfiles="cd ~/.dotfiles"
 alias dotfiles-update="git -C ~/.dotfiles pull --rebase"
 
 alias v.aliases="$EDITOR ~/.dotfiles/configs/zsh/aliases.zsh"
+alias v.powerlevel10k-settings="$EDITOR ~/.dotfiles/configs/zsh/powerlevel10k-settings.zsh"
+alias v.variables="$EDITOR ~/.dotfiles/configs/zsh/variables.zsh"
+
+alias v.alacritty="$EDITOR ~/.dotfiles/configs/alacritty/alacritty.yml"
 alias v.picom="$EDITOR ~/.dotfiles/configs/picom/picom.conf"
 alias v.conky="$EDITOR ~/.dotfiles/configs/conky/conky.conf"
 alias v.i3="$EDITOR ~/.dotfiles/configs/i3/config"
@@ -29,17 +33,6 @@ alias v.mpv="$EDITOR ~/.dotfiles/configs/mpv/linux-mpv.conf"
 alias v.nvim="$EDITOR ~/.dotfiles/configs/nvim/init.vim"
 alias v.polybar="$EDITOR ~/.dotfiles/configs/polybar/config"
 alias v.zsh="$EDITOR ~/.dotfiles/configs/zsh/zshrc"
-
-alias -- -='cd -'
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
 
 alias md='mkdir -p'
 

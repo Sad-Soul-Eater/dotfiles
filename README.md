@@ -50,7 +50,7 @@
 * [neovim](https://github.com/neovim/neovim) - Vim-fork focused on **extensibility** and usability - [config](configs/nvim/init.vim)
   * [vim-plug](https://github.com/junegunn/vim-plug) - Minimalist Vim Plugin Manager
 * [zsh](http://zsh.sourceforge.net) - powerful shell that operates as both an interactive shell and as a scripting language interpreter - [config](configs/zsh)
-  * [zplugin](https://github.com/zdharma/zplugin) - Flexible Zsh plugin manager with **turbo mode**, clean fpath, reports, completion management
+  * [zinit](https://github.com/zdharma/zinit) - Flexible Zsh plugin manager with clean fpath, reports, completion management, **Turbo**, annexes, services, packages
   * [neofetch](https://github.com/dylanaraps/neofetch) - command-line system information tool written in bash 3.2+ - [config](configs/neofetch/config.conf)
 * [mpv](https://github.com/mpv-player/mpv) - **video player** based on MPlayer/mplayer2 - [config](configs/mpv)
 * [yay](https://github.com/Jguer/yay) - Yet another Yogurt - An **AUR** Helper written in Go - [config](configs/yay/config.json)
