@@ -39,6 +39,7 @@ font-5 = "Fura Code Nerd Font:pixelsize=13;3"
 font-6 = "Material Design Icons:pixelsize=12;3"
 font-7 = "Material Design Icons:pixelsize=13;3"
 font-8 = "Fura Code Nerd Font:pixelsize=11;2"
+font-9 = "JoyPixels:scale=10:pixelsize=11;3"
 
 ; Colors
 background = ${colors.background}
