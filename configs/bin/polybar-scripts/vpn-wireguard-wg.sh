@@ -27,7 +27,7 @@ case "$1" in
 	;;
 *)
 	if [ "$(connection_status)" = "1" ]; then
-		echo "%{T7}%{T-} $config_name"
+		echo "%{T7}%{T-}"
 	elif [ "$(connection_status)" = "3" ]; then
 		echo "%{T7}劣%{T-} Config not found!"
 	else

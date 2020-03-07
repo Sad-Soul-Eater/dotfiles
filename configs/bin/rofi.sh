@@ -27,7 +27,7 @@ power() {
 	if [ "$SELECTED_STRING" == "lock" ]; then
 		betterlockscreen -l dim -t "Don't touch my machine!"
 	elif [ "$SELECTED_STRING" == "suspend" ]; then
-		systemctl suspend
+		betterlockscreen -s dim -t "Don't touch my machine!"
 	elif [ "$SELECTED_STRING" == "logout" ]; then
 		i3-msg exit
 	elif [ "$SELECTED_STRING" == "reboot" ]; then
@@ -62,7 +62,7 @@ screenshot() {
 }
 
 emoji() {
-	rofimoji -c --rofi-args "-lines 20 -width 1344 -columns 2"
+	rofimoji --rofi-args "-lines 20 -width 1344 -columns 2"
 }
 
 usage() {
