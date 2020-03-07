@@ -32,7 +32,7 @@ if ! [[ "$LAST_VERSION_URL" =~ $URL_REGEX ]]; then
 fi
 
 LOCAL_GITEA_VERSION=$("$DIR"/"$FILE" -v | grep -oP "(?<=Gitea version )(.*)(?= built)")
-COMPARED_VERSION=$(printf "%s\n%s" "$LOCAL_GITEA_VERSION" "$LAST_REPO_VERSION" | sort -Vr | head -n1)
+COMPARED_VERSION=$(printf "%s\n" "$LOCAL_GITEA_VERSION" "$LAST_REPO_VERSION" | sort -Vr | head -n1)
 
 echo "Local gitea version: $LOCAL_GITEA_VERSION"
 echo "Latest gitea version: $LAST_REPO_VERSION"
@@ -41,6 +41,7 @@ if [ "$LOCAL_GITEA_VERSION" != "$COMPARED_VERSION" ]; then
 	echo "Starting update!"
 else
 	echo "Update unneded!"
+	exit 0
 fi
 
 echo "Downloading..."
