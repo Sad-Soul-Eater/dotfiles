@@ -6,7 +6,8 @@ optimize() {
 	echo "---------------------"
 	echo ""
 
-	find "$1" -type f -iname '*.png' | parallel -j "$2" optipng "$3"
+	# shellcheck disable=SC2086
+	find "$1" $2 -type f -iname '*.png' | parallel -j "$3" optipng "$4"
 
 	echo ""
 	echo "---------------------"
@@ -17,11 +18,13 @@ optimize() {
 usage() {
 	echo "Usage: ./optiPng.sh -p \"path_to_imgs\" [options]
 Options:
--h  open this page
--p  path to images
--j  parallel jobs count
+-h  Open this page
+-d  Limit the directory traversal to a given depth,
+    by default, there is no limit on the search depth
+-p  Path to images
+-j  Parallel jobs count
     if not set, used physical CPU count
--o  options for optipng
+-o  Options for optipng
     if not set, used -strip all -fix -clobber"
 }
 
@@ -33,9 +36,13 @@ fi
 IMGS_PATH=""
 JOBS=""
 OPTS=""
+DEPTH="-maxdepth "
 
-while getopts p:j:o:h OPTION; do
+while getopts d:p:j:o:h OPTION; do
 	case "${OPTION}" in
+	d)
+		DEPTH+="${OPTARG}"
+		;;
 	p)
 		IMGS_PATH=${OPTARG}
 		;;
@@ -69,4 +76,8 @@ if [ "$OPTS" = "" ]; then
 	OPTS="-strip all -fix -clobber"
 fi
 
-optimize "$IMGS_PATH" "$JOBS" "$OPTS"
+if [ "$DEPTH" = "-maxdepth " ]; then
+	DEPTH=""
+fi
+
+optimize "$IMGS_PATH" "$DEPTH" "$JOBS" "$OPTS"
