@@ -1,3 +1,10 @@
+# Opts
+setopt interactive_comments auto_cd
+
+# Autoload
+autoload -Uz zargs allopt zed zmv zcp zln colors
+colors
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 	print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
@@ -11,8 +18,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
 
-autoload -Uz zargs zmv zcp zln
-
 source ~/.zsh/variables.zsh
 
 # Prompt
@@ -23,9 +28,6 @@ zinit light romkatv/powerlevel10k
 zinit snippet OMZ::lib/history.zsh
 
 zinit snippet OMZ::lib/key-bindings.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::lib/git.zsh
 
 zinit ice wait lucid
 zinit snippet OMZ::lib/completion.zsh
@@ -65,37 +67,40 @@ zinit ice wait lucid as'completion' blockf
 zinit snippet OMZ::plugins/ripgrep/_ripgrep
 
 # Plugins
-
-zinit light mafredri/zsh-async
-
-zinit ice wait"1" lucid
-zinit light wfxr/forgit
-
-zinit ice wait lucid
+zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
-zinit ice wait"1" lucid
-zinit light hlissner/zsh-autopair
-
-zinit ice wait"1" lucid
-zinit light peterhurford/up.zsh
-
-zinit ice wait lucid
-zinit light zdharma/history-search-multi-word
-
-zinit ice wait"1" lucid
-zinit light MichaelAquilina/zsh-you-should-use
-
-zinit ice wait blockf lucid atpull"zinit creinstall -q ."
+zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
 zinit light clarketm/zsh-completions
 
-zinit ice wait lucid atinit"zicompinit; zicdreplay" atload"unset 'FAST_HIGHLIGHT[chroma-whatis]' 'FAST_HIGHLIGHT[chroma-man]'"
+zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
+zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait lucid atload"bindkey '$terminfo[kcuu1]' history-substring-search-up; bindkey '$terminfo[kcud1]' history-substring-search-down"
+zinit ice depth=1 wait lucid atload"bindkey '$terminfo[kcuu1]' history-substring-search-up; bindkey '$terminfo[kcud1]' history-substring-search-down"
 zinit light zsh-users/zsh-history-substring-search
+
+zinit ice depth=1 wait lucid
+zinit light wfxr/formarks
+
+zinit ice depth=1 wait"1" lucid pick"manydots-magic" compile"manydots-magic"
+zinit light knu/zsh-manydots-magic
+
+zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
+zinit light zdharma/history-search-multi-word
+
+zinit ice depth=1 wait"2" lucid
+zinit light wfxr/forgit
+
+zinit ice depth=1 wait"2" lucid
+zinit light hlissner/zsh-autopair
+
+zinit ice depth=1 wait"2" lucid
+zinit light peterhurford/up.zsh
+
+zinit ice depth=1 wait"2" lucid
+zinit light MichaelAquilina/zsh-you-should-use
 
 source ~/.zsh/aliases.zsh
