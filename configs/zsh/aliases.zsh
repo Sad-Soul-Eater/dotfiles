@@ -6,12 +6,15 @@ alias l="ls -lAh"
 alias la="ls -Ah"
 alias ll="ls -lh"
 
+alias cp='cp -v'
+alias mv='mv -v'
+
 if (( $+commands[nvim] )); then
 	export EDITOR='nvim'
 	alias v="nvim"
 fi
 
-alias update-mirrorlist="sudo reflector --verbose -c 'GE' -c 'NL' -c 'UA' --age 6 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+alias update-mirrorlist="sudo reflector --verbose -c 'IT' -c 'GE' -c 'NL' -c 'UA' --age 1 --sort rate --save /etc/pacman.d/mirrorlist"
 alias h=htop
 alias mpv-tw="mpv --profile=twitch"
 
