@@ -28,11 +28,16 @@ if (( $+commands[bat] )); then
 fi
 
 # Use fd for finding files/dirs
-if (( $+commands[fd] )); then
-	export FZF_DEFAULT_COMMAND="fd --type f --follow --color=always --exclude go/src --exclude go/pkg"
+if (( $+commands[fd] || $+commands[fdfind] )); then
+	if (( $+commands[fd] )); then         # Arch
+		local FD_COMMAND="fd"
+	elif (( $+commands[fdfind] )); then   # Ubuntu
+		local FD_COMMAND="fdfind"
+	fi
+	export FZF_DEFAULT_COMMAND="$FD_COMMAND --type f --follow --color=always --exclude go/src --exclude go/pkg"
 	export FZF_DEFAULT_OPTS="--ansi"
 
-	export FZF_ALT_C_COMMAND="fd --type d --follow --color=always --exclude go/src --exclude go/pkg"
+	export FZF_ALT_C_COMMAND="$FD_COMMAND --type d --follow --color=always --exclude go/src --exclude go/pkg"
 	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
