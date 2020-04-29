@@ -25,7 +25,7 @@ Options:
 -j  Parallel jobs count,
     if not set, used physical CPU count
 -o  Options for jpegopti,
-    if not set, used -s -o"
+    if not set, used --preserve --preserve-perms --strip-all"
 }
 
 if [ "$1" = "" ]; then
@@ -74,7 +74,7 @@ if [ "$JOBS" = "" ]; then
 fi
 
 if [ "$OPTS" = "" ]; then
-	OPTS="-s -o"
+	OPTS="--preserve --preserve-perms --strip-all"
 fi
 
 if [ "$DEPTH" = "-maxdepth " ]; then

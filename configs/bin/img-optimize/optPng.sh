@@ -22,10 +22,10 @@ Options:
 -d  Limit the directory traversal to a given depth,
     by default, there is no limit on the search depth
 -p  Path to images
--j  Parallel jobs count
+-j  Parallel jobs count,
     if not set, used physical CPU count
--o  Options for optipng
-    if not set, used -strip all -fix -clobber"
+-o  Options for optipng,
+    if not set, used -preserve -strip all -fix -clobber"
 }
 
 if [ "$1" = "" ]; then
@@ -73,7 +73,7 @@ if [ "$JOBS" = "" ]; then
 fi
 
 if [ "$OPTS" = "" ]; then
-	OPTS="-strip all -fix -clobber"
+	OPTS="-preserve -strip all -fix -clobber"
 fi
 
 if [ "$DEPTH" = "-maxdepth " ]; then
