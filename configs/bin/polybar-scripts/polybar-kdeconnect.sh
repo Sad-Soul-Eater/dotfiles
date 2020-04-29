@@ -8,8 +8,8 @@ WIDTH=175
 WIDTH_WIDE=400
 
 # Icons shown in Polybar
-PHONE_ICON='%{T7}%{T-}'
-CHARGING_ICON='%{T5}%{T-}'
+PHONE_ICON='%{T5}󰄝%{T-}'
+CHARGING_ICON='%{T2}%{T-}'
 SEPERATOR='|'
 
 DIR="$(dirname "$(readlink -f "$0")")"

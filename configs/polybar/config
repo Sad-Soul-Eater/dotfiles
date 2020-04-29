@@ -31,15 +31,12 @@ bottom = false
 
 ; Fonts
 font-0 = "FiraGO:size=11;2"
-font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=11;2"
-font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
-font-3 = "Font Awesome 5 Brands:pixelsize=11;2"
-font-4 = "Fura Code Nerd Font:pixelsize=12;2"
-font-5 = "Fura Code Nerd Font:pixelsize=13;3"
-font-6 = "Material Design Icons:pixelsize=12;3"
-font-7 = "Material Design Icons:pixelsize=13;3"
-font-8 = "Fura Code Nerd Font:pixelsize=11;2"
-font-9 = "JoyPixels:scale=10:pixelsize=11;3"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;2"
+font-3 = "Font Awesome 5 Brands:pixelsize=12;2"
+font-4 = "Material Design Icons:pixelsize=13;3"
+font-5 = "FuraCode Nerd Font:pixelsize=13;3"
+font-6 = "JoyPixels:scale=10:pixelsize=11;3"
 
 ; Colors
 background = ${colors.background}
@@ -56,24 +53,73 @@ tray-detached = false
 tray-background = ${colors.background}
 
 ; Modules
-modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
+modules-left = font-test vpn-wireguard-wg wlan cpu memory keyboard spotify
 modules-center = i3
-modules-right = updates-arch-combined github kdeconnect battery backlight pulseaudio popup-calendar time
+modules-right = updates-arch-combined github kdeconnect battery backlight pulseaudio date time
+
+
+[module/font-test]
+type = custom/script
+interval = 1
+exec = ~/bin/polybar-scripts/font-test.sh
+
+
+[module/vpn-wireguard-wg]
+type = custom/script
+interval = 5
+exec = ~/bin/polybar-scripts/vpn-wireguard-wg.sh
+click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle &
+
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+
+label-connected = %{A1:~/bin/rofi.sh -n:}%{T5}󰤨%{T-} %essid%%{A}
+label-disconnected = %{A1:~/bin/rofi.sh -n:}%{T5}󰤮%{T-} Not Connected%{A}
+
+
+[module/cpu]
+type = internal/cpu
+label = %{T2}%{T-} %percentage%%
+
+
+[module/memory]
+type = internal/memory
+label = %{T2}%{T-} %gb_used%
+interval = 3
+
+
+[module/keyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+label-layout = %{T3}%{T-} %layout%
+
+
+[module/spotify]
+type = custom/script
+interval = 5
+format-prefix = "%{T6}%{T-}"
+format = <label>
+exec = python ~/bin/polybar-spotify/spotify_status.py -f ' {song} - {artist}'
+click-left = i3-msg '[class="Spotify"] focus' &
 
 
 [module/i3]
 type = internal/i3
 
 ws-icon-0 = 1;%{T0}%{T-}
-ws-icon-1 = 2;%{T0}%{T-}
+ws-icon-1 = 2;%{T4}%{T-}
 ws-icon-2 = 3;%{T0}%{T-}
-ws-icon-3 = 4;%{T3}%{T-}
+ws-icon-3 = 4;%{T2}%{T-}
 ws-icon-4 = 5;%{T0}%{T-}
-ws-icon-5 = 6;%{T0}%{T-}
-ws-icon-6 = 7;%{T0}%{T-}
+ws-icon-5 = 6;%{T4}%{T-}
+ws-icon-6 = 7;%{T5}%{T-}
 ws-icon-7 = 8;%{T0}%{T-}
 ws-icon-8 = 9;%{T0}%{T-}
-ws-icon-9 = 10;%{T0}%{T-}
+ws-icon-9 = 10;%{T4}%{T-}
 pin-workspaces = true
 enable-scroll = true
 
@@ -99,99 +145,10 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
 
-[module/time]
-type = internal/date
-interval = 1.0
-date = %{A1:~/bin/polybar-scripts/popup-calendar.sh --popup:}%{T5}%{T-} %H:%M%{A}
-
-
-[module/date]
-type = internal/date
-date = %{T5}%{T-} %e %B
-label = %date%
-
-
-[module/battery]
-type = internal/battery
-
-battery = BAT0
-adapter = AC1
-
-format-discharging = %{T5}<ramp-capacity>%{T-} <label-discharging>
-format-charging = %{T5}<animation-charging>%{T-} <label-charging>
-format-full = %{T5}<ramp-capacity>%{T-} <label-full>
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
-
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = %{A3:pavucontrol &:}%{T6}<ramp-volume>%{T-} <label-volume>%{A}
-use-ui-max = true
-
-label-muted = %{A3:pavucontrol &:}%{T6}婢%{T-}%{A}
-
-ramp-volume-0 = 奄
-ramp-volume-1 = 奔
-ramp-volume-2 = 墳
-
-
-[module/backlight]
-type = internal/backlight
-card = amdgpu_bl0
-
-format-spacing = 1
-format = %{T7}<ramp>%{T-}<label>
-label = %percentage%%
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-
-
-[module/wlan]
-type = internal/network
-interface = wlp1s0
-
-label-connected = %{A1:~/bin/rofi.sh -n:}%{T8}蠟%{T-} %essid%%{A}
-label-disconnected = %{A1:~/bin/rofi.sh -n:}%{T8}來%{T-} Not Connected%{A}
-
-
-[module/cpu]
-type = internal/cpu
-label = %{T1}%{T-} %percentage%%
-
-
-[module/memory]
-type = internal/memory
-label = %{T3}%{T-} %gb_used%
-interval = 3
-
-
-[module/keyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-blacklist-1 = scroll lock
-
-label-layout = %{T3}%{T-} %layout%
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/bin/polybar-scripts/updates-arch-combined.sh
+interval = 600
 
 
 [module/github]
@@ -200,39 +157,91 @@ token = ${file:~/.secrets/github-notification.token}
 empty-notifications = false
 interval = 30
 format = <label>
-label = %{T5}%{T-} %notifications%
-
-
-[module/spotify]
-type = custom/script
-interval = 5
-format-prefix = "%{T6} %{T-}"
-format = <label>
-exec = python ~/bin/polybar-spotify/spotify_status.py -f '{song} - {artist}'
-click-left = i3-msg '[class="Spotify"] focus' &
-
-
-[module/popup-calendar]
-type = custom/script
-interval = 60
-exec = ~/bin/polybar-scripts/popup-calendar.sh
-click-left = ~/bin/polybar-scripts/popup-calendar.sh --popup &
-
-
-[module/vpn-wireguard-wg]
-type = custom/script
-interval = 5
-exec = ~/bin/polybar-scripts/vpn-wireguard-wg.sh
-click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle &
-
-
-[module/updates-arch-combined]
-type = custom/script
-exec = ~/bin/polybar-scripts/updates-arch-combined.sh
-interval = 600
+label = %{T5}󰊤%{T-} %notifications%
 
 
 [module/kdeconnect]
 type = custom/script
 exec = "~/bin/polybar-scripts/polybar-kdeconnect.sh -d"
 tail = true
+
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = AC1
+
+format-discharging = %{T5}<ramp-capacity>%{T-}<label-discharging>
+format-charging = %{T5}<animation-charging>%{T-}<label-charging>
+format-full = %{T5}<ramp-capacity>%{T-}<label-full>
+
+ramp-capacity-0 = 󰂎
+ramp-capacity-1 = 󰁺
+ramp-capacity-2 = 󰁻
+ramp-capacity-3 = 󰁼
+ramp-capacity-4 = 󰁽
+ramp-capacity-5 = 󰁾
+ramp-capacity-6 = 󰁿
+ramp-capacity-7 = 󰂀
+ramp-capacity-8 = 󰂁
+ramp-capacity-9 = 󰂂
+ramp-capacity-10 = 󰁹
+
+animation-charging-0 = 󰂆
+animation-charging-1 = 󰂇
+animation-charging-2 = 󰂈
+animation-charging-3 = 󰂉
+animation-charging-4 = 󰂊
+animation-charging-5 = 󰂋
+animation-charging-6 = 󰂅
+
+
+[module/backlight]
+type = internal/backlight
+card = amdgpu_bl0
+
+format-spacing = 1
+format = %{T5}<ramp>%{T-}<label>
+label = %percentage%%
+
+ramp-0 = 󰝦
+ramp-1 = 󰪞
+ramp-2 = 󰪟
+ramp-3 = 󰪠
+ramp-4 = 󰪡
+ramp-5 = 󰪢
+ramp-6 = 󰪣
+ramp-7 = 󰪤
+ramp-8 = 󰪥
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = %{A3:pavucontrol &:}%{T6}<ramp-volume>%{T-} <label-volume>%{A}
+use-ui-max = true
+
+label-muted = %{A3:pavucontrol &:}%{T5}婢%{T-}%{A}
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+
+[module/date]
+type = internal/date
+date = %{A1:~/bin/polybar-scripts/popup-calendar.sh --popup &:}%{T5}󰸗%{T-}%e %B%{A}
+label = %date%
+
+
+[module/time]
+type = internal/date
+interval = 1.0
+date = %{A1:~/bin/polybar-scripts/popup-calendar.sh --popup &:}%{T5}%{T-} %H:%M%{A}
+
+
+[module/popup-calendar]
+type = custom/script
+interval = 60
+exec = ~/bin/polybar-scripts/popup-calendar.sh
