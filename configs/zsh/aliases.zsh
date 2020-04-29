@@ -6,17 +6,25 @@ alias l="ls -lAh"
 alias la="ls -Ah"
 alias ll="ls -lh"
 
-alias cp='cp -v'
-alias mv='mv -v'
+if (( $+commands[xcp] )); then
+	alias cp="xcp -w 0"
+else
+	alias cp="cp -v"
+fi
+alias mv="mv -v"
 
 if (( $+commands[nvim] )); then
-	export EDITOR='nvim'
+	export EDITOR="nvim"
 	alias v="nvim"
 fi
 
 alias update-mirrorlist="sudo reflector --verbose -c 'IT' -c 'GE' -c 'NL' -c 'UA' --age 1 --sort rate --save /etc/pacman.d/mirrorlist"
+alias full-update="yay -Syu --noconfirm && echo '\nFlatpak:' && flatpak update --noninteractive && echo '\nCargo:' && cargo install-update -a"
 alias h=htop
-alias mpv-tw="mpv --profile=twitch"
+
+alias m="mpv"
+alias mt="mpv --profile=twitch"
+alias mi="mpv --profile=interpolation"
 
 alias q="exit"
 
@@ -37,6 +45,6 @@ alias v.mpv="$EDITOR ~/.dotfiles/configs/mpv/linux-mpv.conf"
 alias v.nvim="$EDITOR ~/.dotfiles/configs/nvim/init.vim"
 alias v.polybar="$EDITOR ~/.dotfiles/configs/polybar/config"
 
-alias md='mkdir -p'
+alias md="mkdir -p"
 
 # vim: set ft=zsh:

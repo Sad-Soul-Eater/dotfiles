@@ -67,6 +67,9 @@ zinit ice wait lucid as'completion' blockf
 zinit snippet OMZ::plugins/ripgrep/_ripgrep
 
 # Plugins
+zinit ice depth=1 lucid
+zinit light trystan2k/zsh-tab-title
+
 zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
