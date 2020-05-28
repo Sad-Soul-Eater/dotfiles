@@ -9,7 +9,7 @@ ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
 
 # Path's
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$HOME/.cargo/bin:$PATH
+export PATH=$GOPATH/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
