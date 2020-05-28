@@ -18,7 +18,7 @@ RELEASES_FILE=$(mktemp)
 
 curl --silent --output "$RELEASES_FILE" https://api.github.com/repos/go-gitea/gitea/releases
 
-LAST_REPO_VERSION=$(grep -oP '(?<="tag_name": "v)(.*)(?=")' "$RELEASES_FILE" | sort -Vr | head -n1)
+LAST_REPO_VERSION=$(grep -oP '(?<="tag_name": "v)(.*)(?<!-rc\d)(?<!-dev)(?=")' "$RELEASES_FILE" | sort -Vr | head -n1)
 LAST_VERSION_URL=$(grep -oP "(?<=\s\"browser_download_url\": \")https:\/\/github\.com\/go-gitea\/gitea\/releases\/download\/v$LAST_REPO_VERSION\/gitea-$LAST_REPO_VERSION-linux-amd64(?=\")" "$RELEASES_FILE")
 
 rm "$RELEASES_FILE"
