@@ -225,9 +225,10 @@ exec_always --no-startup-id ~/bin/bar.sh &
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$cl10" -cfr "$cl13" &
 exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf &
 exec_always --no-startup-id killall conky; conky &
+#exec_always --no-startup-id killall glava; glava -d &
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id udiskie &
+exec --no-startup-id udiskie --smart-tray &
 exec --no-startup-id nextcloud --background &
 exec --no-startup-id flatpak run io.github.kotatogram -startintray &
 exec --no-startup-id /usr/lib/kdeconnectd &
@@ -263,9 +264,11 @@ for_window [class="Yad" title="yad-calendar"]                  floating enable
 # Make window with specified title float
 for_window [title="^i3-float$"]                                floating enable,    resize set 1280 720,    move position center
 
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable,    resize set 380 420
+
 for_window [window_role="About"]                               floating enable
 
-for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable,    resize set 380 420
+for_window [window_role="PictureInPicture"]                    floating enable,    sticky enable
 
 #------------#
 # MEDIA KEYS #
