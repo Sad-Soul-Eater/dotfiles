@@ -53,7 +53,7 @@ tray-detached = false
 tray-background = ${colors.background}
 
 ; Modules
-modules-left = font-test vpn-wireguard-wg wlan cpu memory keyboard spotify
+modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
 modules-center = i3
 modules-right = updates-arch-combined github kdeconnect battery backlight pulseaudio date time
 
