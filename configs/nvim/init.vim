@@ -26,7 +26,7 @@ Plug 'ncm2/ncm2'
 
 Plug 'ncm2/ncm2-neosnippet'
 Plug 'ncm2/ncm2-bufword'
-Plug 'fgrsnau/ncm2-otherbuf', {'branch': 'ncm2'}
+Plug 'fgrsnau/ncm2-otherbuf'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-markdown-subscope'
@@ -56,7 +56,6 @@ Plug '~/.config/nvim/plugins/cs'
 " Language specific plugins
 Plug 'sheerun/vim-polyglot'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sebdah/vim-delve'
 
 Plug 'plasticboy/vim-markdown'
@@ -496,19 +495,11 @@ map <leader>gst :Gstatus<cr>
 "------------------------------------------------------------------------------
 let g:LanguageClient_diagnosticsEnable=1
 
-let g:LanguageClient_rootMarkers = {
-			\ 'go': ['.git', 'go.mod'],
-			\ }
-
 let g:LanguageClient_serverCommands = {
-			\ 'go': ['~/go/bin/gopls'],
 			\ 'html': ['html-languageserver', '--stdio'],
 			\ 'css': ['css-languageserver', '--stdio'],
 			\ 'json': ['json-languageserver', '--stdio'],
 			\ }
-
-" Run gofmt and goimports on save
-autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 
 "------------------------------------------------------------------------------
@@ -545,9 +536,6 @@ set conceallevel=2 concealcursor=niv
 "------------------------------------------------------------------------------
 " Ale
 "------------------------------------------------------------------------------
-let g:ale_linters = {
-			\ 'go': ['~/go/bin/golangci-lint'],
-			\ }
 let g:ale_fixers = {
 			\ '*': ['remove_trailing_lines', 'trim_whitespace']
 			\}
@@ -566,111 +554,9 @@ let g:ale_set_quickfix = 1
 
 
 "------------------------------------------------------------------------------
-" Vim-go
-"------------------------------------------------------------------------------
-"let g:go_fmt_command = 'goimports'
-"let g:go_info_mode = 'gocode'
-"let g:go_def_mode = 'guru'
-let g:auto_complete_enabled = 0
-let g:go_snippet_engine = 'neosnippet' " Set neosnippet as snippet engine
-
-" Easier to jump between errors in quickfix list
-nnoremap <leader>n :cnext<CR>
-nnoremap <leader>m :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-
-" Reuse one terminal
-let g:go_term_enabled = 1
-let g:go_term_mode = "on | belowright split"
-let g:go_term_height = 10
-
-" Show a list of interfaces which is implemented by the type under your cursor
-au FileType go nmap <Leader>s <Plug>(go-implements)
-
-" Show type info for the word under your cursor
-au FileType go nmap <Leader>i <Plug>(go-info)
-
-" Open the relevant Godoc for the word under the cursor
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-
-" Open the Godoc in browser
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-
-" Run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-	let l:file = expand('%')
-	if l:file =~# '^\f\+_test\.go$'
-		call go#test#Test(0, 1)
-	elseif l:file =~# '^\f\+\.go$'
-		call go#cmd#Build(0)
-	endif
-endfunction
-
-" Run/build/test/coverage
-au FileType go nmap <leader>r <Plug>(go-run)
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-
-" Show the progress when running :GoCoverage
-let g:go_echo_command_info = 0
-
-" Highlight variable uses
-let g:go_auto_sameids = 1
-let g:go_fmt_experimental = 1
-let g:go_updatetime = 200
-
-" Add the failing test name to the output of :GoTest
-let g:go_test_show_name = 1
-
-let g:go_list_type = 'quickfix'
-let g:go_fmt_fail_silently = 1
-let g:go_def_reuse_buffer = 1
-
-" Highlight all
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
-
-"------------------------------------------------------------------------------
 " Tagbar'
 "------------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
-let g:tagbar_type_go = {
-			\ 'ctagstype' : 'go',
-			\ 'kinds'     : [
-			\ 'p:package',
-			\ 'i:imports:1',
-			\ 'c:constants',
-			\ 'v:variables',
-			\ 't:types',
-			\ 'n:interfaces',
-			\ 'w:fields',
-			\ 'e:embedded',
-			\ 'm:methods',
-			\ 'r:constructor',
-			\ 'f:functions'
-			\ ],
-			\ 'sro' : '.',
-			\ 'kind2scope' : {
-			\ 't' : 'ctype',
-			\ 'n' : 'ntype'
-			\ },
-			\ 'scope2kind' : {
-			\ 'ctype' : 't',
-			\ 'ntype' : 'n'
-			\ },
-			\ 'ctagsbin'  : 'gotags',
-			\ 'ctagsargs' : '-sort -silent'
-			\ }
-
 
 "------------------------------------------------------------------------------
 " vim-delve
