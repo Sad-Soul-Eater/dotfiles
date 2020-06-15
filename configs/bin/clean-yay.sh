@@ -14,8 +14,8 @@ if [ -s "$DIRS_TO_RM" ]; then
 	echo "Founded unneeded folders:"
 	cat "$DIRS_TO_RM"
 	echo ""
-	read -rp "Delete them? <y/N> " prompt
-	if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
+	read -rp "Delete them? <Y/n> " prompt
+	if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" || $prompt == "" ]]; then
 		cd "$HOME/.cache/yay" || exit
 		xargs -a "$DIRS_TO_RM" rm -rfv
 	fi
