@@ -291,6 +291,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 #-------------#
 
 assign [class="firefox" window_type="normal"] $ws2
+assign [class="Code"] $ws3
 assign [class="code-oss"] $ws3
 assign [class="VSCodium"] $ws3
 assign [class="qBittorrent" window_type="normal"] $ws4
