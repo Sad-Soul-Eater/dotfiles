@@ -154,7 +154,7 @@ bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+Shift+Return exec --no-startup-id kitty --title="i3-float"
 
 # File Manager
-bindsym $mod+Tab exec --no-startup-id pcmanfm
+bindsym $mod+Tab exec --no-startup-id thunar
 
 # restart i3 in place
 bindsym $mod+Shift+r restart
@@ -163,7 +163,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+a exec --no-startup-id firefox
 
 # Telegram
-bindsym $mod+t exec --no-startup-id flatpak run io.github.kotatogram
+bindsym $mod+t exec --no-startup-id flatpak run org.telegram.desktop
+
 #------#
 # GAPS #
 #------#
@@ -230,10 +231,11 @@ exec_always --no-startup-id killall conky; conky &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id udiskie --smart-tray &
 exec --no-startup-id nextcloud --background &
-exec --no-startup-id flatpak run io.github.kotatogram -startintray &
+exec --no-startup-id flatpak run org.telegram.desktop -startintray &
 exec --no-startup-id /usr/lib/kdeconnectd &
 exec --no-startup-id xcalib -v '/home/soul/Acer Swift 3 SF315-41.icm' &
 exec --no-startup-id redshift &
+exec --no-startup-id corectrl &
 
 #---------------#
 # SPECIAL CASES #
@@ -251,6 +253,9 @@ for_window [class="KeePassXC"]                                 floating enable, 
 
 # pcmanfm
 for_window [class="(?i)pcmanfm" window_type="normal"]          floating enable,    resize set 1280 720,    move position center
+
+# Thunar
+for_window [class="Thunar" window_type="normal"]          floating enable,    resize set 1280 720,    move position center
 
 # sxiv
 for_window [class="Sxiv"]                                      floating enable,    resize set 1280 720,    move position center
