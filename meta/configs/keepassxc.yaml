@@ -1,0 +1,8 @@
+- link:
+    ~/.config/keepassxc: configs/keepassxc
+- shell:
+    -
+        command: sh -c '[ -f $HOME/.cache/keepassxc/keepassxc.ini ] && echo "The file exists, nothing will changed" || { mkdir -p  ~/.cache/keepassxc && cp -v configs/keepassxc-cache/keepassxc.ini ~/.cache/keepassxc; }'
+        stdout: true
+        description: Trying to put keepassxc window config
+        quiet: true
