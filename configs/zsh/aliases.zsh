@@ -18,10 +18,7 @@ if (( $+commands[nvim] )); then
 	alias v="nvim"
 fi
 
-alias update-mirrorlist="sudo reflector --verbose -c 'IT' -c 'GE' -c 'NL' -c 'UA' --age 1 --sort rate --save /etc/pacman.d/mirrorlist"
-if (( $+commands[yay] )); then
-	alias full-update="yay -Syu --noconfirm && echo '\nFlatpak:' && flatpak update --noninteractive && echo '\nCargo:' && cargo install-update -a"
-fi
+alias update-mirrorlist="sudo reflector --verbose --age 6 --sort rate --score 20 --save /etc/pacman.d/mirrorlist"
 alias h=htop
 
 alias m="mpv"
