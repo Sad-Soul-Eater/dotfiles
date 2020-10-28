@@ -11,9 +11,6 @@ ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # Disable highlighting of text pasted into the command line
 zle_highlight=('paste:none')
 
@@ -43,20 +40,12 @@ fi
 
 # Preview the file content of the file under cursor
 if (( $+commands[bat] && $+commands[tree] )); then
-	export FZF_CTRL_T_OPTS="--ansi --preview '(bat --color always --number {} || tree -C {}) 2> /dev/null | head -200'"
-else
-	export FZF_CTRL_T_OPTS="--ansi--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+	export FZF_CTRL_T_OPTS="--ansi --preview '(bat --color always --decorations never {} || tree -C {}) 2> /dev/null | head -200'"
 fi
 
-# (experimental) give a preview of directory when completing cd
-if (( $+commands[tree] )); then
-	local extract="
-	# trim input
-	in=\${\${\"\$(<{f})\"%\$'\0'*}#*\$'\0'}
-	# get ctxt for current completion
-	local -A ctxt=(\"\${(@ps:\2:)CTXT}\")
-	"
-	zstyle ':fzf-tab:complete:cd*' extra-opts --preview=$extract"tree -C \${~ctxt[hpre]}\$in 2> /dev/null | head -200"
+# Give a preview of directory when completing cd
+if (( $+commands[lsd] )); then
+	zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd --color always $realpath 2> /dev/null | head -200'
 fi
 
 # zstyle for kill completion
