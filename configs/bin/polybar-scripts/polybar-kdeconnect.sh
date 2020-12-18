@@ -30,10 +30,10 @@ show_devices() {
 				fi
 				if [ "$isreach" = "true" ] && [ "$istrust" = "true" ]; then
 					battery_icon=""
-					if "$(qdbus --literal org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.battery.isCharging)" == "true"; then
+					if "$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid/battery" org.kde.kdeconnect.device.battery.isCharging)" == "true"; then
 						battery_icon+="$CHARGING_ICON "
 					fi
-					battery_charge="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.battery.charge)%"
+					battery_charge="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid/battery" org.kde.kdeconnect.device.battery.charge)%"
 					devices+="%{A1:$DIR/polybar-kdeconnect.sh -n '$devicename' -i '$deviceid' -b '$battery_charge' -m:}$PHONE_ICON$battery_icon$battery_charge%{A}"
 				elif [ "$isreach" = "false" ] && [ "$istrust" = "true" ]; then
 					devices+="$PHONE_ICON"

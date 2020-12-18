@@ -14,7 +14,7 @@ connection_status() {
 	fi
 }
 
-config="$HOME/wg/wg-aruba.conf"
+config="$HOME/wg/hiso-tun.conf"
 config_name=$(basename "${config%.*}")
 
 case "$1" in

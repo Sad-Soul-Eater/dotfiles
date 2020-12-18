@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 calc() {
-	rofi -show calc -modi calc -calc-command "echo '{result}' | xclip" -lines 12 -width 768
+	rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo '{result}' | xclip" -lines 12 -width 768
 }
 
 drun() {
