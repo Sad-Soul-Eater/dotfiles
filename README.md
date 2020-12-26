@@ -53,7 +53,7 @@
   * [zinit](https://github.com/zdharma/zinit) - Flexible Zsh plugin manager with clean fpath, reports, completion management, **Turbo**, annexes, services, packages
   * [neofetch](https://github.com/dylanaraps/neofetch) - command-line system information tool written in bash 3.2+ - [config](configs/neofetch/config.conf)
 * [mpv](https://github.com/mpv-player/mpv) - **video player** based on MPlayer/mplayer2 - [config](configs/mpv)
-* [yay](https://github.com/Jguer/yay) - Yet another Yogurt - An **AUR** Helper written in Go - [config](configs/yay/config.json)
+* [paru](https://github.com/Morganamilo/paru) -An AUR helper and pacman wrapper - [config](configs/paru/paru.conf)
 * Fonts:
   * [FiraGO](https://github.com/bBoxType/FiraGO) - interface font
   * [FiraCode](https://github.com/tonsky/FiraCode) - terminal font
@@ -70,33 +70,33 @@
 ### Profiles
 
 ``` text
-├── server (bin dotfiles sv_htop neofetch neovim xresources zsh)
-└── workstation (all configs)
+- workstation (all configs)
 ```
 
 ### Configs
 
 ``` text
-├── alacritty
-├── bin
-├── compton
-├── conky
-├── dotfiles
-├── dunst
-├── firefox
-├── i3
-├── kitty
-├── mpv
-├── neofetch
-├── neovim
-├── polybar
-├── psd
-├── ranger
-├── systemd
-├── ws_htop
-├── xresources
-├── yay
-└── zsh
+- bin
+- conky
+- dotfiles
+- dunst
+- firefox
+- htop
+- i3
+- keepassxc
+- kitty
+- mpv
+- neofetch
+- neovim
+- paru
+- picom
+- polybar
+- psd
+- ranger
+- systemd
+- topgrade
+- xresources
+- zsh
 ```
 
 </div>

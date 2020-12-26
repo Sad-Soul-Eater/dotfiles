@@ -12,18 +12,26 @@ else
 	alias cp="cp -v"
 fi
 alias mv="mv -v"
+alias md="mkdir -pv"
 
 if (( $+commands[nvim] )); then
 	export EDITOR="nvim"
 	alias v="nvim"
 fi
 
-alias update-mirrorlist="sudo reflector --verbose --age 6 --sort rate --score 20 --save /etc/pacman.d/mirrorlist"
-alias h=htop
+if (( $+commands[reflector] )); then
+	alias update-mirrorlist="sudo reflector --verbose --age 6 --sort rate --score 20 --save /etc/pacman.d/mirrorlist"
+fi
 
-alias m="mpv"
-alias mt="mpv --profile=twitch"
-alias mi="mpv --profile=interpolation"
+if (( $+commands[htop] )); then
+	alias h=htop
+fi
+
+if (( $+commands[mpv] )); then
+	alias m="mpv"
+	alias mt="mpv --profile=twitch"
+	alias mi="mpv --profile=interpolation"
+fi
 
 alias q="exit"
 
@@ -44,6 +52,23 @@ alias v.mpv="$EDITOR ~/.dotfiles/configs/mpv/linux-mpv.conf"
 alias v.nvim="$EDITOR ~/.dotfiles/configs/nvim/init.vim"
 alias v.polybar="$EDITOR ~/.dotfiles/configs/polybar/config"
 
-alias md="mkdir -p"
+if (( $+commands[paru] )); then
+	alias puconf='paru -Pg'
+	alias puupg='paru -Syu'
+	alias pusu='paru -Syu --noconfirm'
+	alias puin='paru -S'
+	alias puins='paru -U'
+	alias pure='paru -R'
+	alias purem='paru -Rns'
+	alias purep='paru -Si'
+	alias pureps='paru -Ss'
+	alias puloc='paru -Qi'
+	alias pulocs='paru -Qs'
+	alias pulst='paru -Qe'
+	alias puorph='paru -Qtd'
+	alias puinsd='paru -S --asdeps'
+	alias pumir='paru -Syy'
+	alias puupd='paru -Sy'
+fi
 
 # vim: set ft=zsh:

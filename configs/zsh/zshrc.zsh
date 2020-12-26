@@ -52,19 +52,10 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
 zinit ice wait lucid
-zinit snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
-
-zinit ice wait lucid
 zinit snippet OMZ::plugins/golang/golang.plugin.zsh
 
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
-
-zinit ice wait lucid as'completion' blockf
-zinit snippet OMZ::plugins/ripgrep/_ripgrep
 
 # Plugins
 zinit ice depth=1 lucid
@@ -99,9 +90,6 @@ zinit light wfxr/forgit
 
 zinit ice depth=1 wait"2" lucid
 zinit light hlissner/zsh-autopair
-
-zinit ice depth=1 wait"2" lucid
-zinit light peterhurford/up.zsh
 
 zinit ice depth=1 wait"2" lucid
 zinit light MichaelAquilina/zsh-you-should-use
