@@ -5,6 +5,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
 
+# Fix highlighting
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(${(@)ZSH_AUTOSUGGEST_IGNORE_WIDGETS:#zle-\*} zle-\^line-init)
+
 # Path's
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH

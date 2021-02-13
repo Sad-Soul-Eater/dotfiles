@@ -64,7 +64,7 @@ zinit light trystan2k/zsh-tab-title
 zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
-zinit ice depth=1 wait blockf lucid atpull"zinit creinstall -q ."
+zinit ice depth=1 blockf atpull'zinit creinstall -q .'
 zinit light clarketm/zsh-completions
 
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
