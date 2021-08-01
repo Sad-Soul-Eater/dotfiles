@@ -35,7 +35,7 @@ font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;2"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;2"
 font-4 = "Material Design Icons:pixelsize=13;3"
-font-5 = "FuraCode Nerd Font:pixelsize=13;3"
+font-5 = "FiraCode Nerd Font:pixelsize=13;3"
 font-6 = "JoyPixels:scale=10:pixelsize=11;3"
 
 ; Colors
@@ -101,10 +101,12 @@ label-layout = %{T3}%{T-} %layout%
 [module/spotify]
 type = custom/script
 interval = 5
-format-prefix = "%{T6}%{T-}"
 format = <label>
-exec = python ~/bin/polybar-spotify/spotify_status.py -f ' {song} - {artist}'
-click-left = i3-msg '[class="Spotify"] focus' &
+exec = python ~/bin/polybar-spotify/spotify_status.py -p ',' -f '{play_pause} {song} - {artist}'
+;control players (optional)
+click-left = playerctl --player=spotify play-pause
+click-right = playerctl --player=spotify next
+click-middle = playerctl --player=spotify previous
 
 
 [module/i3]
