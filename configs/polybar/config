@@ -73,7 +73,7 @@ click-left = ~/bin/polybar-scripts/vpn-wireguard-wg.sh --toggle &
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
+interface = wlan0
 
 label-connected = %{A1:~/bin/rofi.sh -n:}%{T5}󰤨%{T-} %essid%%{A}
 label-disconnected = %{A1:~/bin/rofi.sh -n:}%{T5}󰤮%{T-} Not Connected%{A}
