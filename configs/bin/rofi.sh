@@ -25,9 +25,9 @@ power() {
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi)
 	if [ "$SELECTED_STRING" == "lock" ]; then
-		betterlockscreen -l dim -t "Don't touch my machine!"
+		betterlockscreen -l dim
 	elif [ "$SELECTED_STRING" == "suspend" ]; then
-		betterlockscreen -s dim -t "Don't touch my machine!"
+		betterlockscreen -s dim
 	elif [ "$SELECTED_STRING" == "logout" ]; then
 		i3-msg exit
 	elif [ "$SELECTED_STRING" == "reboot" ]; then
