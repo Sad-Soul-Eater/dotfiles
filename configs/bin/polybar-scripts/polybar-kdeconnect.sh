@@ -8,7 +8,7 @@ WIDTH=175
 WIDTH_WIDE=400
 
 # Icons shown in Polybar
-PHONE_ICON='%{T5}󰄝%{T-}'
+PHONE_ICON='%{T5}󰄜%{T-}'
 CHARGING_ICON='%{T2}%{T-}'
 SEPERATOR='|'
 
@@ -30,7 +30,7 @@ show_devices() {
 				fi
 				if [ "$isreach" = "true" ] && [ "$istrust" = "true" ]; then
 					battery_icon=""
-					if "$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid/battery" org.kde.kdeconnect.device.battery.isCharging)" == "true"; then
+					if [ "$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid/battery" org.kde.kdeconnect.device.battery.isCharging)" == "true" ]; then
 						battery_icon+="$CHARGING_ICON "
 					fi
 					battery_charge="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid/battery" org.kde.kdeconnect.device.battery.charge)%"
@@ -55,7 +55,7 @@ show_menu() {
 	case "$menu" in
 	*'Send File') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/share" org.kde.kdeconnect.device.share.shareUrl "file://$(zenity --file-selection)" ;;
 	*'Browse Files')
-		if "$(qdbus --literal org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.isMounted)" == "false"; then
+		if [ "$(qdbus --literal org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.isMounted)" == "false" ]; then
 			qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.mount
 		fi
 		qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.startBrowsing
