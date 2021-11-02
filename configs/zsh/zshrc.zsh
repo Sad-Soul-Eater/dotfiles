@@ -9,7 +9,7 @@ colors
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 	print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
 	command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-	command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+	command git clone https://github.com/treuille/zinit.git "$HOME/.zinit/bin" && \
 		print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
 		print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
@@ -68,7 +68,7 @@ zinit ice depth=1 blockf atpull'zinit creinstall -q .'
 zinit light clarketm/zsh-completions
 
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
@@ -83,7 +83,7 @@ zinit ice depth=1 wait"1" lucid pick"manydots-magic" compile"manydots-magic"
 zinit light knu/zsh-manydots-magic
 
 zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
-zinit light zdharma/history-search-multi-word
+zinit light zdharma-continuum/history-search-multi-word
 
 zinit ice depth=1 wait"2" lucid
 zinit light wfxr/forgit
