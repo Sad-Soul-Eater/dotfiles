@@ -1,3 +1,10 @@
+# Opts
+setopt interactive_comments auto_cd
+
+# Autoload
+autoload -Uz zargs allopt zed zmv zcp zln colors
+colors
+
 # Zsh autosuggest settings
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -37,11 +44,6 @@ fi
 # Show the entries of the directory
 if (( $+commands[tree] )); then
 	export FZF_ALT_C_OPTS="--ansi --preview 'tree -C {} | head -200'"
-fi
-
-# Preview the file content of the file under cursor
-if (( $+commands[bat] && $+commands[tree] )); then
-	export FZF_CTRL_T_OPTS="--ansi --preview '(bat --color always --decorations never {} || tree -C {}) 2> /dev/null | head -200'"
 fi
 
 # Give a preview of directory when completing cd

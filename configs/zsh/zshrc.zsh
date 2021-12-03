@@ -1,13 +1,16 @@
-# Opts
-setopt interactive_comments auto_cd
+export GPG_TTY=$TTY
 
-# Autoload
-autoload -Uz zargs allopt zed zmv zcp zln colors
-colors
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
 
-### Added by Zinit's installer
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+
+### Start of Zinit installer's chunk
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-	print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+	print -P "%F{33}▓▒░ %F{220}Installing Zinit (zdharma-continuum/zinit)…%f"
 	command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
 	command git clone https://github.com/zdharma-continuum/zinit.git "$HOME/.zinit/bin" && \
 		print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
