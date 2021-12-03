@@ -236,6 +236,7 @@ exec --no-startup-id /usr/lib/kdeconnectd &
 exec --no-startup-id xcalib -v '/home/soul/Acer Swift 3 SF315-41.icm' &
 exec --no-startup-id redshift &
 exec --no-startup-id corectrl &
+exec --no-startup-id blueman-applet &
 
 #---------------#
 # SPECIAL CASES #
