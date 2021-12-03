@@ -70,7 +70,7 @@ Plug 'tarekbecker/vim-yaml-formatter'
 
 Plug 'lifepillar/pgsql.vim'
 
-Plug 'zinit-zsh/zinit-vim-syntax'
+Plug 'zdharma-continuum/zinit-vim-syntax'
 
 call plug#end()
 
