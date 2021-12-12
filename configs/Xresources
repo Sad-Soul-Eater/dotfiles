@@ -51,13 +51,3 @@ Xft*lcdfilter:  lcddefault
 ! white
 *.color7:       #bfbfb8
 *.color15:      #ebece6
-
-rofi.padding:         20
-rofi.hide-scrollbar:  true
-rofi.font:            FiraGO 12
-rofi.color-enabled:   true
-
-rofi.color-window:   #161520,#29282f,#00161520
-rofi.color-normal:   #00161520,#ebece6,#00161520,#00161520,#aa30bf
-rofi.color-active:   #00161520,#30bf54,#00161520,#00161520,#aa30bf
-rofi.color-urgent:   #00161520,#b1bf30,#00161520,#00161520,#aa30bf

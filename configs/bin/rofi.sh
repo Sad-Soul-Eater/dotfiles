@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
 
 calc() {
-	rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo '{result}' | xclip" -lines 12 -width 768
+	rofi -show calc -modi calc -no-show-match -no-sort -theme-str 'window {width: 30%;}' -calc-command "printf '{result}' | xclip -selection clipboard"
 }
 
 drun() {
-	rofi -show drun -modi drun,window,run -lines 12 -width 1152 -columns 3 -sidebar-mode -show-icons true
+	rofi -show drun -modi drun,window,run -sidebar-mode -show-icons true -theme-str 'window {width: 60%;} listview {columns: 5;}'
 }
 
 clip() {
-	CM_HISTLENGTH=20 CM_LAUNCHER=rofi CM_DIR=~/.cache/clipmenu clipmenu -i -p "clipmenu" -width 768
+	CM_HISTLENGTH=20 CM_LAUNCHER=rofi CM_DIR=~/.cache/clipmenu clipmenu -i -p "clipmenu" -theme-str 'window {width: 60%;} listview {columns: 2;}'
 }
 
 nm() {
-	networkmanager_dmenu -width 300
+	networkmanager_dmenu -theme-str 'window {width: 20%;}'
 }
 
 power() {
 	ACTION_LIST="lock\nsuspend\nlogout\nreboot\nshutdown"
 
 	_rofi() {
-		rofi -dmenu -i -sync -p "sys" -width 115 -lines 5
+		rofi -dmenu -i -sync -p "sys" -theme-str 'window {width: 5%;} listview {lines: 5;}'
 	}
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi)
@@ -42,7 +42,7 @@ screenshot() {
 	SCRIPT="$(dirname "$(readlink -f "$0")")"/screenshot.sh
 
 	_rofi() {
-		rofi -dmenu -i -sync -p "screen" -width 175 -lines 6
+		rofi -dmenu -i -sync -p "shot" -theme-str 'window {width: 10%;} listview {lines: 6;}'
 	}
 
 	SELECTED_STRING=$(echo -e "$ACTION_LIST" | _rofi)
@@ -62,7 +62,7 @@ screenshot() {
 }
 
 emoji() {
-	rofimoji --rofi-args "-lines 20 -width 1344 -columns 2"
+	rofimoji --rofi-args "-theme-str 'window {width: 60%;} listview {columns: 3;}'"
 }
 
 usage() {
