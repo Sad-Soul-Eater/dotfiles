@@ -156,6 +156,7 @@ interval = 600
 [module/github]
 type = internal/github
 token = ${file:~/.secrets/github-notification.token}
+user = Sad-Soul-Eater
 empty-notifications = false
 interval = 30
 format = <label>
