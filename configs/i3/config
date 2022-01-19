@@ -220,20 +220,18 @@ client.background       $bg
 # Keyboard layout
 exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle' &
 
+exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf
 exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id xrdb ~/.Xresources &
 exec_always --no-startup-id ~/bin/bar.sh &
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$cl10" -cfr "$cl13" &
-exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf &
 exec_always --no-startup-id killall conky; conky &
-#exec_always --no-startup-id killall glava; glava -d &
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id udiskie --smart-tray &
 exec --no-startup-id nextcloud --background &
 exec --no-startup-id flatpak run org.telegram.desktop -startintray &
 exec --no-startup-id /usr/lib/kdeconnectd &
-exec --no-startup-id xcalib -v '/home/soul/Acer Swift 3 SF315-41.icm' &
 exec --no-startup-id redshift &
 exec --no-startup-id corectrl &
 exec --no-startup-id blueman-applet &
@@ -243,38 +241,36 @@ exec --no-startup-id blueman-applet &
 #---------------#
 
 # Telegram
-for_window [class="TelegramDesktop"]                                               resize set 400 1000,    move position 20 40
-for_window [class="TelegramDesktop" title="Media viewer"]      fullscreen enable
+for_window [class="TelegramDesktop" title="Media viewer"] fullscreen enable
 # KotatogramDesktop
-for_window [class="KotatogramDesktop"]                                             resize set 400 1000,    move position 20 40
-for_window [class="KotatogramDesktop" title="Media viewer"]    fullscreen enable
+for_window [class="KotatogramDesktop" title="Media viewer"] fullscreen enable
 
 # KeePassXC
-for_window [class="KeePassXC"]                                 floating enable,    resize set 1280 720,    move position center
+for_window [class="KeePassXC"] floating enable, resize set 1280 720, move position center
 
 # pcmanfm
-for_window [class="(?i)pcmanfm" window_type="normal"]          floating enable,    resize set 1280 720,    move position center
+for_window [class="(?i)pcmanfm" window_type="normal"] floating enable, resize set 1280 720, move position center
 
 # Thunar
-for_window [class="Thunar" window_type="normal"]          floating enable,    resize set 1280 720,    move position center
+for_window [class="Thunar" window_type="normal"] floating enable, resize set 1280 720, move position center
 
 # sxiv
-for_window [class="Sxiv"]                                      floating enable,    resize set 1280 720,    move position center
+for_window [class="Sxiv"] floating enable, resize set 1280 720, move position center
 
 # libreoffice
-for_window [class="Soffice"]                                                       resize set 1000 750,    move position center
+for_window [class="Soffice"] resize set 1000 750, move position center
 
 # Yad popup calendar
-for_window [class="Yad" title="yad-calendar"]                  floating enable
+for_window [class="Yad" title="yad-calendar"] floating enable
 
 # Make window with specified title float
-for_window [title="^i3-float$"]                                floating enable,    resize set 1280 720,    move position center
+for_window [title="^i3-float$"] floating enable, resize set 1280 720, move position center
 
-for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable,    resize set 380 420
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable, resize set 380 420
 
-for_window [window_role="About"]                               floating enable
+for_window [window_role="About"] floating enable
 
-for_window [window_role="PictureInPicture"]                    floating enable,    sticky enable
+for_window [window_role="PictureInPicture"] floating enable, sticky enable
 
 #------------#
 # MEDIA KEYS #
@@ -289,25 +285,29 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
-#floating_maximum_size 1900 x 1060
-#floating_minimum_size -1 x -1
-
 #-------------#
 # ASSIGNMENTS #
 #-------------#
 
 assign [class="firefox" window_type="normal"] $ws2
+
 assign [class="Code"] $ws3
 assign [class="code-oss"] $ws3
 assign [class="VSCodium"] $ws3
+
 assign [class="qBittorrent" window_type="normal"] $ws4
 assign [class="Transmission" window_type="normal"] $ws4
 assign [class="Deluge" window_type="normal"] $ws4
+
 assign [class="mpv"] $ws5
+
 assign [class="Steam" title="Steam"] $ws6
+
 assign [class="TelegramDesktop"] $ws7
 assign [class="KotatogramDesktop"] $ws7
 assign [class="discord"] $ws7
+assign [class="Thunderbird"] $ws7
+
 for_window [class="Spotify"] move to workspace $ws10
 
 # vim: set ft=i3config:
