@@ -5,6 +5,7 @@ setopt interactive_comments auto_cd
 autoload -Uz zargs allopt zed zmv zcp zln colors
 colors
 
+
 # Zsh autosuggest settings
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -12,12 +13,24 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 ZSH_TAB_TITLE_DEFAULT_DISABLE_PREFIX=true
 
+
 # Fix highlighting
 ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(${(@)ZSH_AUTOSUGGEST_IGNORE_WIDGETS:#zle-\*} zle-\^line-init)
 
+
 # Path's
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+
+if (( $+commands[go] )); then
+	export GOPATH=$HOME/go
+	export PATH="$GOPATH/bin:$PATH"
+fi
+
+if (( $+commands[ruby] )); then
+	export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+	export PATH="$GEM_HOME/bin:$PATH"
+fi
+
 
 # Disable highlighting of text pasted into the command line
 zle_highlight=('paste:none')
