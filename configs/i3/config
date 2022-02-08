@@ -152,6 +152,9 @@ bindsym Print exec --no-startup-id  ~/bin/rofi.sh -s
 # emoji picker
 bindsym $mod+m exec --no-startup-id ~/bin/rofi.sh -e
 
+# duns pop notification from history
+bindsym $mod+grave exec --no-startup-id dunstctl history-pop
+
 # terminal
 bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+Shift+Return exec --no-startup-id kitty --title="i3-float"
