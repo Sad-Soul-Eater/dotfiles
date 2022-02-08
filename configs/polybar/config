@@ -31,9 +31,9 @@ bottom = false
 
 ; Fonts
 font-0 = "FiraGO:size=11;2"
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;2"
-font-3 = "Font Awesome 5 Brands:pixelsize=12;2"
+font-1 = "Font Awesome 6 Free:style=Solid:pixelsize=12;2"
+font-2 = "Font Awesome 6 Free:style=Regular:pixelsize=12;2"
+font-3 = "Font Awesome 6 Brands:pixelsize=12;2"
 font-4 = "Material Design Icons:pixelsize=13;3"
 font-5 = "FiraCode Nerd Font:pixelsize=13;3"
 font-6 = "JoyPixels:scale=10:pixelsize=11;3"
