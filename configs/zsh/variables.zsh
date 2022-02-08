@@ -19,16 +19,16 @@ ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(${(@)ZSH_AUTOSUGGEST_IGNORE_WIDGETS:#zle-\*} zle
 
 
 # Path's
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 if (( $+commands[go] )); then
-	export GOPATH=$HOME/go
-	export PATH="$GOPATH/bin:$PATH"
+	GOPATH=$HOME/go
+	PATH="$GOPATH/bin:$PATH"
 fi
 
 if (( $+commands[ruby] )); then
-	export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-	export PATH="$GEM_HOME/bin:$PATH"
+	GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+	PATH="$GEM_HOME/bin:$PATH"
 fi
 
 
@@ -37,7 +37,7 @@ zle_highlight=('paste:none')
 
 # Use bat (https://github.com/sharkdp/bat) for man page colorizing
 if (( $+commands[bat] )); then
-	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
 # Use fd for finding files/dirs
@@ -47,16 +47,16 @@ if (( $+commands[fd] || $+commands[fdfind] )); then
 	elif (( $+commands[fdfind] )); then   # Ubuntu
 		local FD_COMMAND="fdfind"
 	fi
-	export FZF_DEFAULT_COMMAND="$FD_COMMAND --type f --follow --color=always --exclude go/src --exclude go/pkg"
-	export FZF_DEFAULT_OPTS="--ansi"
+	FZF_DEFAULT_COMMAND="$FD_COMMAND --type f --follow --color=always --exclude go/src --exclude go/pkg"
+	FZF_DEFAULT_OPTS="--ansi"
 
-	export FZF_ALT_C_COMMAND="$FD_COMMAND --type d --follow --color=always --exclude go/src --exclude go/pkg"
-	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+	FZF_ALT_C_COMMAND="$FD_COMMAND --type d --follow --color=always --exclude go/src --exclude go/pkg"
+	FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
 # Show the entries of the directory
 if (( $+commands[tree] )); then
-	export FZF_ALT_C_OPTS="--ansi --preview 'tree -C {} | head -200'"
+	FZF_ALT_C_OPTS="--ansi --preview 'tree -C {} | head -200'"
 fi
 
 # Give a preview of directory when completing cd

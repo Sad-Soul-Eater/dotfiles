@@ -15,7 +15,7 @@ alias mv="mv -v"
 alias md="mkdir -pv"
 
 if (( $+commands[nvim] )); then
-	export EDITOR="nvim"
+	EDITOR="nvim"
 	alias v="nvim"
 fi
 
@@ -28,9 +28,8 @@ if (( $+commands[htop] )); then
 fi
 
 if (( $+commands[mpv] )); then
-	alias m="mpv"
-	alias mt="mpv --profile=twitch"
-	alias mi="mpv --profile=interpolation"
+	alias mpv-twitch="mpv --profile=twitch"
+	alias mpv-interpolation="mpv --profile=interpolation"
 fi
 
 alias q="exit"
