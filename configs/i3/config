@@ -14,7 +14,7 @@ font pango:FiraGO 12
 #-----------------------------#
 
 # drag floating key
-floating_modifier $alt
+floating_modifier $mod
 
 # kill focused window
 bindsym $mod+q kill
