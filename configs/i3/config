@@ -191,27 +191,27 @@ smart_borders on
 # window border
 for_window [class="^.*"] border pixel 1
 
-set_from_resource $fg i3wm.foreground #f0f0f0
-set_from_resource $bg i3wm.background #f0f0f0
-set_from_resource $cl0 i3wm.color0 #f0f0f0
-set_from_resource $cl1 i3wm.color1 #f0f0f0
-set_from_resource $cl2 i3wm.color2 #f0f0f0
-set_from_resource $cl3 i3wm.color3 #f0f0f0
-set_from_resource $cl4 i3wm.color4 #f0f0f0
-set_from_resource $cl5 i3wm.color5 #f0f0f0
-set_from_resource $cl6 i3wm.color6 #f0f0f0
-set_from_resource $cl7 i3wm.color7 #f0f0f0
-set_from_resource $cl8 i3wm.color8 #f0f0f0
-set_from_resource $cl9 i3wm.color9 #f0f0f0
-set_from_resource $cl10 i3wm.color10 #f0f0f0
-set_from_resource $cl11 i3wm.color11 #f0f0f0
-set_from_resource $cl12 i3wm.color12 #f0f0f0
-set_from_resource $cl13 i3wm.color13 #f0f0f0
-set_from_resource $cl14 i3wm.color14 #f0f0f0
-set_from_resource $cl15 i3wm.color15 #f0f0f0
+set_from_resource $fg i3wm.foreground
+set_from_resource $bg i3wm.background
+set_from_resource $cl0 i3wm.color0
+set_from_resource $cl1 i3wm.color1
+set_from_resource $cl2 i3wm.color2
+set_from_resource $cl3 i3wm.color3
+set_from_resource $cl4 i3wm.color4
+set_from_resource $cl5 i3wm.color5
+set_from_resource $cl6 i3wm.color6
+set_from_resource $cl7 i3wm.color7
+set_from_resource $cl8 i3wm.color8
+set_from_resource $cl9 i3wm.color9
+set_from_resource $cl10 i3wm.color10
+set_from_resource $cl11 i3wm.color11
+set_from_resource $cl12 i3wm.color12
+set_from_resource $cl13 i3wm.color13
+set_from_resource $cl14 i3wm.color14
+set_from_resource $cl15 i3wm.color15
 
 # class                 border  backgr. text   indicator child_border
-client.focused          $cl7    $bg     $fg    $fg       $fg
+client.focused          $cl7    $bg     $fg    $fg       $cl7
 client.focused_inactive $cl0    $bg     $fg    $bg       $bg
 client.unfocused        $cl0    $bg     $fg    $bg       $bg
 client.urgent           $cl13   $bg     $cl13  $bg       $cl13
@@ -226,7 +226,7 @@ client.background       $bg
 # Keyboard layout
 exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle' &
 
-exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf
+exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf &
 exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id xrdb ~/.Xresources &
 exec_always --no-startup-id ~/bin/bar.sh &
