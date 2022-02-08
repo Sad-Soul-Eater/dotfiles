@@ -102,11 +102,11 @@ label-layout = %{T3}%{T-} %layout%
 type = custom/script
 interval = 5
 format = <label>
-exec = python ~/bin/polybar-spotify/spotify_status.py -p ',' -f '{play_pause} {song} - {artist}'
+exec = python ~/bin/polybar-spotify/spotify_status.py -p ',' -f '{play_pause} {song} - {artist}'
 ;control players (optional)
-click-left = playerctl --player=spotify play-pause
-click-right = playerctl --player=spotify next
-click-middle = playerctl --player=spotify previous
+click-left = playerctl --player=spotify play-pause &
+click-right = playerctl --player=spotify next &
+click-middle = playerctl --player=spotify previous &
 
 
 [module/i3]
