@@ -48,6 +48,7 @@ show_devices() {
 		fi
 	done
 	echo "${devices}"
+	sleep 5
 }
 
 show_menu() {
