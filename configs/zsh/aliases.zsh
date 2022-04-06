@@ -6,13 +6,11 @@ alias l="ls -lAh"
 alias la="ls -Ah"
 alias ll="ls -lh"
 
-if (( $+commands[xcp] )); then
-	alias cp="xcp -w 0"
-else
-	alias cp="cp -v"
-fi
-alias mv="mv -v"
 alias md="mkdir -pv"
+
+if (( $+commands[bat] )); then
+	alias cat='bat --decorations never --paging never'
+fi
 
 if (( $+commands[nvim] )); then
 	EDITOR="nvim"
