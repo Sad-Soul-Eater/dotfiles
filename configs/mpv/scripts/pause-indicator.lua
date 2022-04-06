@@ -13,7 +13,7 @@ local log = {
     local level = 2
     if "table" ~= type(item) then
       msg.info(tostring(item))
-      return 
+      return
     end
     local count = 1
     local tablecount = 1
@@ -86,7 +86,7 @@ local settingsMeta = {
       local dirExists = mp.find_config_file(configDir)
       if dirExists and not utils.readdir(configDir) then
         log.warn(('Configuration migration failed. %q exists and does not appear to be a folder'):format(configDir))
-        return 
+        return
       else
         if not dirExists then
           local res = utils.subprocess({
@@ -97,7 +97,7 @@ local settingsMeta = {
           })
           if res.error or res.status ~= 0 then
             log.warn(('Making directory %q failed.'):format(configDir))
-            return 
+            return
           end
         end
       end
@@ -110,7 +110,7 @@ local settingsMeta = {
       })
       if res.error or res.status ~= 0 then
         log.warn(('Moving file %q -> %q failed.'):format(oldConfig, newConfig))
-        return 
+        return
       end
       if mp.find_config_file(newConfigFile) then
         return log.info('Configuration successfully migrated.')
@@ -430,7 +430,7 @@ do
     end,
     removeSortedList = function(self, elementList)
       if #elementList < 1 then
-        return 
+        return
       end
       for i = 1, #elementList - 1 do
         local element = table.remove(elementList)
@@ -623,7 +623,7 @@ do
   end
   self.animate = function()
     if #animationList == 0 then
-      return 
+      return
     end
     local currentTime = mp.get_time()
     for _, animation in ipairs(animationList) do
@@ -656,13 +656,13 @@ do
     end,
     addZone = function(self, zone)
       if zone == nil then
-        return 
+        return
       end
       return self.activityZones:insert(zone)
     end,
     removeZone = function(self, zone)
       if zone == nil then
-        return 
+        return
       end
       return self.activityZones:remove(zone)
     end,
@@ -741,7 +741,7 @@ do
       local displayDuration = settings['request-display-duration']
       mp.add_key_binding("tab", "request-display", function(event)
         if event.event == "repeat" then
-          return 
+          return
         end
         if event.event == "down" or event.event == "press" then
           if displayRequestTimer then

@@ -1,4 +1,3 @@
-* [auto-profiles](https://github.com/wiiaboo/mpv-scripts/blob/master/auto-profiles.lua)
 * [autocrop](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autocrop.lua)
 * [autoload](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autoload.lua)
 * [bookmark](https://github.com/yozorayuki/mpv-plugin-bookmark)

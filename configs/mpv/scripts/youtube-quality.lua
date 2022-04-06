@@ -19,6 +19,9 @@ local opts = {
     down_binding = "DOWN",
     select_binding = "ENTER",
 
+    --youtube-dl version(could be youtube-dl or yt-dlp, or something else)
+    ytdl_ver = "yt-dlp",
+
     --formatting / cursors
     selected_and_active     = "▶ - ",
     selected_and_inactive   = "● - ",
@@ -112,7 +115,7 @@ function show_menu()
         draw_menu()
     end
     function choose_prefix(i)
-        if     i == selected and i == active then return opts.selected_and_active 
+        if     i == selected and i == active then return opts.selected_and_active
         elseif i == selected then return opts.selected_and_inactive end
 
         if     i ~= selected and i == active then return opts.unselected_and_active
@@ -157,11 +160,11 @@ function show_menu()
     mp.add_forced_key_binding(opts.toggle_menu_binding, "escape", destroy)
 
     draw_menu()
-    return 
+    return
 end
 
 local ytdl = {
-    path = "youtube-dl",
+    path = opts.ytdl_ver,
     searched = false,
     blacklisted = {}
 }
@@ -186,7 +189,7 @@ function download_formats()
     url = string.gsub(url, "ytdl://", "") -- Strip possible ytdl:// prefix.
 
     -- don't fetch the format list if we already have it
-    if format_cache[url] ~= nil then 
+    if format_cache[url] ~= nil then
         local res = format_cache[url]
         return res, table_size(res)
     end
@@ -240,7 +243,7 @@ end
 
 
 -- register script message to show menu
-mp.register_script_message("toggle-quality-menu", 
+mp.register_script_message("toggle-quality-menu",
 function()
     if destroyer ~= nil then
         destroyer()
