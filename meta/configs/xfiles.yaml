@@ -1,0 +1,5 @@
+- link:
+    ~/.xinitrc:    configs/xfiles/xinitrc
+    ~/.xprofile:   configs/xfiles/xprofile
+    ~/.Xresources: configs/xfiles/Xresources
+    ~/.xserverrc:  configs/xfiles/xserverrc
