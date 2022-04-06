@@ -27,7 +27,7 @@ power() {
 	if [ "$SELECTED_STRING" == "lock" ]; then
 		betterlockscreen -l dim
 	elif [ "$SELECTED_STRING" == "suspend" ]; then
-		betterlockscreen -s dim
+		systemctl suspend
 	elif [ "$SELECTED_STRING" == "logout" ]; then
 		i3-msg exit
 	elif [ "$SELECTED_STRING" == "reboot" ]; then
@@ -62,7 +62,7 @@ screenshot() {
 }
 
 emoji() {
-	rofimoji --rofi-args "-theme-str 'window {width: 60%;} listview {columns: 3;}'"
+	rofimoji --action copy clipboard --selector-args "-theme-str 'window {width: 60%;} listview {columns: 3;}'"
 }
 
 usage() {
