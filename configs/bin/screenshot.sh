@@ -57,6 +57,12 @@ Options:
 -e  edit last screenshot"
 }
 
+check_dir() {
+	if [ ! -d "$SCREENSHOTS_DIR" ]; then
+		mkdir -p "$SCREENSHOTS_DIR"
+	fi
+}
+
 if [[ "$1" == "" ]]; then
 	usage
 	exit 0
@@ -65,15 +71,19 @@ fi
 while getopts "fgacoeh" OPTION; do
 	case "$OPTION" in
 	f)
+		check_dir
 		full
 		;;
 	g)
+		check_dir
 		full_cl
 		;;
 	a)
+		check_dir
 		area
 		;;
 	c)
+		check_dir
 		area_cl
 		;;
 	o)

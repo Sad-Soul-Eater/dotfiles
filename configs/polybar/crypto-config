@@ -1,0 +1,22 @@
+[general]
+display = both
+
+[USDTUAH]
+icon = 
+price_round = 2
+click = xdg-open https\://www.binance.com/en/trade/USDT_UAH?layout=pro
+
+[BTCUSDT]
+icon = 
+price_round = 0
+click = xdg-open https\://www.binance.com/en/trade/BTC_USDT?layout=pro
+
+[TWTUSDT]
+icon = %%{T5}󰒙%%{T-}
+price_round = 4
+click = xdg-open https\://www.binance.com/en/trade/TWT_USDT?layout=pro
+
+# [LUNABUSD]
+# icon = 
+# price_round = 6
+# click = xdg-open https\://www.binance.com/en/trade/LUNA_BUSD?layout=pro

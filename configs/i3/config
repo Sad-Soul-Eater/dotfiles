@@ -243,6 +243,7 @@ exec --no-startup-id redshift &
 exec --no-startup-id corectrl &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id conky &
+exec --no-startup-id ~/bin/keyboard/acpi-listen.sh &
 
 #---------------#
 # SPECIAL CASES #
@@ -297,6 +298,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 # screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+
+bindsym XF86TouchpadToggle exec --no-startup-id ~/bin/keyboard/touchpad-toggle.sh
+
+bindsym XF86Launch4 exec --no-startup-id ~/bin/keyboard/asus-power-profile.sh
 
 #-------------#
 # ASSIGNMENTS #

@@ -37,6 +37,7 @@ font-3 = "Font Awesome 6 Brands:pixelsize=12;2"
 font-4 = "Material Design Icons:pixelsize=13;3"
 font-5 = "FiraCode Nerd Font:pixelsize=13;3"
 font-6 = "JoyPixels:scale=10:pixelsize=11;3"
+font-7 = "cryptofont:pixelsize=12;3"
 
 ; Colors
 background = ${colors.background}
@@ -55,7 +56,7 @@ tray-background = ${colors.background}
 ; Modules
 modules-left = vpn-wireguard-wg wlan cpu memory keyboard spotify
 modules-center = i3
-modules-right = updates-arch-combined github kdeconnect battery backlight pulseaudio date time
+modules-right = crypto updates-arch-combined github kdeconnect battery backlight upower-headset mic-status pulseaudio date time
 
 
 [module/font-test]
@@ -100,7 +101,7 @@ label-layout = %{T3}%{T-} %layout%
 
 [module/spotify]
 type = custom/script
-interval = 5
+interval = 1
 format = <label>
 exec = python ~/bin/polybar-spotify/spotify_status.py -p ',' -f '{play_pause} {song} - {artist}'
 ;control players (optional)
@@ -145,6 +146,12 @@ label-visible-padding = 1
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
+
+
+[module/crypto]
+type = custom/script
+interval = 60
+exec = ~/bin/polybar-scripts/crypto.py
 
 
 [module/updates-arch-combined]
@@ -217,6 +224,19 @@ ramp-5 = 󰪢
 ramp-6 = 󰪣
 ramp-7 = 󰪤
 ramp-8 = 󰪥
+
+
+[module/upower-headset]
+type = custom/script
+exec = "~/bin/polybar-scripts/upower-headset.sh"
+interval = 60
+
+
+[module/mic-status]
+type = custom/script
+exec = "~/bin/polybar-scripts/mic-status.sh"
+click-left = ~/bin/keyboard/mic-toggle.sh &
+interval = 1
 
 
 [module/pulseaudio]
