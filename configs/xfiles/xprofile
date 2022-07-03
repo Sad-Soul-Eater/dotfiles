@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
-export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME='gtk2'
+
 export MOZ_USE_XINPUT2=1
