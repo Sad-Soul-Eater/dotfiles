@@ -160,7 +160,7 @@ bindsym $mod+Return exec --no-startup-id kitty
 bindsym $mod+Shift+Return exec --no-startup-id kitty --title="i3-float"
 
 # File Manager
-bindsym $mod+Tab exec --no-startup-id thunar
+bindsym $mod+Tab exec --no-startup-id nemo
 
 # restart i3 in place
 bindsym $mod+Shift+r restart
@@ -168,8 +168,10 @@ bindsym $mod+Shift+r restart
 # Firefox
 bindsym $mod+a exec --no-startup-id firefox
 
+# Telegram flatpak
+#bindsym $mod+t exec --no-startup-id flatpak run org.telegram.desktop
 # Telegram
-bindsym $mod+t exec --no-startup-id flatpak run org.telegram.desktop
+bindsym $mod+t exec --no-startup-id telegram-desktop
 
 #------#
 # GAPS #
@@ -231,16 +233,16 @@ exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id xrdb ~/.Xresources &
 exec_always --no-startup-id ~/bin/bar.sh &
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$cl10" -cfr "$cl13" &
-exec_always --no-startup-id killall conky; conky &
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id udiskie --smart-tray &
 exec --no-startup-id nextcloud --background &
-exec --no-startup-id flatpak run org.telegram.desktop -startintray &
-exec --no-startup-id /usr/lib/kdeconnectd &
+exec --no-startup-id telegram-desktop -startintray &
+exec --no-startup-id flatpak run com.slack.Slack -u &
 exec --no-startup-id redshift &
 exec --no-startup-id corectrl &
 exec --no-startup-id blueman-applet &
+exec --no-startup-id conky &
 
 #---------------#
 # SPECIAL CASES #
@@ -250,6 +252,8 @@ exec --no-startup-id blueman-applet &
 for_window [class="TelegramDesktop" title="Media viewer"] fullscreen enable
 # KotatogramDesktop
 for_window [class="KotatogramDesktop" title="Media viewer"] fullscreen enable
+# 64Gram
+for_window [class="64Gram" title="Media viewer"] fullscreen enable
 
 # KeePassXC
 for_window [class="KeePassXC"] floating enable, resize set 1280 720, move position center
@@ -259,6 +263,9 @@ for_window [class="(?i)pcmanfm" window_type="normal"] floating enable, resize se
 
 # Thunar
 for_window [class="Thunar" window_type="normal"] floating enable, resize set 1280 720, move position center
+
+# Nemo
+for_window [class="Nemo" window_type="normal"] floating enable, resize set 1280 720, move position center
 
 # sxiv
 for_window [class="Sxiv"] floating enable, resize set 1280 720, move position center
@@ -311,7 +318,9 @@ assign [class="Steam" title="Steam"] $ws6
 
 assign [class="TelegramDesktop"] $ws7
 assign [class="KotatogramDesktop"] $ws7
+assign [class="64Gram"] $ws7
 assign [class="discord"] $ws7
+assign [class="Slack"] $ws7
 assign [class="Thunderbird"] $ws7
 
 for_window [class="Spotify"] move to workspace $ws10
