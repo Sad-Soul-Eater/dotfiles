@@ -2,36 +2,24 @@
 
 SCREENSHOTS_DIR="$HOME/Pictures/Screenshots"
 TIMESTAMP="$(date +%Y.%m.%d-%H.%M.%S)"
-FILENAME="${SCREENSHOTS_DIR}/${TIMESTAMP}.screenshot.png"
+FILENAME="${SCREENSHOTS_DIR}/${TIMESTAMP}.screenshot.jpg"
 ICON_PATH="gnome-screenshot"
 IMG_V="xdg-open"
 
 full() {
-	maim --hidecursor --quality 9 "$FILENAME"
-	xclip -selection clipboard -t image/png "$FILENAME"
-	notify-send "Screenshot taken." -t 500 --urgency low -i $ICON_PATH
+	flameshot gui --region all --path "$FILENAME"
 }
 
 full_cl() {
-	maim --hidecursor --quality 3 "/tmp/maim_clipboard.png"
-	xclip -selection clipboard -t image/png "/tmp/maim_clipboard.png"
-	notify-send "Copied to clipboard." -t 500 --urgency low -i $ICON_PATH
-	rm "/tmp/maim_clipboard.png"
+	flameshot gui --region all --clipboard
 }
 
 area() {
-	notify-send 'Select area to capture.' --urgency low -i $ICON_PATH
-	maim --hidecursor --quality 9 -s "$FILENAME"
-	xclip -selection clipboard -t image/png "$FILENAME"
-	notify-send "Screenshot taken." -t 500 --urgency low -i $ICON_PATH
+	flameshot gui --path "$FILENAME"
 }
 
 area_cl() {
-	notify-send 'Select area to copy to clipboard.' -t 500 --urgency low -i $ICON_PATH
-	maim --hidecursor --quality 3 -s "/tmp/maim_clipboard.png"
-	xclip -selection clipboard -t image/png "/tmp/maim_clipboard.png"
-	notify-send "Copied selection to clipboard." -t 500 --urgency low -i $ICON_PATH
-	rm "/tmp/maim_clipboard.png"
+	flameshot gui --clipboard
 }
 
 open() {
