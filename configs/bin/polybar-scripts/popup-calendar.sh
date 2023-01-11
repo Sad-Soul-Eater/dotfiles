@@ -2,8 +2,10 @@
 
 BAR_HEIGHT=22  # polybar height
 BORDER_SIZE=1  # border size from your wm settings
-YAD_WIDTH=222  # 222 is minimum possible value
-YAD_HEIGHT=193 # 193 is minimum possible value
+
+YAD_WIDTH=228
+YAD_HEIGHT=186
+
 DATE="%{T9}%{T-} $(date +"%e %B")"
 
 case "$1" in
@@ -17,22 +19,22 @@ case "$1" in
 
 	# X
 	if [ "$((X + YAD_WIDTH / 2 + BORDER_SIZE))" -gt "$WIDTH" ]; then #Right side
-		: $((pos_x = WIDTH - YAD_WIDTH - BORDER_SIZE))
+		: $((pos_x = WIDTH - YAD_WIDTH - BORDER_SIZE * 2))
 	elif [ "$((X - YAD_WIDTH / 2 - BORDER_SIZE))" -lt 0 ]; then #Left side
-		: $((pos_x = BORDER_SIZE))
+		: $((pos_x = 0))
 	else #Center
 		: $((pos_x = X - YAD_WIDTH / 2))
 	fi
 
 	# Y
 	if [ "$Y" -gt "$((HEIGHT / 2))" ]; then #Bottom
-		: $((pos_y = HEIGHT - YAD_HEIGHT - BAR_HEIGHT - BORDER_SIZE))
+		: $((pos_y = HEIGHT - YAD_HEIGHT - BORDER_SIZE * 2))
 	else #Top
-		: $((pos_y = BAR_HEIGHT + BORDER_SIZE))
+		: $((pos_y = BAR_HEIGHT))
 	fi
 
-	yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
-		--width=$YAD_WIDTH --height=$YAD_HEIGHT --posx=$pos_x --posy=$pos_y \
+	yad --calendar --undecorated --close-on-unfocus --no-buttons \
+		--geometry="${YAD_WIDTH}x${YAD_HEIGHT}+${pos_x}+${pos_y}" \
 		--title="yad-calendar" --borders=0 >/dev/null &
 	;;
 *)
