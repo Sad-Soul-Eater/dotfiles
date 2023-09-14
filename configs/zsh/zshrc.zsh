@@ -69,7 +69,6 @@ zinit depth'1' wait"0a" lucid light-mode for \
     if'[[ -z "$commands[atuin]" ]]' zdharma-continuum/history-search-multi-word \
     has'fzf' Aloxaf/fzf-tab \
     has'fzf' wfxr/forgit \
-    has'fd' aubreypwd/zsh-plugin-fd \
     MichaelAquilina/zsh-you-should-use
 
 zinit depth'1' wait'0c' lucid light-mode for \
