@@ -1,100 +1,125 @@
-export GPG_TTY=$TTY
-
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
 
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
-
-### Start of Zinit installer's chunk
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-	print -P "%F{33}▓▒░ %F{220}Installing Zinit (zdharma-continuum/zinit)…%f"
-	command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-	command git clone https://github.com/zdharma-continuum/zinit.git "$HOME/.zinit/bin" && \
-		print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-		print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "$HOME/.zinit/bin/zinit.zsh"
+source "$HOME/.zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
+### End of Zinit's installer chunk
 
-source ~/.zsh/variables.zsh
+# Path's
+PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+
+# Direnv hook
+(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
+
+if [[ -f "$HOME/.zsh/powerlevel10k-generated.zsh" ]]; then
+    zinit snippet "$HOME/.zsh/powerlevel10k-generated.zsh"
+else
+    zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/configs/zsh/powerlevel10k-generated.zsh'
+fi
+
+if [[ -f "$HOME/.zsh/powerlevel10k-settings.zsh" ]]; then
+    zinit snippet "$HOME/.zsh/powerlevel10k-settings.zsh"
+else
+    zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/configs/zsh/powerlevel10k-settings.zsh'
+fi
 
 # Prompt
-zinit ice depth=1 atload"!source ~/.zsh/powerlevel10k-settings.zsh" lucid nocd
-zinit light romkatv/powerlevel10k
+zinit depth'1' nocd light-mode for \
+    romkatv/powerlevel10k
 
-# Oh-my-zsh libs
-zinit snippet OMZ::lib/history.zsh
+# Oh My Zsh libs
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/lib
+zinit light-mode for \
+    OMZL::clipboard.zsh \
+    OMZL::completion.zsh \
+    OMZL::correction.zsh \
+    OMZL::directories.zsh \
+    OMZL::functions.zsh \
+    OMZL::git.zsh \
+	OMZL::grep.zsh \
+    OMZL::key-bindings.zsh \
+    OMZL::spectrum.zsh \
+    OMZL::termsupport.zsh
 
-zinit snippet OMZ::lib/key-bindings.zsh
+# Oh My Zsh plugins
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
+zinit wait'0a' lucid light-mode for \
+    OMZP::colored-man-pages \
+    OMZP::extract \
+    OMZP::git \
+    OMZP::sudo \
+    OMZP::systemd
 
-zinit ice wait lucid
-zinit snippet OMZ::lib/completion.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::lib/grep.zsh
-
-# Oh-my-zsh plugins
-zinit ice wait lucid atload"unalias grv"
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/golang/golang.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+# Completions
+zinit depth'1' wait'0a' lucid blockf atpull'zinit creinstall -q .' light-mode for \
+    zsh-users/zsh-completions \
+    zchee/zsh-completions
 
 # Plugins
-zinit ice depth=1 lucid
-zinit light trystan2k/zsh-tab-title
+zinit depth'1' wait"0a" lucid light-mode for \
+    has'atuin' atuinsh/atuin \
+    has'fzf' Aloxaf/fzf-tab \
+    has'fzf' wfxr/forgit \
+    has'fd' aubreypwd/zsh-plugin-fd \
+    MichaelAquilina/zsh-you-should-use
 
-zinit ice depth=1 wait lucid
-zinit light Aloxaf/fzf-tab
+zinit depth'1' wait'0c' lucid light-mode for \
+    zdharma-continuum/fast-syntax-highlighting \
+    atload'ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(reset-prompt); _zsh_autosuggest_start' atinit'ZINIT[COMPINIT_OPTS]=-u; zpcompinit; zpcdreplay' \
+        zsh-users/zsh-autosuggestions \
 
-zinit ice depth=1 blockf atpull'zinit creinstall -q clarketm/zsh-completions'
-zinit light clarketm/zsh-completions
+if (( $+commands[lsd] )); then
+	alias ls="lsd --size=short"
+	alias lt="ls --tree"
+fi
 
-zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
+if (( $+commands[bat] )); then
+	alias cat='bat --decorations never --paging never'
+fi
 
-zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
+if (( $+commands[nvim] )); then
+	export EDITOR="nvim"
+	alias v="nvim"
+fi
 
-zinit ice depth=1 wait lucid atload"bindkey '$terminfo[kcuu1]' history-substring-search-up; bindkey '$terminfo[kcud1]' history-substring-search-down"
-zinit light zsh-users/zsh-history-substring-search
+if (( $+commands[htop] )); then
+	alias h=htop
+fi
 
-zinit ice depth=1 wait lucid
-zinit light wfxr/formarks
+if (( $+commands[kubectl] )); then
+	alias k=kubectl
+fi
 
-zinit ice depth=1 wait"1" lucid pick"manydots-magic" compile"manydots-magic"
-zinit light knu/zsh-manydots-magic
+if (( $+commands[paru] )); then
+	alias puconf='paru -Pg'
+	alias puupg='paru -Syu'
+	alias pusu='paru -Syu --noconfirm'
+	alias puin='paru -S'
+	alias puins='paru -U'
+	alias pure='paru -R'
+	alias purem='paru -Rns'
+	alias purep='paru -Si'
+	alias pureps='paru -Ss'
+	alias puloc='paru -Qi'
+	alias pulocs='paru -Qs'
+	alias pulst='paru -Qe'
+	alias puorph='paru -Qtd'
+	alias puinsd='paru -S --asdeps'
+	alias pumir='paru -Syy'
+	alias puupd='paru -Sy'
+fi
 
-zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
-zinit light zdharma-continuum/history-search-multi-word
-
-zinit ice depth=1 wait"2" lucid
-zinit light wfxr/forgit
-
-zinit ice depth=1 wait"2" lucid
-zinit light hlissner/zsh-autopair
-
-zinit ice depth=1 wait"2" lucid
-zinit light MichaelAquilina/zsh-you-should-use
-
-source ~/.zsh/aliases.zsh
+# Integrate atuin in zsh-autosuggest
+if (( $+commands[atuin] )); then
+    _zsh_autosuggest_strategy_atuin_top() {
+        suggestion=$(atuin search --cmd-only --limit 1 --search-mode prefix "$1")
+    }
+    ZSH_AUTOSUGGEST_STRATEGY=atuin_top
+fi
