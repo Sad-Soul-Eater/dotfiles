@@ -44,7 +44,7 @@ zinit light-mode for \
     OMZL::functions.zsh \
     OMZL::git.zsh \
 	OMZL::grep.zsh \
-    OMZL::history.zsh \
+    if'[[ -z "$commands[atuin]" ]]' OMZL::history.zsh \
     OMZL::key-bindings.zsh \
     OMZL::spectrum.zsh \
     OMZL::termsupport.zsh
@@ -66,6 +66,7 @@ zinit depth'1' wait'0a' lucid blockf atpull'zinit creinstall -q .' light-mode fo
 # Plugins
 zinit depth'1' wait"0a" lucid light-mode for \
     has'atuin' atuinsh/atuin \
+    if'[[ -z "$commands[atuin]" ]]' zdharma-continuum/history-search-multi-word \
     has'fzf' Aloxaf/fzf-tab \
     has'fzf' wfxr/forgit \
     has'fd' aubreypwd/zsh-plugin-fd \
