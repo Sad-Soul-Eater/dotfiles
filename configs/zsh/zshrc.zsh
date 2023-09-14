@@ -44,6 +44,7 @@ zinit light-mode for \
     OMZL::functions.zsh \
     OMZL::git.zsh \
 	OMZL::grep.zsh \
+    OMZL::history.zsh \
     OMZL::key-bindings.zsh \
     OMZL::spectrum.zsh \
     OMZL::termsupport.zsh
