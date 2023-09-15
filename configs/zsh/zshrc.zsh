@@ -65,7 +65,7 @@ zinit depth'1' wait'0a' lucid blockf atpull'zinit creinstall -q .' light-mode fo
 
 # Plugins
 zinit depth'1' wait"0a" lucid light-mode for \
-    has'atuin' atuinsh/atuin \
+    has'atuin' atload'$(atuin sync >/dev/null 2>&1 &)' atuinsh/atuin \
     if'[[ -z "$commands[atuin]" ]]' zdharma-continuum/history-search-multi-word \
     has'fzf' Aloxaf/fzf-tab \
     has'fzf' wfxr/forgit \
