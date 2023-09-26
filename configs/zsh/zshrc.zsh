@@ -124,3 +124,9 @@ if (( $+commands[atuin] )); then
     }
     ZSH_AUTOSUGGEST_STRATEGY=atuin_top
 fi
+
+# Disable highlighting of text pasted into the command line
+zle_highlight=('paste:none')
+
+# https://wiki.archlinux.org/index.php/zsh#Persistent_rehash
+zstyle ':completion:*' rehash true
