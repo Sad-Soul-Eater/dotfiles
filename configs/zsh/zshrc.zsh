@@ -2,7 +2,7 @@
 if [[ ! -f $HOME/.zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/zinit.git" && \
+    command git clone --depth 1 https://github.com/zdharma-continuum/zinit "$HOME/.zinit/zinit.git" && \
         print -P "%F{33} %F{34}Installation successful.%f%b" || \
         print -P "%F{160} The clone has failed.%f%b"
 fi
@@ -13,7 +13,7 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 # Path's
-PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.krew/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 # Direnv hook
 (( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
@@ -43,15 +43,19 @@ zinit light-mode for \
     OMZL::directories.zsh \
     OMZL::functions.zsh \
     OMZL::git.zsh \
-	OMZL::grep.zsh \
-    if'[[ -z "$commands[atuin]" ]]' OMZL::history.zsh \
+    OMZL::grep.zsh \
+    OMZL::history.zsh \
     OMZL::key-bindings.zsh \
     OMZL::spectrum.zsh \
     OMZL::termsupport.zsh
 
+# Programs
+zinit as'program' depth'1' wait'0a' lucid light-mode for \
+    mv'::cht.sh -> cht.sh' pick'cht.sh' https://cht.sh/:cht.sh
+
 # Oh My Zsh plugins
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
-zinit wait'0a' lucid light-mode for \
+zinit wait'0b' lucid light-mode for \
     OMZP::colored-man-pages \
     OMZP::extract \
     OMZP::git \
@@ -59,12 +63,13 @@ zinit wait'0a' lucid light-mode for \
     OMZP::systemd
 
 # Completions
-zinit depth'1' wait'0a' lucid blockf atpull'zinit creinstall -q .' light-mode for \
+zinit as'completion' depth'1' wait'0b' lucid blockf nocompile atpull'zinit creinstall -q .' light-mode for \
     zsh-users/zsh-completions \
-    zchee/zsh-completions
+    zchee/zsh-completions \
+    mv'::zsh -> _cht.sh' https://cht.sh/:zsh
 
 # Plugins
-zinit depth'1' wait"0a" lucid light-mode for \
+zinit depth'1' wait'0b' lucid blockf light-mode for \
     has'atuin' atload'$(atuin sync >/dev/null 2>&1 &)' atuinsh/atuin \
     if'[[ -z "$commands[atuin]" ]]' zdharma-continuum/history-search-multi-word \
     has'fzf' Aloxaf/fzf-tab \
