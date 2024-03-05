@@ -1,29 +1,19 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone --depth 1 https://github.com/zdharma-continuum/zinit "$HOME/.zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
+ZINIT_HOME="${HOME}/.zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone --depth 1 --single-branch 'https://github.com/zdharma-continuum/zinit.git' "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 # Path's
 PATH="$HOME/.krew/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
-# Direnv hook
-(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
-
+zinit ice id-as'powerlevel10k-generated.zsh' link light
 if [[ -f "$HOME/.zsh/powerlevel10k-generated.zsh" ]]; then
     zinit snippet "$HOME/.zsh/powerlevel10k-generated.zsh"
 else
     zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/configs/zsh/powerlevel10k-generated.zsh'
 fi
 
+zinit ice id-as'powerlevel10k-settings.zsh' link light
 if [[ -f "$HOME/.zsh/powerlevel10k-settings.zsh" ]]; then
     zinit snippet "$HOME/.zsh/powerlevel10k-settings.zsh"
 else
@@ -32,7 +22,8 @@ fi
 
 # Prompt
 zinit depth'1' nocd light-mode for \
-    romkatv/powerlevel10k
+    id-as'powerlevel10k' \
+        @romkatv/powerlevel10k
 
 # Oh My Zsh libs
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/lib
@@ -50,8 +41,93 @@ zinit light-mode for \
     OMZL::termsupport.zsh
 
 # Programs
-zinit as'program' depth'1' wait'0a' lucid light-mode for \
-    mv'::cht.sh -> cht.sh' pick'cht.sh' https://cht.sh/:cht.sh
+zinit as'program' depth'1' lucid light-mode for \
+    id-as'fzf' \
+        from'gh-r' \
+        @junegunn/fzf \
+    id-as'cht.sh' \
+        run-atpull \
+        atclone'curl -sL https://cht.sh/:cht.sh > cht.sh; curl -sL https://cheat.sh/:zsh > _cht.sh' \
+        atpull'%atclone' \
+        pick'cht.sh' \
+        @zdharma-continuum/null \
+    id-as'zoxide' \
+        from'gh-r' \
+        atclone'./zoxide init zsh > init.zsh && zcompile init.zsh' \
+        atpull'%atclone' \
+        atload'alias cd=z' \
+        src'init.zsh' \
+        @ajeetdsouza/zoxide
+
+# Programs that will not work in Termux
+zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
+    id-as'lsd' \
+        from'gh-r' \
+        mv'lsd*/lsd -> lsd' \
+        @lsd-rs/lsd \
+    id-as'atuin' \
+        from'gh-r' \
+        mv'atuin*/atuin -> atuin' \
+        @atuinsh/atuin \
+    id-as'direnv' \
+        from'gh-r' \
+        mv'direnv* -> direnv' \
+        @direnv/direnv \
+    id-as'bat' \
+        from'gh-r' \
+        mv'bat*/bat -> bat' \
+        @sharkdp/bat \
+    id-as'fd' \
+        from'gh-r' \
+        mv'fd*/fd -> fd' \
+        @sharkdp/fd \
+    id-as'delta' \
+        from'gh-r' \
+        mv'delta*/delta -> delta' \
+        @dandavison/delta \
+    id-as'ripgrep' \
+        from'gh-r' \
+        mv'ripgrep*/rg -> rg' \
+        @BurntSushi/ripgrep \
+    id-as'dust' \
+        from'gh-r' \
+        mv'dust*/dust -> dust' \
+        @bootandy/dust \
+    id-as'kubecolor' \
+        has'kubectl' \
+        from'gh-r' \
+        atclone'./kubecolor completion zsh | sed "s/kubectl/kubecolor/g" > _kubecolor' \
+        atpull'%atclone' \
+        @kubecolor/kubecolor \
+    id-as'cilium-cli' \
+        has'kubectl' \
+        from'gh-r' \
+        atclone'./cilium completion zsh > _cilium' \
+        atpull'%atclone' \
+        @cilium/cilium-cli
+
+# Programs init
+zinit as'program' wait'0a' depth'1' lucid light-mode for \
+    id-as'lsd-init' \
+        has'lsd' \
+        atload'alias ls="lsd --size=short"; alias lt="ls --tree"' \
+        @zdharma-continuum/null \
+    id-as'atuin-init' \
+        has'atuin' \
+        atload'eval "$(atuin init zsh)"' \
+        @zdharma-continuum/null \
+    id-as'direnv-init' \
+        has'direnv' \
+        atload'eval "$(direnv hook zsh)"' \
+        @zdharma-continuum/null \
+    id-as'bat-init' \
+        has'bat' \
+        atload'alias cat="bat --decorations never --paging never"' \
+        @zdharma-continuum/null \
+    id-as'kubecolor-init' \
+        has'kubecolor' \
+        atload'alias kubectl="kubecolor"' \
+        @zdharma-continuum/null
 
 # Oh My Zsh plugins
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
@@ -65,30 +141,28 @@ zinit wait'0b' lucid light-mode for \
 # Completions
 zinit as'completion' depth'1' wait'0b' lucid blockf nocompile atpull'zinit creinstall -q .' light-mode for \
     zsh-users/zsh-completions \
-    zchee/zsh-completions \
-    mv'::zsh -> _cht.sh' https://cht.sh/:zsh
+    zchee/zsh-completions
 
 # Plugins
 zinit depth'1' wait'0b' lucid blockf light-mode for \
-    has'atuin' atload'$(atuin sync >/dev/null 2>&1 &)' atuinsh/atuin \
-    if'[[ -z "$commands[atuin]" ]]' zdharma-continuum/history-search-multi-word \
-    has'fzf' Aloxaf/fzf-tab \
-    has'fzf' wfxr/forgit \
-    MichaelAquilina/zsh-you-should-use
+    id-as'history-search-multi-word' \
+        if'[[ -z "$commands[atuin]" ]]' \
+        @zdharma-continuum/history-search-multi-word \
+    id-as'fzf-tab' \
+        Aloxaf/fzf-tab \
+    id-as'forgit' \
+        wfxr/forgit \
+    id-as'zsh-you-should-use' \
+        MichaelAquilina/zsh-you-should-use
 
 zinit depth'1' wait'0c' lucid light-mode for \
-    zdharma-continuum/fast-syntax-highlighting \
-    atload'ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(reset-prompt); _zsh_autosuggest_start' atinit'ZINIT[COMPINIT_OPTS]=-u; zpcompinit; zpcdreplay' \
-        zsh-users/zsh-autosuggestions \
-
-if (( $+commands[lsd] )); then
-	alias ls="lsd --size=short"
-	alias lt="ls --tree"
-fi
-
-if (( $+commands[bat] )); then
-	alias cat='bat --decorations never --paging never'
-fi
+    id-as'fast-syntax-highlighting' \
+        atinit"zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
+    id-as'zsh-autosuggestions' \
+        atinit'ZINIT[COMPINIT_OPTS]=-u' \
+        atload'ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(reset-prompt); _zsh_autosuggest_start' \
+        zsh-users/zsh-autosuggestions
 
 if (( $+commands[nvim] )); then
 	export EDITOR="nvim"
@@ -120,14 +194,6 @@ if (( $+commands[paru] )); then
 	alias puinsd='paru -S --asdeps'
 	alias pumir='paru -Syy'
 	alias puupd='paru -Sy'
-fi
-
-# Integrate atuin in zsh-autosuggest
-if (( $+commands[atuin] )); then
-    _zsh_autosuggest_strategy_atuin_top() {
-        suggestion=$(atuin search --cmd-only --limit 1 --search-mode prefix "$1")
-    }
-    ZSH_AUTOSUGGEST_STRATEGY=atuin_top
 fi
 
 # Disable highlighting of text pasted into the command line
