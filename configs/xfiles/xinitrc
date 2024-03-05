@@ -37,9 +37,6 @@ fi
 eval "$(gnome-keyring-daemon --start)"
 export SSH_AUTH_SOCK
 
-if [ "$(supergfxctl -g)" = 'dedicated' ]; then
-	xrandr --setprovideroutputsource modesetting NVIDIA-G0
-	xrandr --auto
-fi
+systemctl start --user clipmenud.service &
 
-exec i3
+exec $@

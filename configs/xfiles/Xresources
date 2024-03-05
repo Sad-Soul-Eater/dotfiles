@@ -4,6 +4,10 @@
 
 Xcursor.size: 24
 
+Xft.dpi: 96
+
+Xcursor.theme: Bibata-Modern-Classic
+
 Xft*antialias:  true
 Xft*hinting:    true
 Xft*rgba:       rgb

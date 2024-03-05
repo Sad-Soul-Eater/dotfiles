@@ -173,6 +173,9 @@ bindsym $mod+a exec --no-startup-id firefox
 # Telegram
 bindsym $mod+t exec --no-startup-id telegram-desktop
 
+bindsym $mod+Shift+o exec --no-startup-id bash -c 'sleep 1 && xclip -o | xdotool type --clearmodifiers --file "/proc/self/fd/0" && notify-send Done'
+bindsym $mod+Shift+p exec --no-startup-id bash -c 'sleep 1 && xclip -selection clipboard -o | xdotool type --clearmodifiers --file "/proc/self/fd/0" && notify-send Done'
+
 #------#
 # GAPS #
 #------#
@@ -228,17 +231,17 @@ client.background       $bg
 # Keyboard layout
 exec_always --no-startup-id setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle' &
 
-exec_always --no-startup-id killall picom; picom --experimental-backends --config ~/.config/picom/picom.conf &
+exec_always --no-startup-id killall picom; picom --config ~/.config/picom/picom.conf &
 exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id xrdb ~/.Xresources &
 exec_always --no-startup-id ~/bin/bar.sh &
 exec_always --no-startup-id killall dunst; dunst -lf "$fg" -nf "$fg" -cf "$fg" -lb "$bg" -nb "$bg" -cb "$bg" -lfr "$lw" -nfr "$cl10" -cfr "$cl13" &
 
+exec systemctl --user import-environment
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id udiskie --smart-tray &
 exec --no-startup-id nextcloud --background &
 exec --no-startup-id telegram-desktop -startintray &
-exec --no-startup-id flatpak run com.slack.Slack -u &
 exec --no-startup-id redshift &
 exec --no-startup-id corectrl &
 exec --no-startup-id blueman-applet &
