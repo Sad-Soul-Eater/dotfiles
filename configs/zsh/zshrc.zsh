@@ -104,7 +104,18 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
         from'gh-r' \
         atclone'./cilium completion zsh > _cilium' \
         atpull'%atclone' \
-        @cilium/cilium-cli
+        @cilium/cilium-cli \
+    id-as'kubeseal' \
+        has'kubectl' \
+        from'gh-r' \
+        @bitnami-labs/sealed-secrets \
+    id-as'talosctl' \
+        has'kubectl' \
+        from'gh-r' \
+        mv'talosctl* -> talosctl' \
+        atclone'./talosctl completion zsh > _talosctl' \
+        atpull'%atclone' \
+        @siderolabs/talos
 
 # Programs init
 zinit as'program' wait'0a' depth'1' lucid light-mode for \
