@@ -55,19 +55,26 @@ zinit as'program' depth'1' lucid light-mode for \
         from'gh-r' \
         atclone'./zoxide init zsh > init.zsh && zcompile init.zsh' \
         atpull'%atclone' \
-        atload'alias cd=z' \
         src'init.zsh' \
-        @ajeetdsouza/zoxide
+        atload'alias cd=z' \
+        @ajeetdsouza/zoxide \
+    id-as'f2' \
+        from'gh-r' \
+        cp'scripts/completions/f2.zsh -> _f2' \
+        pick'f2' \
+        @ayoisaiah/f2
 
 # Programs that will not work in Termux
 zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     id-as'lsd' \
         from'gh-r' \
         mv'lsd*/lsd -> lsd' \
+        atpull'zinit creinstall -q .' \
         @lsd-rs/lsd \
     id-as'atuin' \
         from'gh-r' \
         mv'atuin*/atuin -> atuin' \
+        atpull'zinit creinstall -q .' \
         @atuinsh/atuin \
     id-as'direnv' \
         from'gh-r' \
@@ -76,10 +83,12 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     id-as'bat' \
         from'gh-r' \
         mv'bat*/bat -> bat' \
+        cp'bat*/autocomplete/bat.zsh -> _bat' \
         @sharkdp/bat \
     id-as'fd' \
         from'gh-r' \
         mv'fd*/fd -> fd' \
+        atpull'zinit creinstall -q .' \
         @sharkdp/fd \
     id-as'delta' \
         from'gh-r' \
@@ -88,6 +97,7 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     id-as'ripgrep' \
         from'gh-r' \
         mv'ripgrep*/rg -> rg' \
+        atpull'zinit creinstall -q .' \
         @BurntSushi/ripgrep \
     id-as'dust' \
         from'gh-r' \
