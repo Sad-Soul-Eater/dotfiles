@@ -69,12 +69,14 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     id-as'lsd' \
         from'gh-r' \
         mv'lsd*/lsd -> lsd' \
-        atpull'zinit creinstall -q .' \
+        atclone'mv lsd*/*/_lsd .' \
+        atpull'%atclone' \
         @lsd-rs/lsd \
     id-as'atuin' \
         from'gh-r' \
         mv'atuin*/atuin -> atuin' \
-        atpull'zinit creinstall -q .' \
+        atclone'mv atuin*/*/_atuin .' \
+        atpull'%atclone' \
         @atuinsh/atuin \
     id-as'direnv' \
         from'gh-r' \
@@ -88,7 +90,8 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     id-as'fd' \
         from'gh-r' \
         mv'fd*/fd -> fd' \
-        atpull'zinit creinstall -q .' \
+        atclone'mv fd*/*/_fd .' \
+        atpull'%atclone' \
         @sharkdp/fd \
     id-as'delta' \
         from'gh-r' \
@@ -97,7 +100,8 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     id-as'ripgrep' \
         from'gh-r' \
         mv'ripgrep*/rg -> rg' \
-        atpull'zinit creinstall -q .' \
+        atclone'mv ripgrep*/*/_rg .' \
+        atpull'%atclone' \
         @BurntSushi/ripgrep \
     id-as'dust' \
         from'gh-r' \
