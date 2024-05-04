@@ -13,14 +13,14 @@ zinit ice id-as'powerlevel10k-generated.zsh' link light
 if [[ -f "$HOME/.zsh/powerlevel10k-generated.zsh" ]]; then
   zinit snippet "$HOME/.zsh/powerlevel10k-generated.zsh"
 else
-  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/dot-zsh/powerlevel10k-generated.zsh'
+  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/powerlevel10k-generated.zsh'
 fi
 
 zinit ice id-as'powerlevel10k-settings.zsh' link light
 if [[ -f "$HOME/.zsh/powerlevel10k-settings.zsh" ]]; then
   zinit snippet "$HOME/.zsh/powerlevel10k-settings.zsh"
 else
-  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/dot-zsh/powerlevel10k-settings.zsh'
+  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/powerlevel10k-settings.zsh'
 fi
 
 zinit depth'1' nocd light-mode for \
