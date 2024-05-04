@@ -7,6 +7,5 @@ if ! command -v stow >/dev/null; then
   exit 1
 fi
 
-BASEDIR=$(dirname "$0")
-
-stow $@ --verbose 2 --dotfiles --target="$HOME" "$BASEDIR"
+cd "$(dirname "$0")"
+stow $@ --verbose=2 --target="$HOME" .
