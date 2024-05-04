@@ -1,15 +1,15 @@
 <h1 align="center"> ✨Dotfiles✨ </h1>
 
-<div id="installation">
+<h2 align="center"> Usage </h2>
 
-<h2 align="center"> How to install </h2>
+* Clone the repo
+* Install [GNU Stow](https://www.gnu.org/software/stow/)
 
-* Clone the repo `git clone 'https://github.com/Sad-Soul-Eater/dotfiles.git'`
-* Install GNU Stow
-* Run `./stow.sh --simulate` to see changes that stow would make
-* Run `./stow.sh` to install
+
+* To see changes that stow would make: `./stow.sh --simulate`
+* To install: `./stow.sh`
 
 > All safe, it won't kill your dotfiles, if a folder/file already exists, you'll see an error during the installation
 > process
 
-</div>
+* To uninstall: `./stow.sh --delete`
