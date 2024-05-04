@@ -1,9 +1,4 @@
-configs/zsh/super_secret_vars/*
+/.vscode
+/.idea
 
-.vscode/*
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
+/.config/psd/.psd.conf

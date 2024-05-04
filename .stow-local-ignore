@@ -1,0 +1,11 @@
+\.git
+\.gitignore
+\.gitmodules
+\.idea
+
+README.md
+
+^/LICENSE.*
+^/COPYING
+
+^/stow.sh

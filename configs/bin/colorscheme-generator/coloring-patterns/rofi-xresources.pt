@@ -1,4 +1,0 @@
-rofi.color-window:   #%clbg%,#%cl0%,#00%clbg%
-rofi.color-normal:   #00%clbg%,#%clfg%,#00%clbg%,#00%clbg%,#%cl5%
-rofi.color-active:   #00%clbg%,#%cl2%,#00%clbg%,#00%clbg%,#%cl5%
-rofi.color-urgent:   #00%clbg%,#%cl3%,#00%clbg%,#00%clbg%,#%cl5%

@@ -1,0 +1,6 @@
+sync_frequency = "0"
+show_preview = true
+enter_accept = true
+
+[sync]
+records = true
