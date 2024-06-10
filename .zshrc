@@ -76,8 +76,9 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     @lsd-rs/lsd \
   id-as'atuin' \
     from'gh-r' \
+    bpick'*.tar.gz' \
     mv'atuin*/atuin -> atuin' \
-    atclone'mv atuin*/*/_atuin .' \
+    atclone'./atuin gen-completions --shell zsh > _atuin' \
     atpull'%atclone' \
     @atuinsh/atuin \
   id-as'direnv' \
