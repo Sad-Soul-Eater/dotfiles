@@ -13,13 +13,23 @@ for path_dir in "$HOME/.krew/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/g
 done
 
 # Prompt
-zinit as'program' depth'1' lucid light-mode for \
-  id-as'starship' \
-    from'gh-r' \
-    atclone'./starship init zsh > init.zsh && zcompile init.zsh' \
-    atpull'%atclone' \
-    src'init.zsh' \
-    @starship/starship
+zinit ice id-as'powerlevel10k-generated.zsh' link light
+if [[ -f "$HOME/.zsh/powerlevel10k-generated.zsh" ]]; then
+  zinit snippet "$HOME/.zsh/powerlevel10k-generated.zsh"
+else
+  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/powerlevel10k-generated.zsh'
+fi
+
+zinit ice id-as'powerlevel10k-settings.zsh' link light
+if [[ -f "$HOME/.zsh/powerlevel10k-settings.zsh" ]]; then
+  zinit snippet "$HOME/.zsh/powerlevel10k-settings.zsh"
+else
+  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/powerlevel10k-settings.zsh'
+fi
+
+zinit depth'1' nocd light-mode for \
+  id-as'powerlevel10k' \
+    @romkatv/powerlevel10k
 
 # Oh My Zsh libs
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/lib
