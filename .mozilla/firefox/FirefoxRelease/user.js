@@ -138,4 +138,5 @@ user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
 user_pref("media.hardwaremediakeys.enabled", false);
 
 // Hardware video acceleration
-// user_pref("media.ffmpeg.vaapi.enabled", true);
+user_pref("gfx.webrender.all", true);
+user_pref("media.ffmpeg.vaapi.enabled", true);
