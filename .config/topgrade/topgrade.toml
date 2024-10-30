@@ -1,7 +1,3 @@
 [misc]
-# Don't ask for confirmations
 assume_yes = true
-
-# Disable specific steps - same options as the command line flag
-disable = ["snap", "containers", "spicetify", "vim"]
-
+disable = ["snap", "containers", "spicetify", "vim", "lensfun"]
