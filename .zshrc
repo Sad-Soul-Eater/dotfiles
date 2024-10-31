@@ -103,6 +103,8 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
   id-as'delta' \
     from'gh-r' \
     mv'delta*/delta -> delta' \
+    atclone'./delta --generate-completion zsh > _delta' \
+    atpull'%atclone' \
     @dandavison/delta \
   id-as'ripgrep' \
     from'gh-r' \
@@ -182,13 +184,8 @@ zinit wait'0b' lucid light-mode for \
   OMZP::sudo \
   OMZP::systemd
 
-# Completions
-zinit as'completion' depth'1' wait'0b' lucid blockf nocompile atpull'zinit creinstall -q .' light-mode for \
-  zsh-users/zsh-completions \
-  zchee/zsh-completions
-
 # Plugins
-zinit depth'1' wait'0b' lucid blockf light-mode for \
+zinit depth'1' wait'0b' lucid light-mode for \
   id-as'history-search-multi-word' \
     if'[[ -z "$commands[atuin]" ]]' \
     @zdharma-continuum/history-search-multi-word \
@@ -201,11 +198,14 @@ zinit depth'1' wait'0b' lucid blockf light-mode for \
 
 zinit depth'1' wait'0c' lucid light-mode for \
   id-as'fast-syntax-highlighting' \
-    atinit"zicompinit; zicdreplay" \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
+  id-as'zsh-completions' \
+    blockf \
+    atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions \
   id-as'zsh-autosuggestions' \
-    atinit'ZINIT[COMPINIT_OPTS]=-u' \
-    atload'ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(reset-prompt); _zsh_autosuggest_start' \
+    atload'!_zsh_autosuggest_start' \
     zsh-users/zsh-autosuggestions
 
 if (( $+commands[nvim] )); then
