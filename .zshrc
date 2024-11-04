@@ -190,23 +190,25 @@ zinit depth'1' wait'0b' lucid light-mode for \
     if'[[ -z "$commands[atuin]" ]]' \
     @zdharma-continuum/history-search-multi-word \
   id-as'fzf-tab' \
-    Aloxaf/fzf-tab \
+    @Aloxaf/fzf-tab \
   id-as'forgit' \
-    wfxr/forgit \
+    @wfxr/forgit \
   id-as'zsh-you-should-use' \
-    MichaelAquilina/zsh-you-should-use
+    @MichaelAquilina/zsh-you-should-use
 
 zinit depth'1' wait'0c' lucid light-mode for \
   id-as'fast-syntax-highlighting' \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
+    @zdharma-continuum/fast-syntax-highlighting \
+  id-as'zsh-autosuggestions' \
+    atload'!_zsh_autosuggest_start' \
+    @zsh-users/zsh-autosuggestions
+
+zinit depth'1' wait'0d' lucid light-mode for \
   id-as'zsh-completions' \
     blockf \
     atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions \
-  id-as'zsh-autosuggestions' \
-    atload'!_zsh_autosuggest_start' \
-    zsh-users/zsh-autosuggestions
+    atinit'zicompinit; zicdreplay' \
+    @zsh-users/zsh-completions
 
 if (( $+commands[nvim] )); then
   export EDITOR="nvim"
