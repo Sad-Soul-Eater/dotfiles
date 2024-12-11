@@ -1,5 +1,4 @@
-sync_frequency = "0"
-show_preview = true
+update_check = false
 enter_accept = true
 
 [sync]
