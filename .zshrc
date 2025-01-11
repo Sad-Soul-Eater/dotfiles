@@ -12,20 +12,20 @@ for path_dir in "$HOME/.krew/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/g
   fi
 done
 
-# Prompt
-zinit ice id-as'powerlevel10k-generated.zsh' link light
-if [[ -f "$HOME/.zsh/powerlevel10k-generated.zsh" ]]; then
-  zinit snippet "$HOME/.zsh/powerlevel10k-generated.zsh"
-else
-  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/powerlevel10k-generated.zsh'
+# Secrets
+if [[ -f "$HOME/.zsh/secrets.zsh" ]]; then
+  source "$HOME/.zsh/secrets.zsh"
 fi
 
-zinit ice id-as'powerlevel10k-settings.zsh' link light
-if [[ -f "$HOME/.zsh/powerlevel10k-settings.zsh" ]]; then
-  zinit snippet "$HOME/.zsh/powerlevel10k-settings.zsh"
-else
-  zinit snippet 'https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/powerlevel10k-settings.zsh'
-fi
+# Prompt
+for promt_config in "powerlevel10k-generated.zsh" "powerlevel10k-settings.zsh"; do
+  zinit ice id-as"$promt_config" link light
+  if [[ -f "$promt_config" ]]; then
+    zinit snippet "$promt_config"
+  else
+    zinit snippet "https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/$promt_config"
+  fi
+done
 
 zinit depth'1' nocd light-mode for \
   id-as'powerlevel10k' \

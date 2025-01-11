@@ -2,3 +2,5 @@
 /.idea
 
 /.config/psd/.psd.conf
+
+/.zsh/secrets.zsh
