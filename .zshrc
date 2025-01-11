@@ -122,6 +122,9 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     atclone'mv sd*/*/_sd .' \
     atpull'%atclone' \
     @chmln/sd \
+  id-as'lazygit' \
+    from'gh-r' \
+    @jesseduffield/lazygit \
   id-as'kubecolor' \
     has'kubectl' \
     from'gh-r' \
