@@ -6,7 +6,7 @@ ZINIT_HOME="${HOME}/.zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # PATHs
-for path_dir in "$HOME/.krew/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin"; do
+for path_dir in "$HOME/.krew/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin" "${KREW_ROOT:-$HOME/.krew}/bin"; do
   if [[ -d "$path_dir" ]]; then
     PATH="$PATH:$path_dir"
   fi
@@ -50,6 +50,9 @@ zinit light-mode for \
 zinit as'program' depth'1' lucid light-mode for \
   id-as'fzf' \
     from'gh-r' \
+    atclone'./fzf --zsh > init.zsh && zcompile init.zsh' \
+    atpull'%atclone' \
+    src'init.zsh' \
     @junegunn/fzf \
   id-as'cht.sh' \
     run-atpull \
@@ -159,7 +162,8 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
 zinit as'program' wait'0a' depth'1' lucid light-mode for \
   id-as'lsd-init' \
     has'lsd' \
-    atload'alias ls="lsd --size=short"; alias lt="ls --tree"' \
+    atload'alias ls="lsd --size=short"
+           alias lt="ls --tree"' \
     @zdharma-continuum/null \
   id-as'atuin-init' \
     has'atuin' \
@@ -176,6 +180,11 @@ zinit as'program' wait'0a' depth'1' lucid light-mode for \
   id-as'kubecolor-init' \
     has'kubecolor' \
     atload'alias kubectl="kubecolor"' \
+    @zdharma-continuum/null \
+  id-as'fd-init' \
+    has'fd' \
+    atload'FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git";
+           FZF_ALT_C_COMMAND="fd --type=d --hidden --exclude .git";' \
     @zdharma-continuum/null
 
 # Oh My Zsh plugins
@@ -214,8 +223,8 @@ zinit depth'1' wait'0d' lucid light-mode for \
     @zsh-users/zsh-completions
 
 if (( $+commands[nvim] )); then
-  export EDITOR="nvim"
-  alias v="nvim"
+  EDITOR="nvim"
+  alias v="$EDITOR"
 fi
 
 if (( $+commands[htop] )); then
