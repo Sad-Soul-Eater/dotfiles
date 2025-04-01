@@ -20,6 +20,10 @@ ENABLE_FEATURES=(
   'MiddleClickAutoscroll'
 )
 
+DISABLE_FEATURES=(
+  'GlobalShortcutsPortal'
+)
+
 if [[ "$WAYLAND" == "1" ]]; then
   USER_FLAGS+=(
     '--ozone-platform-hint=auto'
@@ -52,10 +56,19 @@ if [[ "$VULKAN" == "1" ]]; then
   )
 fi
 
-printf -v ENABLE_FEATURES_STR '%s,' "${ENABLE_FEATURES[@]}"
-USER_FLAGS+=(
-  "--enable-features=${ENABLE_FEATURES_STR%,}"
-)
+if [[ -n "${ENABLE_FEATURES[*]}" ]]; then
+  printf -v ENABLE_FEATURES_STR '%s,' "${ENABLE_FEATURES[@]}"
+  USER_FLAGS+=(
+    "--enable-features=${ENABLE_FEATURES_STR%,}"
+  )
+fi
+
+if [[ -n "${DISABLE_FEATURES[*]}" ]]; then
+  printf -v DISABLE_FEATURES_STR '%s,' "${DISABLE_FEATURES[@]}"
+  USER_FLAGS+=(
+    "--disable-features=${DISABLE_FEATURES_STR%,}"
+  )
+fi
 
 EXECUTABLE="$1" && shift
 
