@@ -6,9 +6,18 @@ ZINIT_HOME="${HOME}/.zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # PATHs
-for path_dir in "$HOME/.krew/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/go/bin" "${KREW_ROOT:-$HOME/.krew}/bin"; do
+PATHS=(
+  "$HOME/.local/bin"
+  "$HOME/.cargo/bin"
+  "$HOME/go/bin"
+  "$HOME/.krew/bin"
+  "${KREW_ROOT:-$HOME/.krew}/bin"
+  "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
+  "$HOMEBREW_PREFIX/opt/curl/bin"
+)
+for path_dir in ${PATHS[@]}; do
   if [[ -d "$path_dir" ]]; then
-    PATH="$PATH:$path_dir"
+    PATH="$path_dir:$PATH"
   fi
 done
 
@@ -47,6 +56,12 @@ zinit light-mode for \
   OMZL::termsupport.zsh
 
 # Programs
+zinit depth"1" lucid light-mode for \
+  id-as'iTerm2-shell-integration' \
+    atload'!PATH+=:$(pwd)/utilities'\
+    pick"shell_integration/zsh" if"[[ $+ITERM_PROFILE ]]" \
+    @gnachman/iTerm2-shell-integration
+
 zinit as'program' depth'1' lucid light-mode for \
   id-as'fzf' \
     from'gh-r' \
@@ -83,7 +98,7 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     @lsd-rs/lsd \
   id-as'atuin' \
     from'gh-r' \
-    bpick'*.tar.gz' \
+    bpick'atuin-(X86_64|aarch64)*.tar.gz' \
     mv'atuin*/atuin -> atuin' \
     atclone'./atuin gen-completions --shell zsh > _atuin' \
     atpull'%atclone' \
