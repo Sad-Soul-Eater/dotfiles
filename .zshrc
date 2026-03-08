@@ -69,12 +69,6 @@ zinit as'program' depth'1' lucid light-mode for \
     atpull'%atclone' \
     src'init.zsh' \
     @junegunn/fzf \
-  id-as'cht.sh' \
-    run-atpull \
-    atclone'curl -sL https://cht.sh/:cht.sh > cht.sh; curl -sL https://cheat.sh/:zsh > _cht.sh' \
-    atpull'%atclone' \
-    pick'cht.sh' \
-    @zdharma-continuum/null \
   id-as'zoxide' \
     from'gh-r' \
     atclone'./zoxide init zsh > init.zsh && zcompile init.zsh' \
