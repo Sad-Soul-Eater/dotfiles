@@ -163,7 +163,7 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     has'kubectl' \
     from'gh-r' \
     mv'talosctl* -> talosctl' \
-    atclone'./talosctl completion zsh > _talosctl' \
+    atclone'chmod +x ./talosctl && ./talosctl completion zsh > _talosctl' \
     atpull'%atclone' \
     @siderolabs/talos
 
