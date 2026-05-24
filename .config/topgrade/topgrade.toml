@@ -1,3 +1,6 @@
 [misc]
 assume_yes = true
 disable = ["snap", "containers", "spicetify", "vim", "lensfun"]
+
+[brew]
+greedy_cask = true
