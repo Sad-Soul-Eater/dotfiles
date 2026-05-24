@@ -224,7 +224,7 @@ zinit depth'1' wait'0c' lucid light-mode for \
     atload'!_zsh_autosuggest_start' \
     @zsh-users/zsh-autosuggestions
 
-zinit depth'1' wait'0d' lucid light-mode for \
+zinit depth'1' wait'1c' lucid light-mode for \
   id-as'zsh-completions' \
     blockf \
     atpull'zinit creinstall -q .' \
