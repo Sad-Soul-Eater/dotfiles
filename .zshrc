@@ -100,6 +100,8 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
   id-as'direnv' \
     from'gh-r' \
     mv'direnv* -> direnv' \
+    atclone'chmod +x ./direnv' \
+    atpull'%atclone' \
     @direnv/direnv \
   id-as'bat' \
     from'gh-r' \
@@ -268,3 +270,5 @@ zle_highlight=('paste:none')
 
 # https://wiki.archlinux.org/index.php/zsh#Persistent_rehash
 zstyle ':completion:*' rehash true
+
+setopt interactive_comments
