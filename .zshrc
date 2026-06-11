@@ -196,6 +196,10 @@ zinit as'program' wait'0a' depth'1' lucid light-mode for \
     has'fd' \
     atload'FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git";
            FZF_ALT_C_COMMAND="fd --type=d --hidden --exclude .git";' \
+    @zdharma-continuum/null \
+  id-as'uv-init' \
+    has'uv' \
+    atload'eval "$(uv generate-shell-completion zsh)" 2>/dev/null' \
     @zdharma-continuum/null
 
 # Oh My Zsh plugins
