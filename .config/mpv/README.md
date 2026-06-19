@@ -1,7 +1,0 @@
-* [autocrop](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autocrop.lua)
-* [autoload](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autoload.lua)
-* [fix-sub-timing](https://github.com/wiiaboo/mpv-scripts/blob/master/fix-sub-timing.lua)
-* [mpris](https://github.com/hoyon/mpv-mpris)
-* [sponsorblock_minimal](https://codeberg.org/jouni/mpv_sponsorblock_minimal/src/branch/master/sponsorblock_minimal.lua)
-* [thumbfast](https://github.com/po5/thumbfast)
-* [uosc](https://github.com/tomasklaen/uosc)
