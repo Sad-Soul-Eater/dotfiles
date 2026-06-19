@@ -81,7 +81,10 @@ zinit as'program' depth'1' lucid light-mode for \
     from'gh-r' \
     cp'scripts/completions/f2.zsh -> _f2' \
     pick'f2' \
-    @ayoisaiah/f2
+    @ayoisaiah/f2 \
+  id-as'topgrade' \
+    from'gh-r' \
+    @topgrade-rs/topgrade
 
 # Programs that not working in Termux
 zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \

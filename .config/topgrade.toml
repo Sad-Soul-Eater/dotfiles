@@ -1,0 +1,17 @@
+[misc]
+assume_yes = true
+disable = [
+    "snap",
+    "containers",
+    "spicetify",
+    "vim",
+    "lensfun",
+]
+allow_root = false
+no_self_update = true
+
+[brew]
+greedy_cask = true
+
+[commands]
+"zinit" = "zsh -fc 'source ${HOME}/.zinit/zinit.git/zinit.zsh; zinit self-update; zinit update --parallel; zinit cclear; rm -f ${HOME}/.zcompdump ${HOME}/.zcompdump.zwc'"
