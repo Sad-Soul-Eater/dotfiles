@@ -15,6 +15,7 @@ PATHS=(
   "${KREW_ROOT:-$HOME/.krew}/bin"
   "${HOMEBREW_PREFIX:=/opt/homebrew}/opt/grep/libexec/gnubin"
   "${HOMEBREW_PREFIX:=/opt/homebrew}/opt/curl/bin"
+  "${HOMEBREW_PREFIX:=/opt/homebrew}/share/google-cloud-sdk/bin"
 )
 for path_dir in ${PATHS[@]}; do
   if [[ -d "$path_dir" ]]; then
@@ -23,14 +24,14 @@ for path_dir in ${PATHS[@]}; do
 done
 
 # Secrets
-if [[ -f "$HOME/.zsh/secrets.zsh" ]]; then
+if [[ -r "$HOME/.zsh/secrets.zsh" ]]; then
   source "$HOME/.zsh/secrets.zsh"
 fi
 
 # Prompt
 for prompt_config in "$HOME/.zsh/powerlevel10k-generated.zsh" "$HOME/.zsh/powerlevel10k-settings.zsh"; do
   zinit ice id-as"$prompt_config" light-mode
-  if [[ -f "$prompt_config" ]]; then
+  if [[ -r "$prompt_config" ]]; then
     zinit snippet "$prompt_config"
   else
     zinit snippet "https://github.com/Sad-Soul-Eater/dotfiles/raw/master/.zsh/$prompt_config"
@@ -168,6 +169,13 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     atclone'chmod +x ./talosctl && ./talosctl completion zsh > _talosctl' \
     atpull'%atclone' \
     @siderolabs/talos
+
+# Google Cloud SDK completion
+_ZSHRC_GCLOUD_COMPLETION_FILE="${HOMEBREW_PREFIX:=/opt/homebrew}/share/google-cloud-sdk/completion.zsh.inc"
+if [[ -r "$_ZSHRC_GCLOUD_COMPLETION_FILE" ]]; then
+  zinit ice wait'0a' lucid light-mode is-snippet
+  zinit snippet "$_ZSHRC_GCLOUD_COMPLETION_FILE"
+fi
 
 zinit as'program' wait'0a' depth'1' lucid light-mode for \
   id-as'atuin-init' \
