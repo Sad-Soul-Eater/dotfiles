@@ -12,10 +12,10 @@ PATHS=(
   "$HOME/.local/bin"
   "$HOME/.cargo/bin"
   "$HOME/go/bin"
+  "$HOME/google-cloud-sdk/bin"
   "${KREW_ROOT:-$HOME/.krew}/bin"
   "${HOMEBREW_PREFIX:=/opt/homebrew}/opt/grep/libexec/gnubin"
   "${HOMEBREW_PREFIX:=/opt/homebrew}/opt/curl/bin"
-  "${HOMEBREW_PREFIX:=/opt/homebrew}/share/google-cloud-sdk/bin"
 )
 for path_dir in ${PATHS[@]}; do
   if [[ -d "$path_dir" ]]; then
@@ -25,12 +25,13 @@ done
 
 # Secrets
 if [[ -r "$HOME/.zsh/secrets.zsh" ]]; then
-  source "$HOME/.zsh/secrets.zsh"
+  zinit ice link light-mode
+  zinit snippet "$HOME/.zsh/secrets.zsh"
 fi
 
 # Prompt
 for prompt_config in "$HOME/.zsh/powerlevel10k-generated.zsh" "$HOME/.zsh/powerlevel10k-settings.zsh"; do
-  zinit ice id-as"$prompt_config" light-mode
+  zinit ice link light-mode
   if [[ -r "$prompt_config" ]]; then
     zinit snippet "$prompt_config"
   else
@@ -171,9 +172,9 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
     @siderolabs/talos
 
 # Google Cloud SDK completion
-_ZSHRC_GCLOUD_COMPLETION_FILE="${HOMEBREW_PREFIX:=/opt/homebrew}/share/google-cloud-sdk/completion.zsh.inc"
+_ZSHRC_GCLOUD_COMPLETION_FILE="${HOME}/google-cloud-sdk/completion.zsh.inc"
 if [[ -r "$_ZSHRC_GCLOUD_COMPLETION_FILE" ]]; then
-  zinit ice wait'0a' lucid light-mode is-snippet
+  zinit ice id-as"google-cloud-sdk-completion" wait'0a' lucid link light-mode
   zinit snippet "$_ZSHRC_GCLOUD_COMPLETION_FILE"
 fi
 
