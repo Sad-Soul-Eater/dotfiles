@@ -20,11 +20,12 @@ path=(
   $path
 )
 
-# Secrets
-if [[ -r "$HOME/.zsh/secrets.zsh" ]]; then
-  zinit ice link light-mode
-  zinit snippet "$HOME/.zsh/secrets.zsh"
-fi
+zinit depth"1" lucid light-mode for \
+  id-as'iTerm2-shell-integration' \
+    atload'PATH+=:$(pwd)/utilities'\
+    pick"shell_integration/zsh" \
+    if"[[ $LC_TERMINAL == iTerm2 || $+ITERM_PROFILE ]]" \
+    @gnachman/iTerm2-shell-integration
 
 # Prompt
 for prompt_config in "$HOME/.zsh/powerlevel10k-generated.zsh" "$HOME/.zsh/powerlevel10k-settings.zsh"; do
@@ -39,6 +40,12 @@ done
 zinit depth'1' nocd light-mode for \
   id-as'powerlevel10k' \
     @romkatv/powerlevel10k
+
+# Secrets
+if [[ -r "$HOME/.zsh/secrets.zsh" ]]; then
+  zinit ice link light-mode
+  zinit snippet "$HOME/.zsh/secrets.zsh"
+fi
 
 # Oh My Zsh libs
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/lib
@@ -56,25 +63,12 @@ zinit light-mode for \
   OMZL::termsupport.zsh
 
 # Programs
-zinit depth"1" lucid light-mode for \
-  id-as'iTerm2-shell-integration' \
-    atload'PATH+=:$(pwd)/utilities'\
-    pick"shell_integration/zsh" if"[[ $+ITERM_PROFILE ]]" \
-    @gnachman/iTerm2-shell-integration
-
 zinit as'program' depth'1' lucid light-mode for \
   id-as'fzf' \
     from'gh-r' \
-    atclone'./fzf --zsh > init.zsh && zcompile init.zsh' \
-    atpull'%atclone' \
-    src'init.zsh' \
     @junegunn/fzf \
   id-as'zoxide' \
     from'gh-r' \
-    atclone'./zoxide init zsh > init.zsh && zcompile init.zsh' \
-    atpull'%atclone' \
-    src'init.zsh' \
-    atload'alias cd=z' \
     @ajeetdsouza/zoxide \
   id-as'f2' \
     from'gh-r' \
@@ -175,26 +169,43 @@ if [[ -r "$_ZSHRC_GCLOUD_COMPLETION_FILE" ]]; then
   zinit snippet "$_ZSHRC_GCLOUD_COMPLETION_FILE"
 fi
 
-zinit as'program' wait'0a' depth'1' lucid light-mode for \
-  id-as'atuin-init' \
-    has'atuin' \
-    atclone'atuin init zsh > init.zsh && zcompile init.zsh' \
-    atpull'%atclone' \
-    run-atpull \
-    src'init.zsh' \
-    @zdharma-continuum/null \
-  id-as'direnv-init' \
-    has'direnv' \
-    atclone'direnv hook zsh > init.zsh && zcompile init.zsh' \
-    atpull'%atclone' \
-    run-atpull \
-    src'init.zsh' \
-    @zdharma-continuum/null \
-  id-as'uv-init' \
-    has'uv' \
-    atclone'uv generate-shell-completion zsh > _uv;
-           uvx --generate-shell-completion zsh > _uvx;' \
-    atpull'%atclone' \
+# Dynamic programs init
+typeset -A sys_inits=(
+  [atuin]="atuin init zsh"
+  [direnv]="direnv hook zsh"
+  [fzf]="fzf --zsh"
+  [zoxide]="zoxide init zsh"
+)
+typeset -A sys_comps=(
+  [uv]="uv generate-shell-completion zsh"
+  [uvx]="uvx --generate-shell-completion zsh"
+)
+zinit wait'0a' lucid light-mode for \
+  id-as'system-inits' \
+    atinit'
+      local pdir="$(pwd)"
+
+      # Handle init scripts
+      for cmd in ${(k)sys_inits}; do
+        if (( $+commands[$cmd] )); then
+          if [[ ! -f "$pdir/${cmd}.init.zsh" ]]; then
+            eval "${sys_inits[$cmd]} >! $pdir/${cmd}.init.zsh"
+            zcompile "$pdir/${cmd}.init.zsh"
+          fi
+          source "$pdir/${cmd}.init.zsh"
+        fi
+      done
+
+      # Handle completions
+      for cmd in ${(k)sys_comps}; do
+        if (( $+commands[$cmd] )); then
+          if [[ ! -f "$pdir/_${cmd}" ]]; then
+            eval "${sys_comps[$cmd]} >! $pdir/_${cmd}"
+          fi
+        fi
+      done
+    ' \
+    atpull'rm -f "$(pwd)"/*.init.zsh "$(pwd)"/*.zwc "$(pwd)"/_* 2>/dev/null | true' \
     run-atpull \
     @zdharma-continuum/null
 
@@ -261,6 +272,10 @@ fi
 if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git"
   export FZF_ALT_C_COMMAND="fd --type=d --hidden --exclude .git"
+fi
+
+if (( $+commands[zoxide] )); then
+  alias cd=z
 fi
 
 # Disable highlighting of text pasted into the command line
