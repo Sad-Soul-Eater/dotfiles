@@ -178,11 +178,17 @@ fi
 zinit as'program' wait'0a' depth'1' lucid light-mode for \
   id-as'atuin-init' \
     has'atuin' \
-    atload'eval "$(atuin init zsh)"' \
+    atclone'atuin init zsh > init.zsh && zcompile init.zsh' \
+    atpull'%atclone' \
+    run-atpull \
+    src'init.zsh' \
     @zdharma-continuum/null \
   id-as'direnv-init' \
     has'direnv' \
-    atload'eval "$(direnv hook zsh)"' \
+    atclone'direnv hook zsh > init.zsh && zcompile init.zsh' \
+    atpull'%atclone' \
+    run-atpull \
+    src'init.zsh' \
     @zdharma-continuum/null \
   id-as'uv-init' \
     has'uv' \
