@@ -185,6 +185,8 @@ zinit wait'0a' lucid light-mode for \
     atinit'
       local pdir="$(pwd)"
 
+      fpath=("$pdir" $fpath)
+
       # Handle init scripts
       for cmd in ${(k)sys_inits}; do
         if (( $+commands[$cmd] )); then
