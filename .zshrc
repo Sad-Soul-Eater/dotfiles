@@ -8,20 +8,17 @@ source "${ZINIT_HOME}/zinit.zsh"
 export _ZO_DOCTOR=0
 
 # PATHs
-PATHS=(
-  "$HOME/.local/bin"
-  "$HOME/.cargo/bin"
-  "$HOME/go/bin"
-  "$HOME/google-cloud-sdk/bin"
-  "${KREW_ROOT:-$HOME/.krew}/bin"
-  "${HOMEBREW_PREFIX:=/opt/homebrew}/opt/grep/libexec/gnubin"
-  "${HOMEBREW_PREFIX:=/opt/homebrew}/opt/curl/bin"
+typeset -U path PATH
+path=(
+  $HOME/.local/bin(N/)
+  $HOME/.cargo/bin(N/)
+  $HOME/go/bin(N/)
+  $HOME/google-cloud-sdk/bin(N/)
+  ${KREW_ROOT:-$HOME/.krew}/bin(N/)
+  ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/grep/libexec/gnubin(N/)
+  ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/curl/bin(N/)
+  $path
 )
-for path_dir in ${PATHS[@]}; do
-  if [[ -d "$path_dir" ]]; then
-    PATH="$path_dir:$PATH"
-  fi
-done
 
 # Secrets
 if [[ -r "$HOME/.zsh/secrets.zsh" ]]; then
