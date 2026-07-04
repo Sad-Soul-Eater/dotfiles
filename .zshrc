@@ -24,7 +24,7 @@ zinit depth"1" lucid light-mode for \
   id-as'iTerm2-shell-integration' \
     atload'PATH+=:$(pwd)/utilities'\
     pick"shell_integration/zsh" \
-    if"[[ $LC_TERMINAL == iTerm2 || $+ITERM_PROFILE ]]" \
+    if'[[ "$LC_TERMINAL" == "iTerm2" ]]' \
     @gnachman/iTerm2-shell-integration
 
 # Prompt
@@ -206,7 +206,7 @@ zinit wait'0a' lucid light-mode for \
         fi
       done
     ' \
-    atpull'rm -f "$(pwd)"/*.init.zsh "$(pwd)"/*.zwc "$(pwd)"/_* 2>/dev/null | true' \
+    atpull'rm -f "$(pwd)"/*.init.zsh "$(pwd)"/*.zwc "$(pwd)"/_* 2>/dev/null || true' \
     run-atpull \
     @zdharma-continuum/null
 
