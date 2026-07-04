@@ -72,8 +72,7 @@ zinit as'program' depth'1' lucid light-mode for \
     @ajeetdsouza/zoxide \
   id-as'f2' \
     from'gh-r' \
-    cp'scripts/completions/f2.zsh -> _f2' \
-    pick'f2' \
+    mv'scripts/completions/f2.zsh -> _f2' \
     @ayoisaiah/f2 \
   id-as'topgrade' \
     from'gh-r' \
@@ -84,7 +83,7 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
   id-as'lsd' \
     from'gh-r' \
     mv'lsd*/lsd -> .' \
-    cp'lsd*/*/_lsd -> .' \
+    mv'lsd*/*/_lsd -> .' \
     @lsd-rs/lsd \
   id-as'atuin' \
     from'gh-r' \
@@ -102,12 +101,12 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
   id-as'bat' \
     from'gh-r' \
     mv'bat*/bat -> bat' \
-    cp'bat*/autocomplete/bat.zsh -> _bat' \
+    mv'bat*/autocomplete/bat.zsh -> _bat' \
     @sharkdp/bat \
   id-as'fd' \
     from'gh-r' \
     mv'fd*/fd -> .' \
-    cp'fd*/*/_fd -> .' \
+    mv'fd*/*/_fd -> .' \
     @sharkdp/fd \
   id-as'delta' \
     from'gh-r' \
@@ -118,7 +117,7 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
   id-as'ripgrep' \
     from'gh-r' \
     mv'ripgrep*/rg -> .' \
-    cp'ripgrep*/*/_rg -> .' \
+    mv'ripgrep*/*/_rg -> .' \
     @BurntSushi/ripgrep \
   id-as'dust' \
     from'gh-r' \
@@ -127,7 +126,7 @@ zinit as'program' depth'1' lucid light-mode if'[[ -z "$TERMUX_VERSION" ]]' for \
   id-as'sd' \
     from'gh-r' \
     mv'sd*/sd -> .' \
-    cp'sd*/*/_sd -> .' \
+    mv'sd*/*/_sd -> .' \
     @chmln/sd \
   id-as'lazygit' \
     from'gh-r' \
