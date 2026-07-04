@@ -196,7 +196,9 @@ zinit as'program' wait'0a' depth'1' lucid light-mode for \
            uvx --generate-shell-completion zsh > _uvx;' \
     atpull'%atclone' \
     run-atpull \
-    @zdharma-continuum/null \
+    @zdharma-continuum/null
+
+zinit wait'0a' depth'1' lucid light-mode for \
   id-as'zsh-completions' \
     blockf \
     atpull'zinit creinstall -q .' \
@@ -273,6 +275,6 @@ setopt interactive_comments
 zup() {
   zinit update --all "$@"
   zinit cclear            # remove stray/broken completion symlinks
-  rm -f ~/.zcompdump      # force compinit to rebuild on reload
+  rm -f ~/.zcompdump*     # force compinit to rebuild on reload
   exec zsh                # clean fpath + fresh dump in one shot
 }
