@@ -2,4 +2,4 @@
 
 TARGET_SECRET=$(realpath "$*")
 
-kubeseal -o yaml -f "$TARGET_SECRET" -w "$TARGET_SECRET"
+kubeseal --controller-namespace sealed-secrets -o yaml -f "$TARGET_SECRET" -w "$TARGET_SECRET"
