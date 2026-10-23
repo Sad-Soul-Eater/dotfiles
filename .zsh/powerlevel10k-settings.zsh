@@ -7,12 +7,20 @@
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' '
   # The generated dotted style forces even an empty right prompt to fill the line.
   unset POWERLEVEL9K_EMPTY_LINE_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL
-  # Show the former right-side segments directly after the path and Git status.
-  local -i newline_index=${POWERLEVEL9K_LEFT_PROMPT_ELEMENTS[(i)newline]}
+  # Put user@hostname before the path and the remaining segments after Git status.
+  local -a left_segments=(
+    "${(@)POWERLEVEL9K_LEFT_PROMPT_ELEMENTS:#(context|status|command_execution_time|background_jobs)}"
+  )
+  local -i newline_index=${left_segments[(i)newline]}
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    "${(@)POWERLEVEL9K_LEFT_PROMPT_ELEMENTS[1,newline_index-1]}"
-    "${(@)POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS:#newline}"
-    "${(@)POWERLEVEL9K_LEFT_PROMPT_ELEMENTS[newline_index,-1]}"
+    context
+    "${(@)left_segments[1,newline_index-1]}"
+    "${(@)POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS:#(newline|context|status|command_execution_time|background_jobs)}"
+    # Keep command status, duration, and background jobs last on the first line.
+    status
+    command_execution_time
+    background_jobs
+    "${(@)left_segments[newline_index,-1]}"
   )
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
