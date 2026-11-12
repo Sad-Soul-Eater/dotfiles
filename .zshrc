@@ -210,6 +210,12 @@ zinit wait'0a' lucid light-mode for \
     run-atpull \
     @zdharma-continuum/null
 
+zinit wait'0a' lucid light-mode nocd for \
+  id-as'mise-activate' \
+    has'mise' \
+    atload'eval "$(mise activate zsh)"' \
+    @zdharma-continuum/null
+
 zinit wait'0a' depth'1' lucid light-mode for \
   id-as'zsh-completions' \
     blockf \
