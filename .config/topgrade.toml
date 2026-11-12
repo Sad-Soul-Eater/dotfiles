@@ -6,6 +6,9 @@ disable = [
     "spicetify",
     "vim",
     "lensfun",
+    "tailscale",
+    "colima",
+    "pip3",
 ]
 allow_root = false
 no_self_update = true
