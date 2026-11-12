@@ -173,7 +173,7 @@ typeset -A sys_inits=(
   [atuin]="atuin init zsh"
   [direnv]="direnv hook zsh"
   [fzf]="fzf --zsh"
-  [zoxide]="zoxide init zsh"
+  [zoxide]="(zoxide init zsh && echo 'alias cd=z')"
 )
 typeset -A sys_comps=(
   [uv]="uv generate-shell-completion zsh"
@@ -273,10 +273,6 @@ fi
 if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git"
   export FZF_ALT_C_COMMAND="fd --type=d --hidden --exclude .git"
-fi
-
-if (( $+commands[zoxide] )); then
-  alias cd=z
 fi
 
 # Disable highlighting of text pasted into the command line
